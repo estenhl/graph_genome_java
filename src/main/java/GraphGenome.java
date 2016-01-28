@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import configuration.Configuration;
+import configuration.EditDistanceConfiguration;
+import configuration.LastzConfiguration;
 import data.Graph;
 import data.Node;
 import index.FuzzySearchIndex;
@@ -14,6 +17,8 @@ import utils.ParseUtils;
 public class GraphGenome {
   public static void main(String[] args) throws IOException {
     Map<String, String> params = parseArgs(args);
+    Configuration configuration = getConfiguration(params.get("type"), params.get("suffixLength"),
+        params.get("gapLength"));
     Graph graph = parseGraph(params.get("Input file"), params.get("Input sequence"));
     if (params.get("Sequence") == null && params.get("Sequence file") == null) {
       printGraph(graph, params.get("Print"), null, null);
@@ -51,6 +56,31 @@ public class GraphGenome {
     }
 
     return params;
+  }
+
+  public static Configuration getConfiguration(String type, String suffixLength,
+      String maxGapLength) {
+    Configuration configuration;
+    if ("lastz".equals(type)) {
+      System.out.println("Using LASTZ scoring configuration");
+      configuration = new LastzConfiguration();
+    } else if ("edit-distance".equals(type)) {
+      System.out.println("Using edit distance scoring configuration");
+      configuration = new EditDistanceConfiguration();
+    } else {
+      System.out.println("Using default scoring configuration (edit distance)");
+      configuration = new EditDistanceConfiguration();
+    }
+
+    if (suffixLength != null) {
+      configuration.setSuffixLength(Integer.parseInt(suffixLength));
+    }
+
+    if (maxGapLength != null) {
+      configuration.setMaxGapLength(Integer.parseInt(maxGapLength));
+    }
+
+    return configuration;
   }
 
   public static Graph parseGraph(String filesString, String sequencesString) throws IOException {

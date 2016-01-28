@@ -120,12 +120,9 @@ public class FuzzySearchIndex implements Index {
       for (Map.Entry<Integer, Integer> entry : map1.entrySet()) {
         Score score;
         if (map2.containsKey(entry.getKey())) {
-          score = new Score(AlignmentUtils.scaleContextScore(entry.getValue()) + AlignmentUtils
-              .scaleContextScore(map2.get(entry.getKey())) + AlignmentUtils
-              .getScore(characters[i], graph.getNode(entry.getKey()).getValue()), entry.getKey());
+          score = new Score(entry.getValue() + map2.get(entry.getKey()), entry.getKey());
         } else {
-          score = new Score(AlignmentUtils.scaleContextScore(entry.getValue()) + AlignmentUtils
-              .getScore(characters[i], graph.getNode(entry.getKey()).getValue()), entry.getKey());
+          score = new Score(entry.getValue(), entry.getKey());
         }
         if (score.getScore() >= maxScore) {
           combinedForPosition.add(score);
@@ -136,10 +133,7 @@ public class FuzzySearchIndex implements Index {
       }
       for (Map.Entry<Integer, Integer> entry : map2.entrySet()) {
         if (!map1.containsKey(entry.getKey())) {
-          Score score = new Score(
-              AlignmentUtils.scaleContextScore(entry.getValue()) + AlignmentUtils
-                  .getScore(characters[i], graph.getNode(entry.getKey()).getValue()),
-              entry.getKey());
+          Score score = new Score(entry.getValue(), entry.getKey());
           if (score.getScore() >= maxScore) {
             combinedForPosition.add(score);
             maxScore = score.getScore();
@@ -152,15 +146,22 @@ public class FuzzySearchIndex implements Index {
           new Score(maxScore - AlignmentUtils.SUFFIX_SCORE_THRESHOLD - 1, -1));
     }
 
+    for (int i = 0; i < combined.length; i++) {
+      System.out.println("i: " + i);
+      for (Score sc : (Set<Score>) combined[i]) {
+        System.out.println(sc.getIndex() + ": " + sc.getScore());
+      }
+    }
     return combined;
   }
 
-  public int[] findMostProbablePath(Object[] alignmentScores) {
+  public int[] findMostProbablePath(Object[] alignmentScores, String sequence) {
     System.out.println("Finding most probable path");
 
     double[][] scores = new double[alignmentScores.length][0];
     int[][] indexes = new int[alignmentScores.length][0];
     String[][] backPointers = new String[alignmentScores.length][0];
+    char[] characters = sequence.toCharArray();
 
     SortedSet<Score> row = (SortedSet<Score>) alignmentScores[0];
     scores[0] = new double[row.size()];
@@ -168,7 +169,7 @@ public class FuzzySearchIndex implements Index {
     backPointers[0] = new String[row.size()];
     int i = 0;
     for (Score s : row) {
-      scores[0][i] = s.getScore();
+      scores[0][i] = AlignmentUtils.getScore(graph.getNode(s.getIndex()).getValue(), characters[0]);
       indexes[0][i] = s.getIndex();
       backPointers[0][i] = "-1:-1";
       i++;
@@ -186,13 +187,16 @@ public class FuzzySearchIndex implements Index {
       backPointers[i] = new String[row.size()];
       int j = 0;
       for (Score s : row) {
-        scores[i][j] = s.getScore();
-        indexes[i][j] = s.getIndex();
+        scores[i][j] = Double.MIN_VALUE;
+        indexes[i][j] = -1;
         backPointers[i][j] = "-1:-1";
+        int baseScore = AlignmentUtils
+            .getScore(graph.getNode(s.getIndex()).getValue(), characters[i]);
         for (int k = 0; k < i; k++) {
           for (int l = 0; l < scores[k].length; l++) {
-            double score = s.getScore() + scores[k][l] - AlignmentUtils.getLogGapPenalty(
-                graph.getDistance(indexes[k][l], s.getIndex(), AlignmentUtils.MAX_GAP_LENGTH));
+            double score = baseScore + scores[k][l] - AlignmentUtils.getGapPenalty(
+                graph.getDistance(indexes[k][l], s.getIndex(), AlignmentUtils.MAX_GAP_LENGTH))
+                - AlignmentUtils.getGapPenalty(i - k);
 
             if (score > scores[i][j]) {
               scores[i][j] = score;
@@ -237,7 +241,7 @@ public class FuzzySearchIndex implements Index {
   public int[] align(String sequence) {
     System.out.println("Aligning sequence " + sequence);
     Object[] alignmentScores = improvedFuzzyContextSearch(sequence);
-    int[] alignment = findMostProbablePath(alignmentScores);
+    int[] alignment = findMostProbablePath(alignmentScores, sequence);
 
     return alignment;
   }
