@@ -11,6 +11,7 @@ public abstract class Configuration {
   private int gapExtensionPenalty;
   private int maxGapLength;
   private int suffixLength;
+  private int maxPairwiseScore;
 
   protected Configuration(int[][] scoringMatrix, int gapOpeningPenalty, int gapExtensionPenalty) {
     this.scoringMatrix = scoringMatrix;
@@ -18,6 +19,20 @@ public abstract class Configuration {
     this.gapExtensionPenalty = gapExtensionPenalty;
     this.maxGapLength = DEFAULT_MAX_GAP_LENGTH;
     this.suffixLength = DEFAULT_SUFFIX_LENGTH;
+    maxPairwiseScore = findMaxScore(scoringMatrix);
+  }
+
+  private int findMaxScore(int[][] scoringMatrix) {
+    int max = Integer.MIN_VALUE;
+    for (int i = 0; i < scoringMatrix.length; i++) {
+      for (int j = 0; j < scoringMatrix[i].length; j++) {
+        if (scoringMatrix[i][j] > max) {
+          max = scoringMatrix[i][j];
+        }
+      }
+    }
+
+    return max;
   }
 
   public int getScore(char a, char b) {
@@ -84,5 +99,21 @@ public abstract class Configuration {
 
   public int getMaxGapLength() {
     return maxGapLength;
+  }
+
+  public int getGapOpeningPenalty() {
+    return gapOpeningPenalty;
+  }
+
+  public int getGapExtensionPenalty() {
+    return gapExtensionPenalty;
+  }
+
+  public int getMaxPairwiseScore() {
+    return maxPairwiseScore;
+  }
+
+  public int getSuffixScoreThreshold() {
+    return gapOpeningPenalty;
   }
 }

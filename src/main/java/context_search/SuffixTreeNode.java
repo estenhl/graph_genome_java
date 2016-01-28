@@ -5,17 +5,20 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import utils.AlignmentUtils;
+import configuration.Configuration;
 import utils.ArrayUtils;
 
 public class SuffixTreeNode {
-  public Map<Character, SuffixTreeNode> children;
-  public Set<Integer> indexes;
-  public int depth;
+  private Configuration configuration;
+  private Map<Character, SuffixTreeNode> children;
+  private Set<Integer> indexes;
+  private int depth;
 
-  public SuffixTreeNode(int depth) {
+  public SuffixTreeNode(Configuration configuration, int depth) {
+    this.configuration = configuration;
     children = new HashMap<Character, SuffixTreeNode>();
     indexes = new HashSet<Integer>();
+    this.depth = depth;
   }
 
   public void addSuffix(String suffix, int node) {
@@ -26,7 +29,7 @@ public class SuffixTreeNode {
 
     SuffixTreeNode next = children.get(suffix.charAt(0));
     if (next == null) {
-      next = new SuffixTreeNode(depth + 1);
+      next = new SuffixTreeNode(configuration, depth + 1);
       children.put(suffix.charAt(0), next);
     }
 
@@ -53,76 +56,18 @@ public class SuffixTreeNode {
     return cumulativeIndexes;
   }
 
-  public int search(String suffix, int score, HashMap<Integer, Set<Integer>> scores,
-      int maxScore, int maxDepth, int gapStatus) {
-    SuffixTree.operations += 1;
-    if (score + (maxDepth - depth) * AlignmentUtils.MAX_PAIRWISE_ALIGNMENT_SCORE < maxScore) {
-      return maxScore;
-    }
-    if (suffix.length() == 0) {
-      if (score >= maxScore - AlignmentUtils.SUFFIX_SCORE_THRESHOLD) {
-        if (scores.containsKey(score)) {
-          scores.get(score).addAll(getIndexes());
-        } else {
-          scores.put(score, getIndexes());
-        }
-      }
-    } else if (children.size() == 0) {
-      if (score >= maxScore - AlignmentUtils.SUFFIX_SCORE_THRESHOLD) {
-        if (scores.containsKey(score)) {
-          scores.get(score).addAll(getIndexes());
-        } else {
-          scores.put(score, getIndexes());
-        }
-      }
-    } else {
-      // Gap in sequence
-      if (gapStatus == AlignmentUtils.GAP_STATUS_GAP_IN_SEQUENCE) {
-        maxScore = Math.max(maxScore,
-            search(suffix.substring(1), score - AlignmentUtils.AFFINE_GAP_PENALTY_CONTINUATION,
-                scores,
-                maxScore, maxDepth, AlignmentUtils.GAP_STATUS_GAP_IN_SEQUENCE));
-      } else {
-        maxScore = Math.max(maxScore,
-            search(suffix.substring(1), score - AlignmentUtils.AFFINE_GAP_PENALTY_OPENING, scores,
-                maxScore, maxDepth, AlignmentUtils.GAP_STATUS_GAP_IN_SEQUENCE));
-      }
-
-      for (Character c : children.keySet()) {
-        // Gap in graph
-        if (gapStatus == AlignmentUtils.GAP_STATUS_GAP_IN_GRAPH) {
-          maxScore = Math.max(maxScore, children.get(c)
-              .search(suffix, score - AlignmentUtils.AFFINE_GAP_PENALTY_CONTINUATION, scores,
-                  maxScore,
-                  maxDepth, AlignmentUtils.GAP_STATUS_GAP_IN_GRAPH));
-        } else {
-          maxScore = Math.max(maxScore, children.get(c)
-              .search(suffix, score - AlignmentUtils.AFFINE_GAP_PENALTY_OPENING, scores, maxScore,
-                  maxDepth, AlignmentUtils.GAP_STATUS_GAP_IN_GRAPH));
-        }
-
-        // Match and SNP
-        maxScore = Math.max(maxScore, children.get(c)
-            .search(suffix.substring(1), score + AlignmentUtils.getScore(c, suffix.charAt(0)),
-                scores, maxScore, maxDepth, AlignmentUtils.GAP_STATUS_NO_GAP));
-      }
-    }
-
-    return Math.max(score, maxScore);
-  }
-
   public int improvedSearch(char[] suffix, int[] scores, int maxScore, int depth,
       HashMap<Integer, Integer> finalScores, boolean[] gaps, String path, int maxDepth) {
     int current = ArrayUtils.max(scores);
-    if (current + (maxDepth - depth) * AlignmentUtils.MAX_PAIRWISE_ALIGNMENT_SCORE
-        < maxScore - AlignmentUtils.SUFFIX_SCORE_THRESHOLD) {
+    if (current + (maxDepth - depth) * configuration.getMaxPairwiseScore()
+        < maxScore - configuration.getSuffixScoreThreshold()) {
       return maxScore;
     }
     if (children.size() == 0) {
       int score = ArrayUtils.max(scores);
       for (Integer i : indexes) {
         if ((!finalScores.containsKey(i) || score > finalScores.get(i))
-            && score >= maxScore - AlignmentUtils.SUFFIX_SCORE_THRESHOLD) {
+            && score >= maxScore - configuration.getSuffixScoreThreshold()) {
           finalScores.put(i, score);
         }
       }
@@ -132,17 +77,17 @@ public class SuffixTreeNode {
       int[] myScores = new int[scores.length];
       boolean[] myGaps = new boolean[gaps.length];
       if (depth == 0) {
-        myScores[0] = scores[0] - AlignmentUtils.AFFINE_GAP_PENALTY_OPENING;
+        myScores[0] = scores[0] - configuration.getGapOpeningPenalty();
       } else {
-        myScores[0] = scores[0] - AlignmentUtils.AFFINE_GAP_PENALTY_CONTINUATION;
+        myScores[0] = scores[0] - configuration.getGapExtensionPenalty();
       }
       for (int i = 1; i < scores.length; i++) {
         int verticalScore = myScores[i - 1] - getGapPenalty(myScores, i);
-        int horizontalScore = scores[i] - AlignmentUtils.AFFINE_GAP_PENALTY_OPENING;
+        int horizontalScore = scores[i] - configuration.getGapOpeningPenalty();
         if (gaps[i]) {
-          horizontalScore = scores[i] - AlignmentUtils.AFFINE_GAP_PENALTY_CONTINUATION;
+          horizontalScore = scores[i] - configuration.getGapExtensionPenalty();
         }
-        int diagonalScore = scores[i - 1] + AlignmentUtils.getScore(suffix[i - 1], c);
+        int diagonalScore = scores[i - 1] + configuration.getScore(suffix[i - 1], c);
         myScores[i] = ArrayUtils
             .max(new int[] { verticalScore, horizontalScore, diagonalScore });
         if (myScores[i] == horizontalScore) {
@@ -159,13 +104,13 @@ public class SuffixTreeNode {
 
   private int getGapPenalty(int[] scores, int index) {
     if (index - 1 == 0) {
-      return AlignmentUtils.AFFINE_GAP_PENALTY_CONTINUATION;
-    } else if ((scores[index - 1] == scores[index - 2] - AlignmentUtils.AFFINE_GAP_PENALTY_OPENING)
+      return configuration.getGapExtensionPenalty();
+    } else if ((scores[index - 1] == scores[index - 2] - configuration.getGapOpeningPenalty())
         || (scores[index - 1]
-        == scores[index - 2] - AlignmentUtils.AFFINE_GAP_PENALTY_CONTINUATION)) {
-      return AlignmentUtils.AFFINE_GAP_PENALTY_CONTINUATION;
+        == scores[index - 2] - configuration.getGapExtensionPenalty())) {
+      return configuration.getGapExtensionPenalty();
     } else {
-      return AlignmentUtils.AFFINE_GAP_PENALTY_OPENING;
+      return configuration.getGapOpeningPenalty();
     }
   }
 

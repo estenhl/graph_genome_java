@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import utils.AlignmentUtils;
+import configuration.Configuration;
 import utils.GraphUtils;
 import utils.Pair;
 
@@ -20,18 +20,21 @@ public class Graph {
   public static final String LEFT_CONTEXT = "left";
   public static final String RIGHT_CONTEXT = "right";
 
+  private Configuration configuration;
   private int totalSize;
   private int currentIndex;
   private Node[] nodes;
 
-  public Graph(int size) {
+  public Graph(Configuration configuration, int size) {
+    this.configuration = configuration;
+    this.totalSize = size;
+    this.currentIndex = 1;
+
     nodes = new Node[size];
     nodes[0] = new Node(HEAD_VALUE);
     nodes[0].setIndex(HEAD_INDEX);
     nodes[size - 1] = new Node(TAIL_VALUE);
     nodes[size - 1].setIndex(TAIL_INDEX);
-    this.totalSize = size;
-    this.currentIndex = 1;
   }
 
   public int getCurrentSize() {
@@ -175,7 +178,7 @@ public class Graph {
     if (suffixes[index] == null) {
       suffixes[index] = new HashSet<String>();
     }
-    suffix = suffix.substring(0, Math.min(suffix.length(), AlignmentUtils.SUFFIX_LENGTH));
+    suffix = suffix.substring(0, Math.min(suffix.length(), configuration.getSuffixLength()));
     ((Set<String>) suffixes[index]).add(suffix);
   }
 
