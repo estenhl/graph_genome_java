@@ -140,7 +140,6 @@ public class Graph {
 
     while (!queue.isEmpty()) {
       Node curr = queue.remove(0);
-      System.out.println("Popped " + curr.getIndex());
       int index = curr.getIndex();
       if (index == -1) {
         index = nodes.length - 1;

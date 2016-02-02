@@ -35,7 +35,7 @@ public class Score implements Comparable<Score> {
     } else if (val < 0) {
       return -1;
     } else {
-      return 0;
+      return score.getIndex() - index;
     }
   }
 }

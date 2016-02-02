@@ -5,6 +5,7 @@ import data.Graph;
 public abstract class Configuration {
   public final int DEFAULT_MAX_GAP_LENGTH = 5;
   public final int DEFAULT_SUFFIX_LENGTH = 15;
+  public final char WILDCARD = 'N';
 
   private int[][] scoringMatrix;
   private int gapOpeningPenalty;
@@ -36,6 +37,10 @@ public abstract class Configuration {
   }
 
   public int getScore(char a, char b) {
+    if (a == WILDCARD || b == WILDCARD) {
+      return maxPairwiseScore;
+    }
+
     final int A = 0;
     final int C = 1;
     final int G = 2;
@@ -78,10 +83,8 @@ public abstract class Configuration {
       return 0;
     } else if (distance == 2) {
       return gapOpeningPenalty;
-    } else if (distance <= maxGapLength) {
-      return gapOpeningPenalty + ((distance - 2) * gapExtensionPenalty);
     } else {
-      return gapOpeningPenalty + (maxGapLength - 2) * gapExtensionPenalty;
+      return gapOpeningPenalty + ((distance - 2) * gapExtensionPenalty);
     }
   }
 
@@ -113,7 +116,7 @@ public abstract class Configuration {
     return maxPairwiseScore;
   }
 
-  public int getSuffixScoreThreshold() {
-    return gapOpeningPenalty;
+  public double getSuffixScoreThreshold() {
+    return gapOpeningPenalty * 2;
   }
 }

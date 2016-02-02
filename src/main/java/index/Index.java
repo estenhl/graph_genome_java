@@ -1,9 +1,8 @@
 package index;
 
-/**
- * Created by esten on 20.01.16.
- */
+import data.Alignment;
+
 public interface Index {
 
-  public int[] align(String sequence);
+  public Alignment align(String sequence);
 }
