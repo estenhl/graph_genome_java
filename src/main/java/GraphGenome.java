@@ -5,27 +5,49 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import configuration.Configuration;
+import configuration.EditDistanceConfiguration;
+import configuration.LastzConfiguration;
+import data.Alignment;
 import data.Graph;
 import data.Node;
 import index.FuzzySearchIndex;
+import results.Tester;
+import utils.AlignmentUtils;
 import utils.DOTUtils;
 import utils.ParseUtils;
 
 public class GraphGenome {
   public static void main(String[] args) throws IOException {
     Map<String, String> params = parseArgs(args);
-    Graph graph = parseGraph(params.get("Input file"), params.get("Input sequence"));
+    if (params.containsKey("Test")) {
+      Tester tester = new Tester(params.get("Test"));
+      tester.test();
+      System.exit(-1);
+    }
+    Configuration configuration = getConfiguration(params.get("Type"), params.get("Suffix length"),
+        params.get("Gap length"));
+    Graph graph = parseGraph(configuration, params.get("Input file"), params.get("Input sequence"));
     if (params.get("Sequence") == null && params.get("Sequence file") == null) {
       printGraph(graph, params.get("Print"), null, null);
       return;
     }
-    FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph);
+    FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
     String sequence = params.get("Sequence");
     if (sequence == null && params.get("Sequence file") != null) {
       sequence = ParseUtils.fastaToSequence(params.get("Sequence file"));
     }
-    int[] alignment = index.align(sequence);
-    printGraph(graph, params.get("Print"), alignment, sequence);
+    Alignment bruteForce = AlignmentUtils.align(graph, sequence, configuration);
+    Alignment fuzzySearch = index.align(sequence);
+    System.out.println("Brute force: ");
+    for (Integer k : bruteForce.getAlignment()) {
+      System.out.print(k + " ");
+    }
+    System.out.println("\nFuzzy: ");
+    for (Integer k : fuzzySearch.getAlignment()) {
+      System.out.print(k + " ");
+    }
+    printGraph(graph, params.get("Print"), fuzzySearch.getAlignment(), sequence);
   }
 
   public static Map<String, String> parseArgs(String[] args) {
@@ -42,6 +64,10 @@ public class GraphGenome {
         key = "Sequence";
       } else if (s.startsWith("--print") || s.startsWith("-p")) {
         key = "Print";
+      } else if (s.startsWith("--test")) {
+        key = "Test";
+      } else if (s.startsWith("--type")) {
+        key = "Type";
       } else {
         System.out.println("Invalid parameter " + s + " not handled");
         continue;
@@ -53,7 +79,33 @@ public class GraphGenome {
     return params;
   }
 
-  public static Graph parseGraph(String filesString, String sequencesString) throws IOException {
+  public static Configuration getConfiguration(String type, String suffixLength,
+      String maxGapLength) {
+    Configuration configuration;
+    if ("lastz".equals(type)) {
+      System.out.println("Using LASTZ scoring configuration");
+      configuration = new LastzConfiguration();
+    } else if ("edit-distance".equals(type)) {
+      System.out.println("Using edit distance scoring configuration");
+      configuration = new EditDistanceConfiguration();
+    } else {
+      System.out.println("Using default scoring configuration (edit distance)");
+      configuration = new EditDistanceConfiguration();
+    }
+
+    if (suffixLength != null) {
+      configuration.setSuffixLength(Integer.parseInt(suffixLength));
+    }
+
+    if (maxGapLength != null) {
+      configuration.setMaxGapLength(Integer.parseInt(maxGapLength));
+    }
+
+    return configuration;
+  }
+
+  public static Graph parseGraph(Configuration configuration, String filesString,
+      String sequencesString) throws IOException {
     String[] files = null;
     if (filesString != null) {
       files = filesString.split(",");
@@ -65,30 +117,30 @@ public class GraphGenome {
     Graph graph = null;
     if (files != null && sequences != null) {
       System.out.println("Creating graph");
-      graph = ParseUtils.stringToGraph(sequences[0]);
+      graph = ParseUtils.stringToGraph(configuration, sequences[0]);
       for (int i = 1; i < sequences.length; i++) {
-        FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph);
-        graph.mergeSequence(sequences[i], index.align(sequences[i]));
+        FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
+        graph.mergeSequence(sequences[i], index.align(sequences[i]).getAlignment());
       }
       for (int i = 0; i < files.length; i++) {
         System.out.println("Currently unable to merge sequences. Skipping file " + files[i]);
       }
     } else if (files != null) {
       System.out.println("Creating graph from files");
-      graph = ParseUtils.fastaToGraph(files[0]);
+      graph = ParseUtils.fastaToGraph(configuration, files[0]);
       for (int i = 1; i < files.length; i++) {
         System.out.println("Adding sequence from " + files[i]);
         String sequence = ParseUtils.fastaToSequence(files[i]);
-        FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph);
-        int[] alignment = index.align(sequence);
-        graph.mergeSequence(sequence, alignment);
+        FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
+        Alignment alignment = index.align(sequence);
+        graph.mergeSequence(sequence, alignment.getAlignment());
       }
     } else if (sequences != null) {
       System.out.println("Creating graph from sequence " + sequences[0]);
-      graph = ParseUtils.stringToGraph(sequences[0]);
+      graph = ParseUtils.stringToGraph(configuration, sequences[0]);
       for (int i = 1; i < sequences.length; i++) {
-        FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph);
-        graph.mergeSequence(sequences[i], index.align(sequences[i]));
+        FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
+        graph.mergeSequence(sequences[i], index.align(sequences[i]).getAlignment());
       }
     } else {
       System.out.println("No input sequences given. Aborting");
