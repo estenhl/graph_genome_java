@@ -70,6 +70,14 @@ public class FuzzySearchIndex implements Index {
     return combineScores(leftContextScores, rightContextScores, s);
   }
 
+  private double getMaxAlignmentScore(String sequence) {
+    int score = 0;
+    for (Character c : sequence.toCharArray()) {
+      score += configuration.getScore(c, c);
+    }
+    return score;
+  }
+
   private Object[] combineScores(Object[] scores1, Object[] scores2, String s) {
     char[] characters = s.toCharArray();
     Object[] combined = new Object[scores1.length];
@@ -88,7 +96,7 @@ public class FuzzySearchIndex implements Index {
         if (score.getScore() >= maxScore) {
           combinedForPosition.add(score);
           maxScore = score.getScore();
-        } else if (score.getScore() >= maxScore - configuration.getSuffixScoreThreshold()) {
+        } else if (score.getScore() >= maxScore - configuration.getContextSearchThreshold()) {
           combinedForPosition.add(score);
         }
       }
@@ -98,13 +106,13 @@ public class FuzzySearchIndex implements Index {
           if (score.getScore() >= maxScore) {
             combinedForPosition.add(score);
             maxScore = score.getScore();
-          } else if (score.getScore() >= maxScore - configuration.getSuffixScoreThreshold()) {
+          } else if (score.getScore() >= maxScore - configuration.getContextSearchThreshold()) {
             combinedForPosition.add(score);
           }
         }
       }
       combined[i] = combinedForPosition.subSet(new Score(maxScore + 1, -1),
-          new Score(maxScore - configuration.getSuffixScoreThreshold() - 1, -1));
+          new Score(maxScore - configuration.getContextSearchThreshold() - 1, -1));
     }
 
     return combined;
@@ -113,6 +121,7 @@ public class FuzzySearchIndex implements Index {
   public Alignment findMostProbablePath(Object[] alignmentScores, String sequence) {
     System.out.println("Finding most probable path");
 
+    int maxDistance = configuration.getMaxDistance();
     long startTime = System.nanoTime();
     double[][] scores = new double[alignmentScores.length][0];
     int[][] indexes = new int[alignmentScores.length][0];
@@ -143,15 +152,15 @@ public class FuzzySearchIndex implements Index {
       backPointers[i] = new String[row.size()];
       int j = 0;
       for (Score s : row) {
-        scores[i][j] = -10000;
+        scores[i][j] = -10000; //TODO
         indexes[i][j] = -1;
         backPointers[i][j] = "-1:-1";
         int baseScore = configuration
             .getScore(graph.getNode(s.getIndex()).getValue(), characters[i]);
-        for (int k = 0; k < i; k++) {
+        for (int k = Math.max(0, i - maxDistance); k < i; k++) {
           for (int l = 0; l < scores[k].length; l++) {
-            double score = baseScore + scores[k][l] - configuration.getGapPenalty(
-                graph.getDistance(indexes[k][l], s.getIndex(), configuration.getMaxGapLength()))
+            double score = baseScore + scores[k][l] - configuration
+                .getGapPenalty(graph.getDistance(indexes[k][l], s.getIndex(), maxDistance))
                 - configuration.getGapPenalty(i - k);
 
             if (score > scores[i][j]) {
@@ -166,6 +175,17 @@ public class FuzzySearchIndex implements Index {
     }
 
     int rowNr = scores.length - 1;
+    int initialGapLength = 1;
+    while (scores[rowNr] == null || scores[rowNr].length == 0) {
+      initialGapLength += 1;
+      rowNr -= 1;
+      if (rowNr == -1) {
+        Alignment alignment = new Alignment();
+        alignment.setAlignment(new int[sequence.length()]);
+        alignment.setScore(Double.MIN_VALUE);
+        return alignment;
+      }
+    }
     int colNr = ArrayUtils.findHighestIndex(scores[rowNr]);
     double max = scores[rowNr][colNr];
 
@@ -176,10 +196,21 @@ public class FuzzySearchIndex implements Index {
       rowNr = Integer.parseInt(backPointer.split(":")[0]);
       colNr = Integer.parseInt(backPointer.split(":")[1]);
     }
+    /*
+    System.out.print("\n");
+    for (i = 0; i < scores.length; i++) {
+      System.out.print(i + ": ");
+      for (int j = 0; j < scores[i].length; j++) {
+        System.out
+            .print("[" + scores[i][j] + ", " + indexes[i][j] + ", " + backPointers[i][j] + "] ");
+      }
+      System.out.print("\n");
+    }
+    */
 
     long time = System.nanoTime() - startTime;
     Alignment alignment = new Alignment();
-    alignment.setScore(max);
+    alignment.setScore(max - configuration.getGapPenalty(initialGapLength));
     alignment.setTime(time);
     alignment.setType("Fuzzy search");
     alignment.setSequenceLength(characters.length);
@@ -208,6 +239,12 @@ public class FuzzySearchIndex implements Index {
   public Alignment align(String sequence) {
     System.out.println("Aligning sequence " + sequence);
     Object[] alignmentScores = improvedFuzzyContextSearch(sequence);
+    System.out.println("Scores");
+    /*
+    for (int i = 0; i < alignmentScores.length; i++) {
+      System.out.println(i + ":" + (Set<Score>) alignmentScores[i]);
+    }
+    */
 
     return findMostProbablePath(alignmentScores, sequence);
   }

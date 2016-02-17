@@ -15,38 +15,59 @@ import index.FuzzySearchIndex;
 import results.Tester;
 import utils.AlignmentUtils;
 import utils.DOTUtils;
+import utils.GraphUtils;
 import utils.ParseUtils;
 
 public class GraphGenome {
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, InterruptedException {
     Map<String, String> params = parseArgs(args);
+    if (params == null) {
+      return;
+    }
+
     if (params.containsKey("Test")) {
       Tester tester = new Tester(params.get("Test"));
       tester.test();
-      System.exit(-1);
+      return;
     }
-    Configuration configuration = getConfiguration(params.get("Type"), params.get("Suffix length"),
-        params.get("Gap length"));
+    Configuration configuration = getConfiguration(params.get("Type"));
+
+    if (params.get("Threshold") != null) {
+      configuration.setContextSearchThreshold(Double.parseDouble(params.get("Threshold")));
+    } else {
+      System.out.println(
+          "No context search scoring threshold set. Defaulted threshold to " + configuration
+              .getContextSearchThreshold());
+    }
+
     Graph graph = parseGraph(configuration, params.get("Input file"), params.get("Input sequence"));
+
+    if (params.get("Suffix length") != null) {
+      configuration.setSuffixLength(Integer.parseInt(params.get("Suffix length")));
+    } else {
+      configuration.setSuffixLength(GraphUtils.optimalSuffixLength(graph, 1.0));
+      System.out.println(
+          "No suffix length supplied! Defaulted suffix length to " + configuration.getSuffixLength()
+              + ". Probability of shared suffixes is <" + GraphUtils.SHARED_SUFFIX_PROBABILITY);
+    }
+
     if (params.get("Sequence") == null && params.get("Sequence file") == null) {
       printGraph(graph, params.get("Print"), null, null);
       return;
     }
+
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
+
     String sequence = params.get("Sequence");
     if (sequence == null && params.get("Sequence file") != null) {
       sequence = ParseUtils.fastaToSequence(params.get("Sequence file"));
     }
+
     Alignment bruteForce = AlignmentUtils.align(graph, sequence, configuration);
     Alignment fuzzySearch = index.align(sequence);
-    System.out.println("Brute force: ");
-    for (Integer k : bruteForce.getAlignment()) {
-      System.out.print(k + " ");
-    }
-    System.out.println("\nFuzzy: ");
-    for (Integer k : fuzzySearch.getAlignment()) {
-      System.out.print(k + " ");
-    }
+    System.out.println(bruteForce);
+    System.out.println(fuzzySearch);
+
     printGraph(graph, params.get("Print"), fuzzySearch.getAlignment(), sequence);
   }
 
@@ -66,8 +87,15 @@ public class GraphGenome {
         key = "Print";
       } else if (s.startsWith("--test")) {
         key = "Test";
-      } else if (s.startsWith("--type")) {
+      } else if (s.startsWith("--scoring-system") || s.startsWith("-ss")) {
         key = "Type";
+      } else if (s.startsWith("--threshold") || s.startsWith("-t")) {
+        key = "Threshold";
+      } else if (s.startsWith("--suffix-length") || s.startsWith("-sl")) {
+        key = "Suffix length";
+      } else if (s.startsWith("--help") || s.startsWith("-h")) {
+        printHelp();
+        return null;
       } else {
         System.out.println("Invalid parameter " + s + " not handled");
         continue;
@@ -79,8 +107,28 @@ public class GraphGenome {
     return params;
   }
 
-  public static Configuration getConfiguration(String type, String suffixLength,
-      String maxGapLength) {
+  public static void printHelp() {
+    System.out.printf("%-20s%-13s%-40s\n", "Name:", "Abbreviation:", "Description:");
+    System.out.printf("%-20s%-13s%-40s\n", "--input-file", "-if",
+        "Comma separated list of fasta files used to build graph");
+    System.out.printf("%-20s%-13s%-40s\n", "--input-sequence", "-is",
+        "Comma separated list of sequences used to build graph");
+    System.out.printf("%-20s%-13s%-40s\n", "--sequence", "-s", "Sequence to be aligned");
+    System.out.printf("%-20s%-13s%-40s\n", "--print", "-p",
+        "Name of file where dot-formatted output is written");
+    System.out.printf("%-20s%-13s%-40s\n", "--test", "NA", "Preset test runs");
+    System.out.printf("%-20s%-13s%-40s\n", "--scoring-system", "-ss",
+        "Scoring system to use. Can be either edit-distance or lastz. Defaults to edit-distance");
+    System.out.printf("%-20s%-13s%-40s\n", "--threshold", "-t",
+        "Threshold used for fuzzy context search. Defaults to "
+            + Configuration.DEFAULT_CONTEXT_SEARCH_THRESHOLD);
+    System.out.printf("%-20s%-13s%-40s\n", "--suffix-length", "-sl",
+        "Length of contexts used (on each side). Default is computed by approximating the length needed for a probability of <"
+            + GraphUtils.SHARED_SUFFIX_PROBABILITY + " of sharing contexts");
+    System.out.printf("%-20s%-13s%-40s\n", "--help", "-h", "Shows this menu");
+  }
+
+  public static Configuration getConfiguration(String type) {
     Configuration configuration;
     if ("lastz".equals(type)) {
       System.out.println("Using LASTZ scoring configuration");
@@ -91,14 +139,6 @@ public class GraphGenome {
     } else {
       System.out.println("Using default scoring configuration (edit distance)");
       configuration = new EditDistanceConfiguration();
-    }
-
-    if (suffixLength != null) {
-      configuration.setSuffixLength(Integer.parseInt(suffixLength));
-    }
-
-    if (maxGapLength != null) {
-      configuration.setMaxGapLength(Integer.parseInt(maxGapLength));
     }
 
     return configuration;
@@ -117,13 +157,15 @@ public class GraphGenome {
     Graph graph = null;
     if (files != null && sequences != null) {
       System.out.println("Creating graph");
-      graph = ParseUtils.stringToGraph(configuration, sequences[0]);
-      for (int i = 1; i < sequences.length; i++) {
+      graph = ParseUtils.fastaToGraph(configuration, files[0]);
+      for (int i = 1; i < files.length; i++) {
+        FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
+        graph.mergeSequence(sequences[i],
+            index.align(ParseUtils.fastaToSequence(files[i])).getAlignment());
+      }
+      for (int i = 0; i < sequences.length; i++) {
         FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
         graph.mergeSequence(sequences[i], index.align(sequences[i]).getAlignment());
-      }
-      for (int i = 0; i < files.length; i++) {
-        System.out.println("Currently unable to merge sequences. Skipping file " + files[i]);
       }
     } else if (files != null) {
       System.out.println("Creating graph from files");

@@ -36,6 +36,21 @@ public class SuffixTreeNode {
     next.addSuffix(suffix.substring(1), node);
   }
 
+  public boolean printSuffix(String suffix, int index) {
+    if (indexes.contains(index)) {
+      System.out.println("Suffix for index " + index + ": " + suffix);
+      return true;
+    }
+
+    for (Character c : children.keySet()) {
+      if (children.get(c).printSuffix(suffix + c, index)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   public int count() {
     int count = 1;
     for (SuffixTreeNode child : children.values()) {
@@ -60,19 +75,20 @@ public class SuffixTreeNode {
       HashMap<Integer, Integer> finalScores, boolean[] gaps, String path, int maxDepth) {
     int current = ArrayUtils.max(scores);
     if (current + (maxDepth - depth) * configuration.getMaxPairwiseScore()
-        < maxScore - configuration.getSuffixScoreThreshold()) {
+        < maxScore - configuration.getContextSearchThreshold()) {
       return maxScore;
     }
     if (children.size() == 0) {
       int score = ArrayUtils.max(scores);
       for (Integer i : indexes) {
         if ((!finalScores.containsKey(i) || score > finalScores.get(i))
-            && score >= maxScore - configuration.getSuffixScoreThreshold()) {
+            && score >= maxScore - configuration.getContextSearchThreshold()) {
           finalScores.put(i, score);
         }
       }
       return Math.max(maxScore, score);
     }
+
     for (Character c : children.keySet()) {
       int[] myScores = new int[scores.length];
       boolean[] myGaps = new boolean[gaps.length];

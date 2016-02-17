@@ -38,4 +38,9 @@ public class Score implements Comparable<Score> {
       return score.getIndex() - index;
     }
   }
+
+  @Override
+  public String toString() {
+    return index + ":" + score;
+  }
 }

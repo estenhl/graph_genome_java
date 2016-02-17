@@ -70,7 +70,7 @@ public class Alignment {
         "Alignment: ";
     if (alignment != null) {
       for (int i = 0; i < alignment.length; i++) {
-        s += alignment[i] + " ";
+        s += i + ":" + alignment[i] + " ";
       }
     }
 

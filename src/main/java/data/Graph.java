@@ -82,29 +82,52 @@ public class Graph {
       return;
     }
 
-    Node newPrev = getHead();
+    Set<Node> newPrev = getPrev(alignment);
     for (int i = 0; i < characters.length; i++) {
-      if (alignment[i] == -1) {
+      if (alignment[i] == 0) {
         Node n = new Node(characters[i]);
         int value = addNode(n);
-        n.addIncoming(newPrev.getIndex());
-        newPrev.addOutgoing(value);
-        newPrev = n;
+        for (Node prev : newPrev) {
+          n.addIncoming(prev.getIndex());
+          prev.addOutgoing(value);
+          newPrev.remove(prev);
+        }
+        newPrev.add(n);
         continue;
       }
       Node curr = getNode(alignment[i]);
       if (curr.getValue() != characters[i]) {
         Node n = new Node(characters[i]);
         int value = addNode(n);
-        n.addIncoming(newPrev.getIndex());
-        newPrev.addOutgoing(value);
-        newPrev = n;
+        for (Node prev : newPrev) {
+          n.addIncoming(prev.getIndex());
+          prev.addOutgoing(value);
+          newPrev.remove(prev);
+        }
+        newPrev.add(n);
       } else {
-        newPrev.addOutgoing(curr.getIndex());
-        curr.addIncoming(newPrev.getIndex());
-        newPrev = curr;
+        for (Node prev : newPrev) {
+          curr.addIncoming(prev.getIndex());
+          prev.addOutgoing(curr.getIndex());
+          newPrev.remove(prev);
+        }
+        newPrev.add(curr);
       }
     }
+  }
+
+  private Set<Node> getPrev(int[] alignment) {
+    Set<Node> prev = new HashSet<Node>();
+    for (int i = 0; i < alignment.length; i++) {
+      if (alignment[i] != 0) {
+        for (Integer neighbour : getNode(alignment[i]).getIncoming()) {
+          prev.add(getNode(neighbour));
+        }
+        return prev;
+      }
+    }
+    prev.add(getHead());
+    return prev;
   }
 
   public Node getNode(int index) {
@@ -129,21 +152,32 @@ public class Graph {
 
   public Object[] getContexts(String direction) {
     List<Node> queue = new ArrayList<Node>();
+    Set<Integer> active = new HashSet<Integer>();
     Object[] suffixes = new Object[nodes.length];
     if (LEFT_CONTEXT.equals(direction)) {
-      queue.add(getHead());
-      addSuffix(suffixes, 0, "");
+      for (Integer i : getHead().getOutgoing()) {
+        queue.add(getNode(i));
+        addSuffix(suffixes, i, "");
+        active.add(i);
+      }
     } else {
-      queue.add(getTail());
-      addSuffix(suffixes, -1, "");
+      for (Integer i : getTail().getIncoming()) {
+        queue.add(getNode(i));
+        addSuffix(suffixes, i, "");
+        active.add(i);
+      }
     }
 
     while (!queue.isEmpty()) {
       Node curr = queue.remove(0);
+      if (curr == getHead() || curr == getTail()) {
+        continue;
+      }
       int index = curr.getIndex();
       if (index == -1) {
         index = nodes.length - 1;
       }
+      active.remove(index);
       Set<Integer> neighbours;
       Set<Integer> prev;
       if (LEFT_CONTEXT.equals(direction)) {
@@ -163,7 +197,10 @@ public class Graph {
         for (String suffix : (Set<String>) suffixes[index]) {
           addSuffix(suffixes, i, curr.getValue() + suffix);
         }
-        queue.add(getNode(i));
+        if (!active.contains(i)) {
+          active.add(i);
+          queue.add(getNode(i));
+        }
       }
     }
 
@@ -201,7 +238,7 @@ public class Graph {
 
   public int getDistance(int source, int dest, int maxDistance) {
     if (source == dest) {
-      return maxDistance;
+      return 2;
     }
     Set<Integer> visited = new HashSet<Integer>();
     List<Pair> queue = new ArrayList<Pair>();
@@ -222,6 +259,14 @@ public class Graph {
       }
     }
     return maxDistance;
+  }
+
+  public double getBranchingFactor() {
+    int branches = 0;
+    for (int i = 0; i < currentIndex; i++) {
+      branches += nodes[i].getOutgoing().size();
+    }
+    return (double) branches / currentIndex;
   }
 
   public int getTotalSize() {
