@@ -13,7 +13,6 @@ import data.Graph;
 import data.Node;
 import index.FuzzySearchIndex;
 import results.Tester;
-import utils.AlignmentUtils;
 import utils.DOTUtils;
 import utils.GraphUtils;
 import utils.ParseUtils;
@@ -63,9 +62,9 @@ public class GraphGenome {
       sequence = ParseUtils.fastaToSequence(params.get("Sequence file"));
     }
 
-    Alignment bruteForce = AlignmentUtils.align(graph, sequence, configuration);
+    //Alignment bruteForce = AlignmentUtils.align(graph, sequence, configuration);
     Alignment fuzzySearch = index.align(sequence);
-    System.out.println(bruteForce);
+    //System.out.println(bruteForce);
     System.out.println(fuzzySearch);
 
     printGraph(graph, params.get("Print"), fuzzySearch.getAlignment(), sequence);

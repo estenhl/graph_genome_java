@@ -34,7 +34,12 @@ public class ParseUtils {
     String header = reader.readLine();
     String sequence = "";
     String line;
+    int read = 0;
     while ((line = reader.readLine()) != null) {
+      read++;
+      if (read % 1000 == 0) {
+        System.out.println("Read " + read + " lines");
+      }
       for (Character c : line.trim().toCharArray()) {
         sequence += Character.toUpperCase(c);
       }
