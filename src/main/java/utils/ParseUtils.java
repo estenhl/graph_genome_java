@@ -54,4 +54,36 @@ public class ParseUtils {
     System.out.println("Reading file " + fileName);
     return stringToGraph(configuration, fastaToSequence(fileName));
   }
+
+  public static int parseInt(String s) {
+    return parseInt(s, -1);
+  }
+
+  public static int parseInt(String s, int defaultValue) {
+    if (s == null) {
+      return defaultValue;
+    }
+
+    try {
+      return Integer.parseInt(s);
+    } catch (NumberFormatException e) {
+      return defaultValue;
+    }
+  }
+
+  public static double parseDouble(String s) {
+    return parseDouble(s, -1.0);
+  }
+
+  public static double parseDouble(String s, double defaultValue) {
+    if (s == null) {
+      return defaultValue;
+    }
+
+    try {
+      return Double.parseDouble(s);
+    } catch (NumberFormatException e) {
+      return defaultValue;
+    }
+  }
 }

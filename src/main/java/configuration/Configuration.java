@@ -1,8 +1,10 @@
 package configuration;
 
+import java.io.Serializable;
+
 import data.Graph;
 
-public abstract class Configuration {
+public abstract class Configuration implements Serializable {
   public static final int DEFAULT_SUFFIX_LENGTH = 15;
   public static final double DEFAULT_CONTEXT_SEARCH_THRESHOLD = 0;
   public static final char WILDCARD = 'N';

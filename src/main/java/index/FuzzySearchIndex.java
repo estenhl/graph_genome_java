@@ -1,5 +1,11 @@
 package index;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -14,7 +20,7 @@ import data.Score;
 import utils.ArrayUtils;
 import utils.StringUtils;
 
-public class FuzzySearchIndex implements Index {
+public class FuzzySearchIndex implements Serializable {
   private Configuration configuration;
   private Graph graph;
   private SuffixTree leftContexts;
@@ -50,6 +56,13 @@ public class FuzzySearchIndex implements Index {
 
     System.out.println("Finished building indexes");
     return index;
+  }
+
+  public static FuzzySearchIndex readIndex(String filename)
+      throws IOException, ClassNotFoundException {
+    FileInputStream fis = new FileInputStream(filename);
+    ObjectInputStream stream = new ObjectInputStream(fis);
+    return (FuzzySearchIndex) stream.readObject();
   }
 
   public Object[] improvedFuzzyContextSearch(String s) {
@@ -232,12 +245,13 @@ public class FuzzySearchIndex implements Index {
     this.rightContexts = rightContexts;
   }
 
-  private void setConfiguration(Configuration configuration) {
+  public void setConfiguration(Configuration configuration) {
     this.configuration = configuration;
   }
 
   public Alignment align(String sequence) {
-    System.out.println("Aligning sequence " + sequence);
+    System.out.println("Aligning sequence " + sequence + " with threshold " + configuration
+        .getContextSearchThreshold());
     Object[] alignmentScores = improvedFuzzyContextSearch(sequence);
     System.out.println("Scores");
     /*
@@ -247,5 +261,12 @@ public class FuzzySearchIndex implements Index {
     */
 
     return findMostProbablePath(alignmentScores, sequence);
+  }
+
+  public void writeToFile(String filename) throws IOException {
+    FileOutputStream fos = new FileOutputStream(filename);
+    ObjectOutputStream stream = new ObjectOutputStream(fos);
+    stream.writeObject(this);
+    stream.close();
   }
 }

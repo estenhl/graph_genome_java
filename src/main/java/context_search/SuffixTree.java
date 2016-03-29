@@ -1,11 +1,12 @@
 package context_search;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Set;
 
 import configuration.Configuration;
 
-public class SuffixTree {
+public class SuffixTree implements Serializable {
 
   public static final int GAP_STATUS_NO_GAP = 0;
   public static final int GAP_STATUS_GAP_IN_SEQUENCE = 1;

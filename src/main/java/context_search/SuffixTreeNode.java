@@ -1,5 +1,6 @@
 package context_search;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Set;
 import configuration.Configuration;
 import utils.ArrayUtils;
 
-public class SuffixTreeNode {
+public class SuffixTreeNode implements Serializable {
   private Configuration configuration;
   private Map<Character, SuffixTreeNode> children;
   private Set<Integer> indexes;

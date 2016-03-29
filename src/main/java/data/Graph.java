@@ -1,6 +1,7 @@
 package data;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,7 +11,7 @@ import configuration.Configuration;
 import utils.GraphUtils;
 import utils.Pair;
 
-public class Graph {
+public class Graph implements Serializable {
 
   public static final char HEAD_VALUE = '$';
   public static final char TAIL_VALUE = '$';

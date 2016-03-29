@@ -29,7 +29,7 @@ public class GraphUtils {
     return newArr;
   }
 
-  public static int optimalSuffixLength(Graph graph, double confidence) {
+  public static int optimalSuffixLength(Graph graph) {
     int nodes = graph.getCurrentSize();
     double branchingFactor = graph.getBranchingFactor();
     int suffixes = (int) (nodes * branchingFactor);
