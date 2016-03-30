@@ -14,3 +14,4 @@ docker cp $read_dir $CONTAINER_ID:/sequence-graphs/$read_dir
 docker start $CONTAINER_ID
 docker exec $CONTAINER_ID /sequence-graphs/createIndex/createIndex /sequence-graphs/$read_dir-index /sequence-graphs/$read_dir/$filename
 rm -rf $read_dir
+rm $read_dir.reads
