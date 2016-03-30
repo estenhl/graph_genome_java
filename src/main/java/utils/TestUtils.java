@@ -6,8 +6,8 @@ import data.Graph;
 import data.Node;
 
 public class TestUtils {
-  public static final double MUTATION_PROBABILITY = 0.01;
-  public static final int READ_LENGTH = 100;
+  public static final double MUTATION_PROBABILITY = 0.00;
+  public static final int READ_LENGTH = 30;
   public static int SEED = 10215;
   public static final int RUNS = 50;
   public static int[] SIZES = { 500, 1000, 5000, 10000, 50000, 100000 };

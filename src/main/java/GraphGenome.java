@@ -15,6 +15,7 @@ import data.Alignment;
 import data.Graph;
 import data.Node;
 import index.FuzzySearchIndex;
+import utils.AlignmentUtils;
 import utils.DOTUtils;
 import utils.GraphUtils;
 import utils.ParseUtils;
@@ -107,8 +108,10 @@ public class GraphGenome {
         return;
       }
       FuzzySearchIndex index = FuzzySearchIndex.readIndex(params.get("--index"));
+      Graph graph = index.getGraph();
       index.setConfiguration(configuration);
-      Alignment alignment = null;
+      Alignment fuzzy = null;
+      Alignment poMsa = null;
       if (params.get("--align-sequence") == null && params.get("--align-fasta") == null) {
         System.out.println(
             "Need a sequence for alignment. Use --align-sequence=<sequence> or --align-fasta=<filename>");
@@ -118,11 +121,15 @@ public class GraphGenome {
             "Unable to align multiple sequences. Use only one of the parameters --align-sequence or --align-fasta");
         return;
       } else if (params.get("--align-sequence") != null) {
-        alignment = index.align(params.get("--align-sequence"));
+        fuzzy = index.align(params.get("--align-sequence"));
+        poMsa = AlignmentUtils.align(graph, params.get("--align-sequence"), configuration);
       } else {
-        alignment = index.align(ParseUtils.fastaToSequence(params.get("--align-fasta")));
+        String sequence = ParseUtils.fastaToSequence(params.get("--align-fasta"));
+        fuzzy = index.align(sequence);
+        poMsa = AlignmentUtils.align(graph, sequence, configuration);
       }
-      System.out.println(alignment);
+      System.out.println(fuzzy);
+      System.out.println(poMsa);
     } else {
       System.out.println("Invalid type parameter! See help");
       return;

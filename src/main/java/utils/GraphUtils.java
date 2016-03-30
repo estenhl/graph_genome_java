@@ -35,7 +35,6 @@ public class GraphUtils {
     int suffixes = (int) (nodes * branchingFactor);
     int i = 1;
     while (approximateProbability(suffixes, i) > SHARED_SUFFIX_PROBABILITY) {
-      System.out.println(i + ": " + approximateProbability(suffixes, i));
       i++;
     }
 

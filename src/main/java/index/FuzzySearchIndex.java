@@ -249,6 +249,10 @@ public class FuzzySearchIndex implements Serializable {
     this.configuration = configuration;
   }
 
+  public Graph getGraph() {
+    return graph;
+  }
+
   public Alignment align(String sequence) {
     System.out.println("Aligning sequence " + sequence + " with threshold " + configuration
         .getContextSearchThreshold());
