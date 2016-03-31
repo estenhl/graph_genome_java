@@ -1,11 +1,12 @@
 package context_search;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Set;
 
 import configuration.Configuration;
 
-public class SuffixTree {
+public class SuffixTree implements Serializable {
 
   public static final int GAP_STATUS_NO_GAP = 0;
   public static final int GAP_STATUS_GAP_IN_SEQUENCE = 1;
@@ -29,7 +30,7 @@ public class SuffixTree {
   }
 
   public HashMap<Integer, Integer> improvedSearch(String s) {
-    if (s.length() < 2) {
+    if (s.length() < configuration.getSuffixLength()) {
       return new HashMap<Integer, Integer>();
     }
     int[] scores = new int[s.length() + 1];
@@ -39,7 +40,10 @@ public class SuffixTree {
       scores[i] = scores[i - 1] - configuration.getGapExtensionPenalty();
     }
     HashMap<Integer, Integer> finalScores = new HashMap<Integer, Integer>();
-    head.improvedSearch(s.toCharArray(), scores, 0, 0, finalScores, new boolean[scores.length], "",
+    int maxScore = configuration.getMaxAlignmentScore(s);
+    int depth = 0;
+    head.improvedSearch(s.toCharArray(), scores, maxScore, depth, finalScores,
+        new boolean[scores.length], "",
         maxDepth);
 
     return finalScores;
@@ -51,6 +55,10 @@ public class SuffixTree {
 
   public int getNumberOfNodes() {
     return head.count();
+  }
+
+  public void printSuffix(int index) {
+    head.printSuffix("", index);
   }
 
   @Override

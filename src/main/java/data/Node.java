@@ -1,10 +1,11 @@
 package data;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Node {
+public class Node implements Serializable {
   private final char value;
   private int index;
   private Set<Integer> incoming;

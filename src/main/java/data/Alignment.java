@@ -65,12 +65,12 @@ public class Alignment {
     String s = "Alignment type: " + type + "\n" +
         "Sequence length: " + sequenceLength + "\n" +
         "Graph size: " + graphSize + "\n" +
-        "Score: " + score + "\n" +
+        "Score: " + (int) score + "\n" +
         "Time: " + time + "\n" +
         "Alignment: ";
     if (alignment != null) {
       for (int i = 0; i < alignment.length; i++) {
-        s += alignment[i] + " ";
+        s += i + ":" + alignment[i] + " ";
       }
     }
 

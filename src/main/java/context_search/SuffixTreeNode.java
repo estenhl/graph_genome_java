@@ -1,5 +1,6 @@
 package context_search;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Set;
 import configuration.Configuration;
 import utils.ArrayUtils;
 
-public class SuffixTreeNode {
+public class SuffixTreeNode implements Serializable {
   private Configuration configuration;
   private Map<Character, SuffixTreeNode> children;
   private Set<Integer> indexes;
@@ -36,6 +37,21 @@ public class SuffixTreeNode {
     next.addSuffix(suffix.substring(1), node);
   }
 
+  public boolean printSuffix(String suffix, int index) {
+    if (indexes.contains(index)) {
+      System.out.println("Suffix for index " + index + ": " + suffix);
+      return true;
+    }
+
+    for (Character c : children.keySet()) {
+      if (children.get(c).printSuffix(suffix + c, index)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   public int count() {
     int count = 1;
     for (SuffixTreeNode child : children.values()) {
@@ -60,19 +76,20 @@ public class SuffixTreeNode {
       HashMap<Integer, Integer> finalScores, boolean[] gaps, String path, int maxDepth) {
     int current = ArrayUtils.max(scores);
     if (current + (maxDepth - depth) * configuration.getMaxPairwiseScore()
-        < maxScore - configuration.getSuffixScoreThreshold()) {
+        < maxScore - configuration.getContextSearchThreshold()) {
       return maxScore;
     }
     if (children.size() == 0) {
       int score = ArrayUtils.max(scores);
       for (Integer i : indexes) {
         if ((!finalScores.containsKey(i) || score > finalScores.get(i))
-            && score >= maxScore - configuration.getSuffixScoreThreshold()) {
+            && score >= maxScore - configuration.getContextSearchThreshold()) {
           finalScores.put(i, score);
         }
       }
       return Math.max(maxScore, score);
     }
+
     for (Character c : children.keySet()) {
       int[] myScores = new int[scores.length];
       boolean[] myGaps = new boolean[gaps.length];
@@ -84,12 +101,14 @@ public class SuffixTreeNode {
       for (int i = 1; i < scores.length; i++) {
         int verticalScore = myScores[i - 1] - getGapPenalty(myScores, i);
         int horizontalScore = scores[i] - configuration.getGapOpeningPenalty();
+        if (i == scores.length - 1 && depth > scores.length) {
+          horizontalScore = scores[i];
+        }
         if (gaps[i]) {
           horizontalScore = scores[i] - configuration.getGapExtensionPenalty();
         }
         int diagonalScore = scores[i - 1] + configuration.getScore(suffix[i - 1], c);
-        myScores[i] = ArrayUtils
-            .max(new int[] { verticalScore, horizontalScore, diagonalScore });
+        myScores[i] = ArrayUtils.max(new int[] { verticalScore, horizontalScore, diagonalScore });
         if (myScores[i] == horizontalScore) {
           myGaps[i] = true;
         }

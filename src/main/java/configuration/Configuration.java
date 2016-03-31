@@ -1,26 +1,28 @@
 package configuration;
 
+import java.io.Serializable;
+
 import data.Graph;
 
-public abstract class Configuration {
-  public final int DEFAULT_MAX_GAP_LENGTH = 5;
-  public final int DEFAULT_SUFFIX_LENGTH = 15;
-  public final char WILDCARD = 'N';
+public abstract class Configuration implements Serializable {
+  public static final int DEFAULT_SUFFIX_LENGTH = 15;
+  public static final double DEFAULT_CONTEXT_SEARCH_THRESHOLD = 0;
+  public static final char WILDCARD = 'N';
 
   private int[][] scoringMatrix;
   private int gapOpeningPenalty;
   private int gapExtensionPenalty;
-  private int maxGapLength;
   private int suffixLength;
   private int maxPairwiseScore;
+  private double contextSearchThreshold;
 
   protected Configuration(int[][] scoringMatrix, int gapOpeningPenalty, int gapExtensionPenalty) {
     this.scoringMatrix = scoringMatrix;
     this.gapOpeningPenalty = gapOpeningPenalty;
     this.gapExtensionPenalty = gapExtensionPenalty;
-    this.maxGapLength = DEFAULT_MAX_GAP_LENGTH;
     this.suffixLength = DEFAULT_SUFFIX_LENGTH;
     maxPairwiseScore = findMaxScore(scoringMatrix);
+    this.contextSearchThreshold = DEFAULT_CONTEXT_SEARCH_THRESHOLD;
   }
 
   private int findMaxScore(int[][] scoringMatrix) {
@@ -47,8 +49,8 @@ public abstract class Configuration {
     final int T = 3;
 
     if (a == Graph.HEAD_VALUE || a == Graph.TAIL_VALUE || b == Graph.HEAD_VALUE
-        || b == Graph.TAIL_VALUE || a == 'N' || b == 'N') {
-      return -200;
+        || b == Graph.TAIL_VALUE) {
+      return gapOpeningPenalty;
     }
 
     int i = -1;
@@ -89,19 +91,12 @@ public abstract class Configuration {
   }
 
   public void setSuffixLength(int suffixLength) {
+    System.out.println("Sat suffix length to " + suffixLength);
     this.suffixLength = suffixLength;
   }
 
   public int getSuffixLength() {
     return suffixLength;
-  }
-
-  public void setMaxGapLength(int maxGapLength) {
-    this.maxGapLength = maxGapLength;
-  }
-
-  public int getMaxGapLength() {
-    return maxGapLength;
   }
 
   public int getGapOpeningPenalty() {
@@ -116,7 +111,29 @@ public abstract class Configuration {
     return maxPairwiseScore;
   }
 
-  public double getSuffixScoreThreshold() {
-    return gapOpeningPenalty * 2;
+  public void setContextSearchThreshold(double contextSearchThreshold) {
+    this.contextSearchThreshold = contextSearchThreshold;
+  }
+
+  public int getMaxAlignmentScore(String s) {
+    int score = 0;
+    for (Character c : s.toCharArray()) {
+      score += getScore(c, c);
+    }
+
+    return score;
+  }
+
+  public int getMaxDistance() {
+    int i = 1;
+    while (getGapPenalty(i) < getContextSearchThreshold()) {
+      i++;
+    }
+
+    return i;
+  }
+
+  public double getContextSearchThreshold() {
+    return contextSearchThreshold;
   }
 }
