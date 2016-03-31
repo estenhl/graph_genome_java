@@ -1,3 +1,0 @@
-Implement joined context set as union of left and right
-Fix instances where the length of a string is <|c|
-Set length of a string to be c+T instead of 2c

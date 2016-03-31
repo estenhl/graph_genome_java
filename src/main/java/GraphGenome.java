@@ -130,6 +130,7 @@ public class GraphGenome {
     }
     Graph graph = index.getGraph();
     index.setConfiguration(configuration);
+    configuration.setSuffixLength(GraphUtils.optimalSuffixLength(graph));
     Alignment fuzzy = null;
     Alignment poMsa = null;
     if (params.get("--align-sequence") == null && params.get("--align-fasta") == null) {

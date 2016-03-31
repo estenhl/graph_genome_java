@@ -29,8 +29,8 @@ public class SuffixTree implements Serializable {
     head.addSuffix(suffix, node);
   }
 
-  public HashMap<Integer, Integer> improvedSearch(String s) {
-    if (s.length() < configuration.getSuffixLength()) {
+  public HashMap<Integer, Integer> improvedSearch(String s, boolean force) {
+    if (!force && s.length() < configuration.getSuffixLength()) {
       return new HashMap<Integer, Integer>();
     }
     int[] scores = new int[s.length() + 1];

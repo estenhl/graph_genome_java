@@ -82,10 +82,16 @@ public class FuzzySearchIndex implements Serializable {
       if (s.length() > 10 && i % tenPercent == 0) {
         System.out.println(status++ * 10 + " percent done");
       }
+      boolean force = false;
+      if (i - 1 < configuration.getSuffixLength() && s.length() - (i + 1) < configuration
+          .getSuffixLength()) {
+        force = true;
+      }
       leftContextScores[i] = leftContexts.improvedSearch(StringUtils.reverse(
-          s.substring(Math.max(0, i - (configuration.getSuffixLength() * 2)), i)));
+          s.substring(Math.max(0, i - (configuration.getSuffixLength())), i)), force);
       rightContextScores[i] = rightContexts.improvedSearch(
-          s.substring(i + 1, Math.min(s.length(), i + (configuration.getSuffixLength() * 2))));
+          s.substring(i + 1, Math.min(s.length(), i + (configuration.getSuffixLength() * 2))),
+          force);
     }
 
     return combineScores(leftContextScores, rightContextScores, s);
