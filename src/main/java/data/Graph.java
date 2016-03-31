@@ -1,6 +1,5 @@
 package data;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -76,7 +75,7 @@ public class Graph implements Serializable {
     return getNode(node).getOutgoing().contains(neighbour);
   }
 
-  public void mergeSequence(String sequence, int[] alignment) throws IOException {
+  public void mergeSequence(String sequence, int[] alignment) {
     char[] characters = sequence.toCharArray();
     if (characters.length != alignment.length) {
       System.out.println("Invalid alignment");

@@ -11,7 +11,6 @@ import data.Node;
 
 public class ParseUtils {
   public static Graph stringToGraph(Configuration configuration, String s) {
-    System.out.println("Creating graph from string " + s);
     Graph graph = new Graph(configuration, GraphUtils.getGraphSize(s.length() * 2));
     Node prev = graph.getHead();
     char[] chars = s.toCharArray();
@@ -51,7 +50,6 @@ public class ParseUtils {
 
   public static Graph fastaToGraph(Configuration configuration, String fileName)
       throws IOException {
-    System.out.println("Reading file " + fileName);
     return stringToGraph(configuration, fastaToSequence(fileName));
   }
 

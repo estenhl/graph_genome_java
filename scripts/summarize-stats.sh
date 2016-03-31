@@ -43,6 +43,7 @@ do
 	fi
 	if [ ${fuzzy_score[1]} -ne ${po_msa_score[1]} ]; then
 		errors_fuzzy=$(($errors_fuzzy + 1))
+		echo "Fuzzy score: ${fuzzy_score[1]}, po_msa score: ${po_msa_score[1]}"
 	fi
 	total_fuzzy=$(($total_fuzzy + ${fuzzy_time[1]}))
 

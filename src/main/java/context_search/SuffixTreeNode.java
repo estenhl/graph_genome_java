@@ -101,12 +101,14 @@ public class SuffixTreeNode implements Serializable {
       for (int i = 1; i < scores.length; i++) {
         int verticalScore = myScores[i - 1] - getGapPenalty(myScores, i);
         int horizontalScore = scores[i] - configuration.getGapOpeningPenalty();
+        if (i == scores.length - 1 && depth > scores.length) {
+          horizontalScore = scores[i];
+        }
         if (gaps[i]) {
           horizontalScore = scores[i] - configuration.getGapExtensionPenalty();
         }
         int diagonalScore = scores[i - 1] + configuration.getScore(suffix[i - 1], c);
-        myScores[i] = ArrayUtils
-            .max(new int[] { verticalScore, horizontalScore, diagonalScore });
+        myScores[i] = ArrayUtils.max(new int[] { verticalScore, horizontalScore, diagonalScore });
         if (myScores[i] == horizontalScore) {
           myGaps[i] = true;
         }

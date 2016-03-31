@@ -58,11 +58,19 @@ public class FuzzySearchIndex implements Serializable {
     return index;
   }
 
-  public static FuzzySearchIndex readIndex(String filename)
-      throws IOException, ClassNotFoundException {
-    FileInputStream fis = new FileInputStream(filename);
-    ObjectInputStream stream = new ObjectInputStream(fis);
-    return (FuzzySearchIndex) stream.readObject();
+  public static FuzzySearchIndex readIndex(String filename) {
+    System.out.println("Reading index from file " + filename);
+    try {
+      FileInputStream fis = new FileInputStream(filename);
+      ObjectInputStream stream = new ObjectInputStream(fis);
+      return (FuzzySearchIndex) stream.readObject();
+    } catch (IOException e) {
+      System.out.println("Unable to read index from file " + filename);
+      return null;
+    } catch (ClassNotFoundException e) {
+      System.out.println("Internal error. Try rebuilding the project");
+      return null;
+    }
   }
 
   public Object[] improvedFuzzyContextSearch(String s) {
@@ -209,17 +217,6 @@ public class FuzzySearchIndex implements Serializable {
       rowNr = Integer.parseInt(backPointer.split(":")[0]);
       colNr = Integer.parseInt(backPointer.split(":")[1]);
     }
-    /*
-    System.out.print("\n");
-    for (i = 0; i < scores.length; i++) {
-      System.out.print(i + ": ");
-      for (int j = 0; j < scores[i].length; j++) {
-        System.out
-            .print("[" + scores[i][j] + ", " + indexes[i][j] + ", " + backPointers[i][j] + "] ");
-      }
-      System.out.print("\n");
-    }
-    */
 
     long time = System.nanoTime() - startTime;
     Alignment alignment = new Alignment();
@@ -254,20 +251,13 @@ public class FuzzySearchIndex implements Serializable {
   }
 
   public Alignment align(String sequence) {
-    System.out.println("Aligning sequence " + sequence + " with threshold " + configuration
-        .getContextSearchThreshold());
     Object[] alignmentScores = improvedFuzzyContextSearch(sequence);
-    System.out.println("Scores");
-    /*
-    for (int i = 0; i < alignmentScores.length; i++) {
-      System.out.println(i + ":" + (Set<Score>) alignmentScores[i]);
-    }
-    */
 
     return findMostProbablePath(alignmentScores, sequence);
   }
 
   public void writeToFile(String filename) throws IOException {
+    System.out.println("Storing index to file " + filename);
     FileOutputStream fos = new FileOutputStream(filename);
     ObjectOutputStream stream = new ObjectOutputStream(fos);
     stream.writeObject(this);

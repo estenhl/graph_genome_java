@@ -82,59 +82,80 @@ public class GraphGenome {
     }
     Configuration configuration = getConfiguration(params.get("--scoring-system"));
     int suffixLength = ParseUtils.parseInt(params.get("--suffix-length"), -1);
-    configuration.setContextSearchThreshold(
-        ParseUtils.parseDouble(params.get("--threshold"),
-            Configuration.DEFAULT_CONTEXT_SEARCH_THRESHOLD));
+    configuration.setContextSearchThreshold(ParseUtils.parseDouble(params.get("--threshold"),
+        Configuration.DEFAULT_CONTEXT_SEARCH_THRESHOLD));
     if ("index".equals(args[0])) {
-      Graph graph = parseGraph(configuration, params.get("--input-fastas"),
-          params.get("--input-sequences"), suffixLength != -1);
-      if (graph == null) {
-        System.out.println("Unable to build graph! Exiting");
-        return;
-      }
-
-      if (params.get("--dot") != null) {
-        printGraph(graph, params.get("--dot"), null, null);
-      }
-      FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
-      if (params.get("--index") == null) {
-        System.out.println("Unable to write index without filename. Use --index=<filename>");
-        return;
-      }
-      index.writeToFile(params.get("--index"));
+      buildIndex(configuration, params, suffixLength);
     } else if ("align".equals(args[0])) {
-      if (params.get("--index") == null) {
-        System.out.println("Unable to align without an index. Use --index=<filename>");
-        return;
-      }
-      FuzzySearchIndex index = FuzzySearchIndex.readIndex(params.get("--index"));
-      Graph graph = index.getGraph();
-      index.setConfiguration(configuration);
-      Alignment fuzzy = null;
-      Alignment poMsa = null;
-      if (params.get("--align-sequence") == null && params.get("--align-fasta") == null) {
-        System.out.println(
-            "Need a sequence for alignment. Use --align-sequence=<sequence> or --align-fasta=<filename>");
-        return;
-      } else if (params.get("--align-sequence") != null && params.get("--align-fasta") != null) {
-        System.out.println(
-            "Unable to align multiple sequences. Use only one of the parameters --align-sequence or --align-fasta");
-        return;
-      } else if (params.get("--align-sequence") != null) {
-        fuzzy = index.align(params.get("--align-sequence"));
-        poMsa = AlignmentUtils.align(graph, params.get("--align-sequence"), configuration);
-      } else {
-        String sequence = ParseUtils.fastaToSequence(params.get("--align-fasta"));
-        fuzzy = index.align(sequence);
-        poMsa = AlignmentUtils.align(graph, sequence, configuration);
-      }
-      System.out.println(fuzzy);
-      System.out.println(poMsa);
+      align(configuration, params);
     } else {
       System.out.println("Invalid type parameter! See help");
       return;
     }
+  }
 
+  private static void buildIndex(Configuration configuration, Map<String, String> params,
+      int suffixLength) {
+    Graph graph = parseGraph(configuration, params.get("--input-fastas"),
+        params.get("--input-sequences"), suffixLength != -1);
+    if (graph == null) {
+      System.out.println("Unable to build graph! Exiting");
+      return;
+    }
+
+    if (params.get("--dot") != null) {
+      printGraph(graph, params.get("--dot"), null, null);
+    }
+    FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
+    if (params.get("--index") == null) {
+      System.out.println("Unable to write index without filename. Use --index=<filename>");
+      return;
+    }
+    try {
+      index.writeToFile(params.get("--index"));
+    } catch (IOException e) {
+      System.out.println("IOException when writing to file " + params.get("--index"));
+    }
+  }
+
+  private static void align(Configuration configuration, Map<String, String> params) {
+    if (params.get("--index") == null) {
+      System.out.println("Unable to align without an index. Use --index=<filename>");
+      return;
+    }
+    FuzzySearchIndex index = FuzzySearchIndex.readIndex(params.get("--index"));
+    if (index == null) {
+      System.out.println("Unable to align sequence without an index");
+      return;
+    }
+    Graph graph = index.getGraph();
+    index.setConfiguration(configuration);
+    Alignment fuzzy = null;
+    Alignment poMsa = null;
+    if (params.get("--align-sequence") == null && params.get("--align-fasta") == null) {
+      System.out.println(
+          "Need a sequence for alignment. Use --align-sequence=<sequence> or --align-fasta=<filename>");
+      return;
+    } else if (params.get("--align-sequence") != null && params.get("--align-fasta") != null) {
+      System.out.println(
+          "Alignment of multiple sequences disabled. Use only one of the parameters --align-sequence or --align-fasta");
+      return;
+    } else if (params.get("--align-sequence") != null) {
+      fuzzy = index.align(params.get("--align-sequence"));
+      poMsa = AlignmentUtils.align(graph, params.get("--align-sequence"), configuration);
+    } else {
+      String sequence;
+      try {
+        sequence = ParseUtils.fastaToSequence(params.get("--align-fasta"));
+      } catch (IOException e) {
+        System.out.println("Unable to open file " + params.get("--align-fasta"));
+        return;
+      }
+      fuzzy = index.align(sequence);
+      poMsa = AlignmentUtils.align(graph, sequence, configuration);
+    }
+    System.out.println(fuzzy);
+    System.out.println(poMsa);
   }
 
   public static Map<String, String> parseParams(String[] args) {
@@ -208,8 +229,7 @@ public class GraphGenome {
   }
 
   public static Graph parseGraph(Configuration configuration, String filesString,
-      String sequencesString, boolean setSuffixLength)
-      throws IOException {
+      String sequencesString, boolean setSuffixLength) {
     String[] files = null;
     if (filesString != null) {
       files = filesString.split(",");
@@ -220,6 +240,10 @@ public class GraphGenome {
     }
     Graph graph = null;
 
+    if (files == null && sequences == null) {
+      System.out.println("Needs atleast one fasta file or input sequence to build graph");
+      return null;
+    }
     if (files != null) {
       for (int i = 0; i < files.length; i++) {
         try {
@@ -241,8 +265,7 @@ public class GraphGenome {
     return graph;
   }
 
-  public static Graph createOrMerge(Configuration configuration, Graph graph, String sequence)
-      throws IOException {
+  public static Graph createOrMerge(Configuration configuration, Graph graph, String sequence) {
     if (graph == null) {
       return ParseUtils.stringToGraph(configuration, sequence);
     }
@@ -252,12 +275,11 @@ public class GraphGenome {
     return graph;
   }
 
-  public static void printGraph(Graph graph, String fileName, int[] alignment, String sequence)
-      throws IOException {
-    if (graph == null || fileName == null) {
+  public static void printGraph(Graph graph, String filename, int[] alignment, String sequence) {
+    if (graph == null || filename == null) {
       return;
     }
-    System.out.println("Writing dot representation to " + fileName);
+    System.out.println("Writing dot representation to " + filename);
     StringBuilder nodes = new StringBuilder();
     StringBuilder edges = new StringBuilder();
     for (int i = 0; i < graph.getCurrentSize(); i++) {
@@ -292,8 +314,12 @@ public class GraphGenome {
     output += edges.toString();
     output += "}";
 
-    BufferedWriter writer = new BufferedWriter(new FileWriter(new File(fileName)));
-    writer.write(output);
-    writer.close();
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter(new File(filename)));
+      writer.write(output);
+      writer.close();
+    } catch (IOException e) {
+      System.out.println("Unable to write dot-file to " + filename);
+    }
   }
 }
