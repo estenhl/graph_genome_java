@@ -6,23 +6,23 @@ import data.Graph;
 
 public abstract class Configuration implements Serializable {
   public static final int DEFAULT_SUFFIX_LENGTH = 15;
-  public static final double DEFAULT_CONTEXT_SEARCH_THRESHOLD = 0;
+  public static final double DEFAULT_ERROR_MARGIN = 0;
   public static final char WILDCARD = 'N';
 
   private int[][] scoringMatrix;
   private int gapOpeningPenalty;
   private int gapExtensionPenalty;
-  private int suffixLength;
+  private int contextLength;
   private int maxPairwiseScore;
-  private double contextSearchThreshold;
+  private double errorMargin;
 
   protected Configuration(int[][] scoringMatrix, int gapOpeningPenalty, int gapExtensionPenalty) {
     this.scoringMatrix = scoringMatrix;
     this.gapOpeningPenalty = gapOpeningPenalty;
     this.gapExtensionPenalty = gapExtensionPenalty;
-    this.suffixLength = DEFAULT_SUFFIX_LENGTH;
-    maxPairwiseScore = findMaxScore(scoringMatrix);
-    this.contextSearchThreshold = DEFAULT_CONTEXT_SEARCH_THRESHOLD;
+    this.contextLength = DEFAULT_SUFFIX_LENGTH;
+    this.maxPairwiseScore = findMaxScore(scoringMatrix);
+    this.errorMargin = DEFAULT_ERROR_MARGIN;
   }
 
   private int findMaxScore(int[][] scoringMatrix) {
@@ -90,13 +90,13 @@ public abstract class Configuration implements Serializable {
     }
   }
 
-  public void setSuffixLength(int suffixLength) {
-    System.out.println("Sat suffix length to " + suffixLength);
-    this.suffixLength = suffixLength;
+  public void setContextLength(int contextLength) {
+    System.out.println("Sat context length to " + contextLength);
+    this.contextLength = contextLength;
   }
 
-  public int getSuffixLength() {
-    return suffixLength;
+  public int getContextLength() {
+    return contextLength;
   }
 
   public int getGapOpeningPenalty() {
@@ -111,8 +111,12 @@ public abstract class Configuration implements Serializable {
     return maxPairwiseScore;
   }
 
-  public void setContextSearchThreshold(double contextSearchThreshold) {
-    this.contextSearchThreshold = contextSearchThreshold;
+  public void setErrorMargin(double errorMargin) {
+    this.errorMargin = errorMargin;
+  }
+
+  public double getErrorMargin() {
+    return errorMargin;
   }
 
   public int getMaxAlignmentScore(String s) {
@@ -126,14 +130,11 @@ public abstract class Configuration implements Serializable {
 
   public int getMaxDistance() {
     int i = 1;
-    while (getGapPenalty(i) < getContextSearchThreshold()) {
+    while (getGapPenalty(i) <= getErrorMargin()) {
       i++;
     }
 
     return i;
   }
 
-  public double getContextSearchThreshold() {
-    return contextSearchThreshold;
-  }
 }

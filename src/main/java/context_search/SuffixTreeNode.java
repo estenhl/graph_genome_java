@@ -73,17 +73,17 @@ public class SuffixTreeNode implements Serializable {
   }
 
   public int improvedSearch(char[] suffix, int[] scores, int maxScore, int depth,
-      HashMap<Integer, Integer> finalScores, boolean[] gaps, String path, int maxDepth) {
-    int current = ArrayUtils.max(scores);
-    if (current + (maxDepth - depth) * configuration.getMaxPairwiseScore()
-        < maxScore - configuration.getContextSearchThreshold()) {
+      HashMap<Integer, Integer> finalScores, boolean[] gaps, int maxDepth) {
+    int currentMax = ArrayUtils.max(scores);
+    if (currentMax + (maxDepth - depth) * configuration.getMaxPairwiseScore()
+        < maxScore - configuration.getErrorMargin()) {
       return maxScore;
     }
     if (children.size() == 0) {
       int score = ArrayUtils.max(scores);
       for (Integer i : indexes) {
         if ((!finalScores.containsKey(i) || score > finalScores.get(i))
-            && score >= maxScore - configuration.getContextSearchThreshold()) {
+            && score >= maxScore - configuration.getErrorMargin()) {
           finalScores.put(i, score);
         }
       }
@@ -116,7 +116,7 @@ public class SuffixTreeNode implements Serializable {
 
       maxScore = Math
           .max(children.get(c).improvedSearch(suffix, myScores, maxScore, depth + 1, finalScores,
-              myGaps, path + c, maxDepth), maxScore);
+              myGaps, maxDepth), maxScore);
     }
     return maxScore;
   }

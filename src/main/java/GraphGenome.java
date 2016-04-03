@@ -34,10 +34,11 @@ public class GraphGenome {
     VALID_PARAMS.add("--align-sequence");
     VALID_PARAMS.add("--align-file");
     VALID_PARAMS.add("--scoring-system");
-    VALID_PARAMS.add("--threshold");
+    VALID_PARAMS.add("--error-margin");
     VALID_PARAMS.add("--suffix-length");
     VALID_PARAMS.add("--dot");
     VALID_PARAMS.add("--help");
+    VALID_PARAMS.add("--type");
 
     SHORTHAND_PARAMS = new HashMap<String, String>();
     SHORTHAND_PARAMS.put("-if", "--input-fastas");
@@ -46,10 +47,11 @@ public class GraphGenome {
     SHORTHAND_PARAMS.put("-as", "--align-sequence");
     SHORTHAND_PARAMS.put("-af", "--align-fasta");
     SHORTHAND_PARAMS.put("-ss", "--scoring-system");
-    SHORTHAND_PARAMS.put("-t", "--threshold");
+    SHORTHAND_PARAMS.put("-em", "--error-margin");
     SHORTHAND_PARAMS.put("-sl", "--suffix-length");
     SHORTHAND_PARAMS.put("-d", "--dot");
     SHORTHAND_PARAMS.put("-h", "--help");
+    SHORTHAND_PARAMS.put("-t", "--type");
 
     HELP_MENU = new HashMap<String, String>();
     HELP_MENU.put("-if", "Comma separated FASTA files used to build the graph");
@@ -59,13 +61,14 @@ public class GraphGenome {
     HELP_MENU.put("-af", "FASTA file which is to be aligned against the graph");
     HELP_MENU.put("-ss",
         "Scoring schema to use. Possible values are lastz and edit-distance. Defaults to edit-distance");
-    HELP_MENU.put("-t", "Threshold used for alignment. Defaults to "
-        + Configuration.DEFAULT_CONTEXT_SEARCH_THRESHOLD);
+    HELP_MENU.put("-em", "Error margin for alignment. Defaults to "
+        + Configuration.DEFAULT_ERROR_MARGIN);
     HELP_MENU.put("-sl",
         "Suffix length to use. Default to length with " + GraphUtils.SHARED_SUFFIX_PROBABILITY +
             " probability of sharing suffixes");
     HELP_MENU.put("-d", "Filename of dot file visualizing either graph or alignment");
     HELP_MENU.put("-h", "Shows this menu");
+    HELP_MENU.put("-t", "Alignment algorithm to use. po_msa or fuzzy. Defaults to fuzzy");
   }
 
   public static void main(String[] args)
@@ -82,8 +85,8 @@ public class GraphGenome {
     }
     Configuration configuration = getConfiguration(params.get("--scoring-system"));
     int suffixLength = ParseUtils.parseInt(params.get("--suffix-length"), -1);
-    configuration.setContextSearchThreshold(ParseUtils.parseDouble(params.get("--threshold"),
-        Configuration.DEFAULT_CONTEXT_SEARCH_THRESHOLD));
+    configuration.setErrorMargin(ParseUtils.parseDouble(params.get("--error-margin"),
+        Configuration.DEFAULT_ERROR_MARGIN));
     if ("index".equals(args[0])) {
       buildIndex(configuration, params, suffixLength);
     } else if ("align".equals(args[0])) {
@@ -130,9 +133,8 @@ public class GraphGenome {
     }
     Graph graph = index.getGraph();
     index.setConfiguration(configuration);
-    configuration.setSuffixLength(GraphUtils.optimalSuffixLength(graph));
-    Alignment fuzzy = null;
-    Alignment poMsa = null;
+    configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
+    String sequence = null;
     if (params.get("--align-sequence") == null && params.get("--align-fasta") == null) {
       System.out.println(
           "Need a sequence for alignment. Use --align-sequence=<sequence> or --align-fasta=<filename>");
@@ -142,21 +144,32 @@ public class GraphGenome {
           "Alignment of multiple sequences disabled. Use only one of the parameters --align-sequence or --align-fasta");
       return;
     } else if (params.get("--align-sequence") != null) {
-      fuzzy = index.align(params.get("--align-sequence"));
-      poMsa = AlignmentUtils.align(graph, params.get("--align-sequence"), configuration);
+      sequence = params.get("--align-sequence");
     } else {
-      String sequence;
       try {
         sequence = ParseUtils.fastaToSequence(params.get("--align-fasta"));
       } catch (IOException e) {
         System.out.println("Unable to open file " + params.get("--align-fasta"));
         return;
       }
-      fuzzy = index.align(sequence);
-      poMsa = AlignmentUtils.align(graph, sequence, configuration);
     }
-    System.out.println(fuzzy);
-    System.out.println(poMsa);
+    Alignment alignment = alignSequence(configuration, graph, index, sequence,
+        params.get("--type"));
+    if (alignment != null) {
+      System.out.println(alignment);
+    }
+  }
+
+  private static Alignment alignSequence(Configuration configuration, Graph g,
+      FuzzySearchIndex index, String sequence, String type) {
+    if (type == null || "fuzzy".equals(type)) {
+      return index.align(sequence);
+    } else if ("po_msa".equals(type)) {
+      return AlignmentUtils.align(g, sequence, configuration);
+    } else {
+      System.out.println("Invalid alignment algorithm");
+      return null;
+    }
   }
 
   public static Map<String, String> parseParams(String[] args) {
@@ -249,7 +262,7 @@ public class GraphGenome {
       for (int i = 0; i < files.length; i++) {
         try {
           graph = createOrMerge(configuration, graph, ParseUtils.fastaToSequence(files[i]));
-          configuration.setSuffixLength(GraphUtils.optimalSuffixLength(graph));
+          configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
         } catch (IOException e) {
           System.out.println("Unable to open file " + files[i]);
         }
@@ -259,7 +272,7 @@ public class GraphGenome {
     if (sequences != null) {
       for (int i = 0; i < sequences.length; i++) {
         graph = createOrMerge(configuration, graph, sequences[i]);
-        configuration.setSuffixLength(GraphUtils.optimalSuffixLength(graph));
+        configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
       }
     }
 

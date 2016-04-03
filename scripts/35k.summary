@@ -1,13 +1,13 @@
-Graph size: 37801
-Sequence length: 100
-Min. PO-MSA time: 712589281
-Max. PO-MSA time: 1783431662
-Avg. PO-MSA time: 992142399
-Min. Fuzzy time: 5117557
-Max. Fuzzy time: 7751180
-Avg. Fuzzy time: 5847918
+Graph size: 
+Sequence length: 37801
+Min. PO-MSA time: 629272342
+Max. PO-MSA time: 1464192043
+Avg. PO-MSA time: 810942155
+Min. Fuzzy time: 56128677
+Max. Fuzzy time: 99040300
+Avg. Fuzzy time: 63586346
 Fuzzy errors: 0
-Max. sg time: 1240949785
-Min. sg time: 1166038904
-Avg. sg time: 1185506993
+Max. sg time: 1133732420
+Min. sg time: 1100816246
+Avg. sg time: 1114377734
 sg errors: 0

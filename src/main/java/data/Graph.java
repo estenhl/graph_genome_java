@@ -208,13 +208,13 @@ public class Graph implements Serializable {
   }
 
   private void addSuffix(Object[] suffixes, int index, String suffix) {
-    if (index == -1) {
-      index = suffixes.length - 1;
+    if (index == TAIL_INDEX || index == HEAD_INDEX) {
+      return;
     }
     if (suffixes[index] == null) {
       suffixes[index] = new HashSet<String>();
     }
-    suffix = suffix.substring(0, Math.min(suffix.length(), configuration.getSuffixLength()));
+    suffix = suffix.substring(0, Math.min(suffix.length(), configuration.getContextLength()));
     ((Set<String>) suffixes[index]).add(suffix);
   }
 
@@ -238,7 +238,7 @@ public class Graph implements Serializable {
 
   public int getDistance(int source, int dest, int maxDistance) {
     if (source == dest) {
-      return 2;
+      return maxDistance * 2;
     }
     Set<Integer> visited = new HashSet<Integer>();
     List<Pair> queue = new ArrayList<Pair>();
@@ -258,10 +258,10 @@ public class Graph implements Serializable {
         }
       }
     }
-    return maxDistance;
+    return maxDistance * 2;
   }
 
-  public double getBranchingFactor() {
+  public double getApproxBranchingFactor() {
     int branches = 0;
     for (int i = 0; i < currentIndex; i++) {
       branches += nodes[i].getOutgoing().size();

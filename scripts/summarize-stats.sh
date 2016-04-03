@@ -23,8 +23,8 @@ do
 	graph_size=${size[2]}
 	sequence_length=${length[2]}
 
-	po_msa_time=($(tail -2 $filename-fuzzy-stats/$i.stats | head -1))
-	po_msa_score=($(tail -3 $filename-fuzzy-stats/$i.stats | head -1))
+	po_msa_time=($(tail -3 $filename-po_msa-stats/$i.stats | head -1))
+	po_msa_score=($(tail -4 $filename-po_msa-stats/$i.stats | head -1))
 	if [ ${po_msa_time[1]} -gt $max_po_msa ]; then
 		max_po_msa=${po_msa_time[1]}
 	fi
@@ -33,8 +33,8 @@ do
 	fi
 	total_po_msa=$(($total_po_msa + ${po_msa_time[1]}))
 
-	fuzzy_time=($(tail -8 $filename-fuzzy-stats/$i.stats | head -1))
-	fuzzy_score=($(tail -9 $filename-fuzzy-stats/$i.stats | head -1))
+	fuzzy_time=($(tail -3 $filename-fuzzy-stats/$i.stats | head -1))
+	fuzzy_score=($(tail -4 $filename-fuzzy-stats/$i.stats | head -1))
 	if [ ${fuzzy_time[1]} -gt $max_fuzzy ]; then
 		max_fuzzy=${fuzzy_time[1]}
 	fi

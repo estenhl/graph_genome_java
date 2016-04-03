@@ -83,14 +83,17 @@ public class FuzzySearchIndex implements Serializable {
         System.out.println(status++ * 10 + " percent done");
       }
       boolean force = false;
-      if (i - 1 < configuration.getSuffixLength() && s.length() - (i + 1) < configuration
-          .getSuffixLength()) {
+      if (i - 1 < configuration.getContextLength() && s.length() - (i + 1) < configuration
+          .getContextLength()) {
         force = true;
       }
-      leftContextScores[i] = leftContexts.improvedSearch(StringUtils.reverse(
-          s.substring(Math.max(0, i - (configuration.getSuffixLength())), i)), force);
+      long start = System.nanoTime();
+      leftContextScores[i] = leftContexts.improvedSearch(
+          StringUtils.reverse(s.substring(Math.max(0, i - (configuration.getContextLength())), i)),
+          force);
+      start = System.nanoTime();
       rightContextScores[i] = rightContexts.improvedSearch(
-          s.substring(i + 1, Math.min(s.length(), i + (configuration.getSuffixLength() * 2))),
+          s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())),
           force);
     }
 
@@ -123,7 +126,7 @@ public class FuzzySearchIndex implements Serializable {
         if (score.getScore() >= maxScore) {
           combinedForPosition.add(score);
           maxScore = score.getScore();
-        } else if (score.getScore() >= maxScore - configuration.getContextSearchThreshold()) {
+        } else if (score.getScore() >= maxScore - configuration.getErrorMargin()) {
           combinedForPosition.add(score);
         }
       }
@@ -133,19 +136,19 @@ public class FuzzySearchIndex implements Serializable {
           if (score.getScore() >= maxScore) {
             combinedForPosition.add(score);
             maxScore = score.getScore();
-          } else if (score.getScore() >= maxScore - configuration.getContextSearchThreshold()) {
+          } else if (score.getScore() >= maxScore - configuration.getErrorMargin()) {
             combinedForPosition.add(score);
           }
         }
       }
       combined[i] = combinedForPosition.subSet(new Score(maxScore + 1, -1),
-          new Score(maxScore - configuration.getContextSearchThreshold() - 1, -1));
+          new Score(maxScore - configuration.getErrorMargin() - 1, -1));
     }
 
     return combined;
   }
 
-  public Alignment findMostProbablePath(Object[] alignmentScores, String sequence) {
+  public Alignment findMostProbablePath(Object[] alignmentScores, String sequence, long time) {
     System.out.println("Finding most probable path");
 
     int maxDistance = configuration.getMaxDistance();
@@ -179,7 +182,7 @@ public class FuzzySearchIndex implements Serializable {
       backPointers[i] = new String[row.size()];
       int j = 0;
       for (Score s : row) {
-        scores[i][j] = -10000; //TODO
+        scores[i][j] = (-2 * configuration.getErrorMargin()) - 1;
         indexes[i][j] = -1;
         backPointers[i][j] = "-1:-1";
         int baseScore = configuration
@@ -224,14 +227,21 @@ public class FuzzySearchIndex implements Serializable {
       colNr = Integer.parseInt(backPointer.split(":")[1]);
     }
 
-    long time = System.nanoTime() - startTime;
+    long searchTime = System.nanoTime() - startTime;
     Alignment alignment = new Alignment();
-    alignment.setScore(max - configuration.getGapPenalty(initialGapLength));
-    alignment.setTime(time);
+    if (max < configuration.getMaxAlignmentScore(sequence) - configuration.getErrorMargin()) {
+      alignment.setScore(
+          configuration.getMaxAlignmentScore(sequence) - (2 * configuration.getErrorMargin()) - 1);
+      alignment.setAlignment(new int[sequence.length()]);
+    } else {
+      alignment.setScore(max - configuration.getGapPenalty(initialGapLength));
+      alignment.setAlignment(alignmentSequence);
+    }
+    System.out.println("Search time: " + searchTime);
+    alignment.setTime(time + searchTime);
     alignment.setType("Fuzzy search");
     alignment.setSequenceLength(characters.length);
     alignment.setGraphSize(graph.getCurrentSize());
-    alignment.setAlignment(alignmentSequence);
 
     return alignment;
   }
@@ -257,9 +267,13 @@ public class FuzzySearchIndex implements Serializable {
   }
 
   public Alignment align(String sequence) {
+    long start = System.nanoTime();
     Object[] alignmentScores = improvedFuzzyContextSearch(sequence);
+    long time = System.nanoTime() - start;
+    System.out.println("context time: " + time);
 
-    return findMostProbablePath(alignmentScores, sequence);
+    Alignment alignment = findMostProbablePath(alignmentScores, sequence, time);
+    return alignment;
   }
 
   public void writeToFile(String filename) throws IOException {

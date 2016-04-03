@@ -19,7 +19,7 @@ public class SuffixTree implements Serializable {
   public SuffixTree(Configuration configuration) {
     this.configuration = configuration;
     head = new SuffixTreeNode(configuration, 0);
-    maxDepth = configuration.getSuffixLength();
+    maxDepth = configuration.getContextLength();
   }
 
   public void addSuffix(String suffix, int node) {
@@ -30,7 +30,7 @@ public class SuffixTree implements Serializable {
   }
 
   public HashMap<Integer, Integer> improvedSearch(String s, boolean force) {
-    if (!force && s.length() < configuration.getSuffixLength()) {
+    if (!force && s.length() < configuration.getContextLength()) {
       return new HashMap<Integer, Integer>();
     }
     int[] scores = new int[s.length() + 1];
@@ -43,8 +43,7 @@ public class SuffixTree implements Serializable {
     int maxScore = configuration.getMaxAlignmentScore(s);
     int depth = 0;
     head.improvedSearch(s.toCharArray(), scores, maxScore, depth, finalScores,
-        new boolean[scores.length], "",
-        maxDepth);
+        new boolean[scores.length], maxDepth);
 
     return finalScores;
   }

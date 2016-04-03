@@ -31,7 +31,7 @@ public class GraphUtils {
 
   public static int optimalSuffixLength(Graph graph) {
     int nodes = graph.getCurrentSize();
-    double branchingFactor = graph.getBranchingFactor();
+    double branchingFactor = graph.getApproxBranchingFactor();
     int suffixes = (int) (nodes * branchingFactor);
     int i = 1;
     while (approximateProbability(suffixes, i) > SHARED_SUFFIX_PROBABILITY) {

@@ -15,23 +15,19 @@ mkdir $read_dir
 java -jar $DIR/target/read-generator.jar reads file=$filename out=$read_dir.reads num=$num
 /bin/bash $DIR/scripts/reads-to-fastas.sh $read_dir.reads $read_dir
 cp $filename $read_dir/$filename
-mkdir $read_dir-vg-stats
 mkdir $read_dir-fuzzy-stats
+mkdir $read_dir-po_msa-stats
 
 # Copy test data to docker 
 docker cp $read_dir $CONTAINER_ID:/sequence-graphs/$read_dir
+docker cp test-sg.sh $CONTAINER_ID:/test-sg.sh
 
 # Create docker index
 docker start $CONTAINER_ID
 before=$(date +%s%N)
 docker exec $CONTAINER_ID /sequence-graphs/createIndex/createIndex /sequence-graphs/$read_dir-index /sequence-graphs/$read_dir/$filename
 after=$(date +%s%N)
-time=$(($after - $before))
-echo "Type: vg" > $read_dir-vg-stats/build.stats
-echo "Nanoseconds: $time" >> $read_dir-vg-stats/build.stats
-echo "Number of tests: $num" >> $read_dir-vg-stats/build.stats
-echo "Number of allowed $mismatches" >> $read_dir-vg-stats/build.stats
-echo "Mutation probability: $prob" >> $read_dir-vg-stats/build.stats
+docker_build_time=$(($after - $before))
 
 # Create fuzzy index
 before=$(date +%s%N)
@@ -46,23 +42,35 @@ echo "Mutation probability: $prob" >> $read_dir-fuzzy-stats/build.stats
 
 # Run alignment on test files
 docker exec $CONTAINER_ID mkdir /sequence-graphs/$read_dir-vg-alignments
+docker exec $CONTAINER_ID mkdir /sequence-graphs/$read_dir-vg-stats
 for i in `seq 1 $num`;
 do
-	before=$(date +%s%N)
-    docker exec $CONTAINER_ID /sequence-graphs/createIndex/mapReads /sequence-graphs/$read_dir-index --reference /sequence-graphs/$read_dir/$filename --fastas /sequence-graphs/$read_dir/$i.txt --alignment /sequence-graphs/$read_dir-vg-alignments/$i.alignment --mismatches $mismatches
+    docker exec $CONTAINER_ID /bin/bash /test-sg.sh /sequence-graphs/$read_dir-index /sequence-graphs/$read_dir/$filename /sequence-graphs/$read_dir/$i.txt /sequence-graphs/$read_dir-vg-alignments/$i.alignment $mismatches /sequence-graphs/$read_dir-vg-stats/$i.stats
+    before=$(date +%s%N)
+    java -jar $DIR/target/graph-genome.jar align -i=$read_dir-fuzzy-index -af=$read_dir/$i.txt -em=$mismatches -t=fuzzy > $read_dir-fuzzy-stats/$i.stats
     after=$(date +%s%N)
-    time=$(($after - $before))
-    echo "Nanoseconds: $time" > $read_dir-vg-stats/$i.stats
-    java -jar $DIR/target/graph-genome.jar align -i=$read_dir-fuzzy-index -af=$read_dir/$i.txt -t=$mismatches > $read_dir-fuzzy-stats/$i.stats
+    echo "Tool time: $(($after - $before))" >> $read_dir-fuzzy-stats/$i.stats
+    before=$(date +%s%N)
+    java -jar $DIR/target/graph-genome.jar align -i=$read_dir-fuzzy-index -af=$read_dir/$i.txt -em=$mismatches -t=po_msa > $read_dir-po_msa-stats/$i.stats
+    after=$(date +%s%N)
+    echo "Tool time: $(($after - $before))" >> $read_dir-po_msa-stats/$i.stats
 done 
 
 #Copy alignments locally and clean up docker
 docker cp $CONTAINER_ID:/sequence-graphs/$read_dir-vg-alignments .
+docker cp $CONTAINER_ID:/sequence-graphs/$read_dir-vg-stats .
 docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir
 docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir-index
 docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir-vg-alignments
+docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir-vg-stats
+docker exec $CONTAINER_ID rm /test-sg.sh
 
 # Score alignments
+echo "Type: vg" > $read_dir-vg-stats/build.stats
+echo "Nanoseconds: $docker_build_time" >> $read_dir-vg-stats/build.stats
+echo "Number of tests: $num" >> $read_dir-vg-stats/build.stats
+echo "Number of allowed $mismatches" >> $read_dir-vg-stats/build.stats
+echo "Mutation probability: $prob" >> $read_dir-vg-stats/build.stats
 for i in `seq 1 $num`;
 do
 	/bin/bash score-sg-alignment.sh $read_dir-vg-alignments/$i.alignment $read_dir-vg-stats/$i.stats
@@ -76,5 +84,6 @@ rm -rf $read_dir
 rm -rf $read_dir-vg-alignments
 rm -rf $read_dir-vg-stats
 rm -rf $read_dir-fuzzy-stats
+rm -rf $read_dir-po_msa-stats
 rm $read_dir-fuzzy-index
 rm $read_dir.reads
