@@ -28,7 +28,7 @@ public class Deletions {
   public void singleDeletion() {
     Configuration configuration = new EditDistanceConfiguration();
     configuration.setContextLength(5);
-    configuration.setErrorMargin(1.0);
+    configuration.setErrorMargin(1);
     String sequence = "ACGGAATAAGCA";
     String deletion = "ACGGAAAAGCA";
     Graph graph = ParseUtils.stringToGraph(configuration, sequence);

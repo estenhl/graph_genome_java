@@ -74,16 +74,20 @@ public class SuffixTreeNode implements Serializable {
 
   public int improvedSearch(char[] suffix, int[] scores, int maxScore, int depth,
       HashMap<Integer, Integer> finalScores, boolean[] gaps, int maxDepth) {
-    int currentMax = ArrayUtils.max(scores);
+    for (int i = 0; i < scores.length; i++) {
+      System.out.print(scores[i]);
+    }
+    System.out.println();
+    double currentMax = ArrayUtils.max(scores);
     if (currentMax + (maxDepth - depth) * configuration.getMaxPairwiseScore()
-        < maxScore - configuration.getErrorMargin()) {
+        < maxScore) {
       return maxScore;
     }
     if (children.size() == 0) {
       int score = ArrayUtils.max(scores);
       for (Integer i : indexes) {
         if ((!finalScores.containsKey(i) || score > finalScores.get(i))
-            && score >= maxScore - configuration.getErrorMargin()) {
+            && score >= maxScore) {
           finalScores.put(i, score);
         }
       }
@@ -101,7 +105,7 @@ public class SuffixTreeNode implements Serializable {
       for (int i = 1; i < scores.length; i++) {
         int verticalScore = myScores[i - 1] - getGapPenalty(myScores, i);
         int horizontalScore = scores[i] - configuration.getGapOpeningPenalty();
-        if (i == scores.length - 1 && depth > scores.length) {
+        if (i == scores.length - 1 && depth >= scores.length - 2) {
           horizontalScore = scores[i];
         }
         if (gaps[i]) {
@@ -113,10 +117,8 @@ public class SuffixTreeNode implements Serializable {
           myGaps[i] = true;
         }
       }
-
-      maxScore = Math
-          .max(children.get(c).improvedSearch(suffix, myScores, maxScore, depth + 1, finalScores,
-              myGaps, maxDepth), maxScore);
+      System.out.println("Going into " + c + " on depth " + (depth + 1));
+      maxScore = Math.max(children.get(c).improvedSearch(suffix, myScores, maxScore, depth + 1, finalScores, myGaps, maxDepth), maxScore);
     }
     return maxScore;
   }

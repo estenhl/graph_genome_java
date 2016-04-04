@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import configuration.Configuration;
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import utils.GraphUtils;
 import utils.Pair;
 
@@ -35,6 +36,10 @@ public class Graph implements Serializable {
     nodes[0].setIndex(HEAD_INDEX);
     nodes[size - 1] = new Node(TAIL_VALUE);
     nodes[size - 1].setIndex(TAIL_INDEX);
+  }
+
+  public void setConfiguration(Configuration configuration) {
+    this.configuration = configuration;
   }
 
   public int getCurrentSize() {
@@ -82,6 +87,25 @@ public class Graph implements Serializable {
       return;
     }
 
+    Node prev = getHead();
+    for (int i = 0; i < characters.length; i++) {
+      Node n;
+      int index;
+      if (alignment[i] == 0 || sequence.charAt(i) != getNode(alignment[i]).getValue()) {
+        n = new Node(characters[i]);
+        index = addNode(n);
+      } else {
+        n = getNode(alignment[i]);
+        index = n.getIndex();
+      }
+      prev.addOutgoing(index);
+      n.addIncoming(prev.getIndex());
+      prev = n;
+    }
+    prev.addOutgoing(TAIL_INDEX);
+    getTail().addIncoming(prev.getIndex());
+
+    /*
     Set<Node> newPrev = getPrev(alignment);
     for (int i = 0; i < characters.length; i++) {
       if (alignment[i] == 0) {
@@ -114,6 +138,10 @@ public class Graph implements Serializable {
         newPrev.add(curr);
       }
     }
+    for (Node n: newPrev) {
+      n.addIncoming(TAIL_INDEX);
+    }
+    */
   }
 
   private Set<Node> getPrev(int[] alignment) {
@@ -154,17 +182,20 @@ public class Graph implements Serializable {
     List<Node> queue = new ArrayList<Node>();
     Set<Integer> active = new HashSet<Integer>();
     Object[] suffixes = new Object[nodes.length];
+    boolean[] finished = new boolean[nodes.length];
     if (LEFT_CONTEXT.equals(direction)) {
       for (Integer i : getHead().getOutgoing()) {
         queue.add(getNode(i));
         addSuffix(suffixes, i, "");
         active.add(i);
+        finished[0] = true;
       }
     } else {
       for (Integer i : getTail().getIncoming()) {
         queue.add(getNode(i));
         addSuffix(suffixes, i, "");
         active.add(i);
+        finished[finished.length - 1] = true;
       }
     }
 
@@ -187,10 +218,14 @@ public class Graph implements Serializable {
         neighbours = curr.getIncoming();
         prev = curr.getOutgoing();
       }
-      if (((Set<String>) suffixes[index]).size() < prev.size()) {
-        System.out.println("Readding " + curr.getIndex());
-        queue.add(curr);
-        continue;
+      for (Integer incoming: prev) {
+        if (incoming == TAIL_INDEX) {
+          incoming = finished.length - 1;
+        }
+        if (!finished[incoming]) {
+          queue.add(curr);
+          continue;
+        }
       }
 
       for (Integer i : neighbours) {
@@ -201,6 +236,11 @@ public class Graph implements Serializable {
           active.add(i);
           queue.add(getNode(i));
         }
+      }
+      if (curr.getIndex() == TAIL_INDEX) {
+        finished[finished.length - 1] = true;
+      } else {
+        finished[curr.getIndex()] = true;
       }
     }
 

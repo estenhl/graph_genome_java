@@ -87,11 +87,9 @@ public class FuzzySearchIndex implements Serializable {
           .getContextLength()) {
         force = true;
       }
-      long start = System.nanoTime();
       leftContextScores[i] = leftContexts.improvedSearch(
           StringUtils.reverse(s.substring(Math.max(0, i - (configuration.getContextLength())), i)),
           force);
-      start = System.nanoTime();
       rightContextScores[i] = rightContexts.improvedSearch(
           s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())),
           force);
@@ -260,6 +258,15 @@ public class FuzzySearchIndex implements Serializable {
 
   public void setConfiguration(Configuration configuration) {
     this.configuration = configuration;
+    if (graph != null) {
+      graph.setConfiguration(configuration);
+    }
+    if (leftContexts != null) {
+      leftContexts.setConfiguration(configuration);
+    }
+    if (rightContexts != null) {
+      rightContexts.setConfiguration(configuration);
+    }
   }
 
   public Graph getGraph() {

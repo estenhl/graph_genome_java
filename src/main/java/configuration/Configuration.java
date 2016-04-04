@@ -6,7 +6,7 @@ import data.Graph;
 
 public abstract class Configuration implements Serializable {
   public static final int DEFAULT_SUFFIX_LENGTH = 15;
-  public static final double DEFAULT_ERROR_MARGIN = 0;
+  public static final int DEFAULT_ERROR_MARGIN = 0;
   public static final char WILDCARD = 'N';
 
   private int[][] scoringMatrix;
@@ -14,7 +14,7 @@ public abstract class Configuration implements Serializable {
   private int gapExtensionPenalty;
   private int contextLength;
   private int maxPairwiseScore;
-  private double errorMargin;
+  private int errorMargin;
 
   protected Configuration(int[][] scoringMatrix, int gapOpeningPenalty, int gapExtensionPenalty) {
     this.scoringMatrix = scoringMatrix;
@@ -111,11 +111,11 @@ public abstract class Configuration implements Serializable {
     return maxPairwiseScore;
   }
 
-  public void setErrorMargin(double errorMargin) {
+  public void setErrorMargin(int errorMargin) {
     this.errorMargin = errorMargin;
   }
 
-  public double getErrorMargin() {
+  public int getErrorMargin() {
     return errorMargin;
   }
 

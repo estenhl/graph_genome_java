@@ -36,9 +36,10 @@ public class GraphGenome {
     VALID_PARAMS.add("--scoring-system");
     VALID_PARAMS.add("--error-margin");
     VALID_PARAMS.add("--suffix-length");
-    VALID_PARAMS.add("--dot");
+    VALID_PARAMS.add("--png");
     VALID_PARAMS.add("--help");
     VALID_PARAMS.add("--type");
+    VALID_PARAMS.add("--merge");
 
     SHORTHAND_PARAMS = new HashMap<String, String>();
     SHORTHAND_PARAMS.put("-if", "--input-fastas");
@@ -49,9 +50,10 @@ public class GraphGenome {
     SHORTHAND_PARAMS.put("-ss", "--scoring-system");
     SHORTHAND_PARAMS.put("-em", "--error-margin");
     SHORTHAND_PARAMS.put("-sl", "--suffix-length");
-    SHORTHAND_PARAMS.put("-d", "--dot");
+    SHORTHAND_PARAMS.put("-p", "--png");
     SHORTHAND_PARAMS.put("-h", "--help");
     SHORTHAND_PARAMS.put("-t", "--type");
+    SHORTHAND_PARAMS.put("-m", "--merge");
 
     HELP_MENU = new HashMap<String, String>();
     HELP_MENU.put("-if", "Comma separated FASTA files used to build the graph");
@@ -66,9 +68,10 @@ public class GraphGenome {
     HELP_MENU.put("-sl",
         "Suffix length to use. Default to length with " + GraphUtils.SHARED_SUFFIX_PROBABILITY +
             " probability of sharing suffixes");
-    HELP_MENU.put("-d", "Filename of dot file visualizing either graph or alignment");
+    HELP_MENU.put("-p", "Filename of png file visualizing either graph or alignment. Will store dot-file if dot is not installed");
     HELP_MENU.put("-h", "Shows this menu");
     HELP_MENU.put("-t", "Alignment algorithm to use. po_msa or fuzzy. Defaults to fuzzy");
+    HELP_MENU.put("-m", "Chooses whether the aligned sequence should be merged in to the graph and index");
   }
 
   public static void main(String[] args)
@@ -85,7 +88,7 @@ public class GraphGenome {
     }
     Configuration configuration = getConfiguration(params.get("--scoring-system"));
     int suffixLength = ParseUtils.parseInt(params.get("--suffix-length"), -1);
-    configuration.setErrorMargin(ParseUtils.parseDouble(params.get("--error-margin"),
+    configuration.setErrorMargin(ParseUtils.parseInt(params.get("--error-margin"),
         Configuration.DEFAULT_ERROR_MARGIN));
     if ("index".equals(args[0])) {
       buildIndex(configuration, params, suffixLength);
@@ -106,8 +109,8 @@ public class GraphGenome {
       return;
     }
 
-    if (params.get("--dot") != null) {
-      printGraph(graph, params.get("--dot"), null, null);
+    if (params.get("--png") != null) {
+      printGraph(graph, params.get("--png"), null, null);
     }
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
     if (params.get("--index") == null) {
@@ -158,9 +161,7 @@ public class GraphGenome {
     if (alignment != null) {
       System.out.println(alignment);
     }
-    if (params.get("--dot") != null) {
-      printGraph(graph, params.get("--dot"), alignment.getAlignment(), sequence);
-    }
+
     if ("true".equals(params.get("--merge"))) {
       graph.mergeSequence(sequence, alignment.getAlignment());
       try {
@@ -168,6 +169,11 @@ public class GraphGenome {
       } catch (IOException e) {
         System.out.println("Unable to write index to file " + params.get("--index"));
       }
+      if (params.get("--png") != null) {
+        printGraph(graph, params.get("--png"), null, null);
+      }
+    } else if (params.get("--png") != null) {
+      printGraph(graph, params.get("--png"), alignment.getAlignment(), sequence);
     }
   }
 
@@ -193,6 +199,8 @@ public class GraphGenome {
           params.put(key, value);
         } else if (SHORTHAND_PARAMS.keySet().contains(key)) {
           params.put(SHORTHAND_PARAMS.get(key), value);
+        } else {
+          System.out.println("Dropping invalid parameter " + args[i]);
         }
       }
     }
@@ -304,7 +312,6 @@ public class GraphGenome {
     if (graph == null || filename == null) {
       return;
     }
-    System.out.println("Writing dot representation to " + filename);
     StringBuilder nodes = new StringBuilder();
     StringBuilder edges = new StringBuilder();
     for (int i = 0; i < graph.getCurrentSize(); i++) {
@@ -339,12 +346,27 @@ public class GraphGenome {
     output += edges.toString();
     output += "}";
 
+    File dotFile = new File(filename + ".dot");
+    File pngFile = new File(filename + ".png");
     try {
-      BufferedWriter writer = new BufferedWriter(new FileWriter(new File(filename)));
+      System.out.println("Writing dot representation to " + dotFile.getAbsolutePath());
+      BufferedWriter writer = new BufferedWriter(new FileWriter(dotFile));
       writer.write(output);
       writer.close();
+
+      try {
+        System.out.println("Writing png representation to " + pngFile.getAbsolutePath());
+        String[] c = {"dot", "-Tpng", dotFile.getAbsolutePath(), "-o", pngFile.getAbsolutePath()};
+        Process p = Runtime.getRuntime().exec(c);
+        int err = p.waitFor();
+        if (err != 0) {
+          System.out.println("Error message " + err + " when writing png");
+        }
+      } catch (Exception e) {
+        System.out.println("Unable to write png-file to " + pngFile.getAbsolutePath());
+      }
     } catch (IOException e) {
-      System.out.println("Unable to write dot-file to " + filename);
+      System.out.println("Unable to write dot-file to " + dotFile.getAbsolutePath());
     }
   }
 }

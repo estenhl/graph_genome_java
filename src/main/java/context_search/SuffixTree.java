@@ -22,6 +22,10 @@ public class SuffixTree implements Serializable {
     maxDepth = configuration.getContextLength();
   }
 
+  public void setConfiguration(Configuration configuration) {
+    this.configuration = configuration;
+  }
+
   public void addSuffix(String suffix, int node) {
     if (suffix.length() > maxDepth) {
       suffix = suffix.substring(0, maxDepth);
@@ -30,7 +34,8 @@ public class SuffixTree implements Serializable {
   }
 
   public HashMap<Integer, Integer> improvedSearch(String s, boolean force) {
-    if (!force && s.length() < configuration.getContextLength()) {
+    System.out.println("Aligning " + s + " with " + force);
+    if ((!force && s.length() < configuration.getContextLength()) || s.length() < 2) {
       return new HashMap<Integer, Integer>();
     }
     int[] scores = new int[s.length() + 1];
@@ -40,7 +45,7 @@ public class SuffixTree implements Serializable {
       scores[i] = scores[i - 1] - configuration.getGapExtensionPenalty();
     }
     HashMap<Integer, Integer> finalScores = new HashMap<Integer, Integer>();
-    int maxScore = configuration.getMaxAlignmentScore(s);
+    int maxScore = configuration.getMaxAlignmentScore(s) - configuration.getErrorMargin();
     int depth = 0;
     head.improvedSearch(s.toCharArray(), scores, maxScore, depth, finalScores,
         new boolean[scores.length], maxDepth);
