@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=~/skole/master/graph-genome
+DIR=../graph-genome
 CONTAINER_ID=10bf4fbece7b
 
 # Create local test data

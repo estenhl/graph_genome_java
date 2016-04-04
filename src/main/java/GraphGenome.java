@@ -158,6 +158,17 @@ public class GraphGenome {
     if (alignment != null) {
       System.out.println(alignment);
     }
+    if (params.get("--dot") != null) {
+      printGraph(graph, params.get("--dot"), alignment.getAlignment(), sequence);
+    }
+    if ("true".equals(params.get("--merge"))) {
+      graph.mergeSequence(sequence, alignment.getAlignment());
+      try {
+        index.writeToFile(params.get("--index"));
+      } catch (IOException e) {
+        System.out.println("Unable to write index to file " + params.get("--index"));
+      }
+    }
   }
 
   private static Alignment alignSequence(Configuration configuration, Graph g,
