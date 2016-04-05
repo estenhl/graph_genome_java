@@ -1,6 +1,6 @@
 #!/bin/bash
 
-num=50
+num=1
 mismatches=0
 prob=0.00
 

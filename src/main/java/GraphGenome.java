@@ -103,8 +103,11 @@ public class GraphGenome {
 
   private static void buildIndex(Configuration configuration, Map<String, String> params,
       int suffixLength) {
+    long start = System.nanoTime();
+    long graphStart = System.nanoTime();
     Graph graph = parseGraph(configuration, params.get("--input-fastas"),
         params.get("--input-sequences"), suffixLength != -1);
+    System.out.println("Time used building graph: " + (System.nanoTime() - graphStart));
     if (graph == null) {
       System.out.println("Unable to build graph! Exiting");
       return;
@@ -113,7 +116,9 @@ public class GraphGenome {
     if (params.get("--png") != null) {
       printGraph(graph, params.get("--png"), null, null);
     }
+    long indexStart = System.nanoTime();
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
+    System.out.println("Time used creating index: " + (System.nanoTime() - indexStart));
     if (params.get("--index") == null) {
       System.out.println("Unable to write index without filename. Use --index=<filename>");
       return;
@@ -123,6 +128,7 @@ public class GraphGenome {
     } catch (IOException e) {
       System.out.println("IOException when writing to file " + params.get("--index"));
     }
+    System.out.println("Time used building the index: " + (System.nanoTime() - start));
   }
 
   private static void align(Configuration configuration, Map<String, String> params) {

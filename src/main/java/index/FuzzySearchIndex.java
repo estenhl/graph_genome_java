@@ -61,9 +61,12 @@ public class FuzzySearchIndex implements Serializable {
   public static FuzzySearchIndex readIndex(String filename) {
     System.out.println("Reading index from file " + filename);
     try {
+      long start = System.nanoTime();
       FileInputStream fis = new FileInputStream(filename);
       ObjectInputStream stream = new ObjectInputStream(fis);
-      return (FuzzySearchIndex) stream.readObject();
+      FuzzySearchIndex index = (FuzzySearchIndex) stream.readObject();
+      System.out.println("Time for reading index: " + (System.nanoTime() - start));
+      return index;
     } catch (IOException e) {
       System.out.println("Unable to read index from file " + filename);
       return null;
@@ -89,18 +92,14 @@ public class FuzzySearchIndex implements Serializable {
           .getContextLength()) {
         force = true;
       }
-      long start = System.nanoTime();
       leftContextScores[i] = leftContexts.improvedSearch(
           StringUtils.reverse(s.substring(Math.max(0, i - (configuration.getContextLength())), i)),
           force);
-      leftTotal += System.nanoTime() - start;
-      start = System.nanoTime();
       rightContextScores[i] = rightContexts.improvedSearch(
           s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())),
           force);
-      rightTotal += System.nanoTime() - start;
     }
-    
+
     return combineScores(leftContextScores, rightContextScores, s);
   }
 
@@ -289,9 +288,11 @@ public class FuzzySearchIndex implements Serializable {
 
   public void writeToFile(String filename) throws IOException {
     System.out.println("Storing index to file " + filename);
+    long start = System.nanoTime();
     FileOutputStream fos = new FileOutputStream(filename);
     ObjectOutputStream stream = new ObjectOutputStream(fos);
     stream.writeObject(this);
     stream.close();
+    System.out.println("Time used writing the index: " + (System.nanoTime() - start));
   }
 }

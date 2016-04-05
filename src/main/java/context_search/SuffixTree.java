@@ -34,7 +34,6 @@ public class SuffixTree implements Serializable {
   }
 
   public HashMap<Integer, Integer> improvedSearch(String s, boolean force) {
-    System.out.println("Searching for " + s);
     if ((!force && s.length() < configuration.getContextLength()) || s.length() < 2) {
       return new HashMap<Integer, Integer>();
     }
