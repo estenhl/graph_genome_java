@@ -78,6 +78,8 @@ public class FuzzySearchIndex implements Serializable {
     Object[] rightContextScores = new Object[s.length()];
     int tenPercent = s.length() / 10;
     int status = 0;
+    long leftTotal = 0;
+    long rightTotal = 0;
     for (int i = 0; i < s.length(); i++) {
       if (s.length() > 10 && i % tenPercent == 0) {
         System.out.println(status++ * 10 + " percent done");
@@ -87,14 +89,18 @@ public class FuzzySearchIndex implements Serializable {
           .getContextLength()) {
         force = true;
       }
+      long start = System.nanoTime();
       leftContextScores[i] = leftContexts.improvedSearch(
           StringUtils.reverse(s.substring(Math.max(0, i - (configuration.getContextLength())), i)),
           force);
+      leftTotal += System.nanoTime() - start;
+      start = System.nanoTime();
       rightContextScores[i] = rightContexts.improvedSearch(
           s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())),
           force);
+      rightTotal += System.nanoTime() - start;
     }
-
+    
     return combineScores(leftContextScores, rightContextScores, s);
   }
 
@@ -146,18 +152,17 @@ public class FuzzySearchIndex implements Serializable {
     return combined;
   }
 
-  public Alignment findMostProbablePath(Object[] alignmentScores, String sequence, long time) {
+  public Alignment findMostProbablePath(Object[] alignmentScores, String sequence, long startTime) {
     System.out.println("Finding most probable path");
 
     int maxDistance = configuration.getMaxDistance();
-    long startTime = System.nanoTime();
-    double[][] scores = new double[alignmentScores.length][0];
+    int[][] scores = new int[alignmentScores.length][0];
     int[][] indexes = new int[alignmentScores.length][0];
     String[][] backPointers = new String[alignmentScores.length][0];
     char[] characters = sequence.toCharArray();
 
     SortedSet<Score> row = (SortedSet<Score>) alignmentScores[0];
-    scores[0] = new double[row.size()];
+    scores[0] = new int[row.size()];
     indexes[0] = new int[row.size()];
     backPointers[0] = new String[row.size()];
     int i = 0;
@@ -175,7 +180,7 @@ public class FuzzySearchIndex implements Serializable {
       if (tenPercent > 0 && i % tenPercent == 0) {
         System.out.println(status++ * 10 + " percent done");
       }
-      scores[i] = new double[row.size()];
+      scores[i] = new int[row.size()];
       indexes[i] = new int[row.size()];
       backPointers[i] = new String[row.size()];
       int j = 0;
@@ -187,7 +192,7 @@ public class FuzzySearchIndex implements Serializable {
             .getScore(graph.getNode(s.getIndex()).getValue(), characters[i]);
         for (int k = Math.max(0, i - maxDistance); k < i; k++) {
           for (int l = 0; l < scores[k].length; l++) {
-            double score = baseScore + scores[k][l] - configuration
+            int score = baseScore + scores[k][l] - configuration
                 .getGapPenalty(graph.getDistance(indexes[k][l], s.getIndex(), maxDistance))
                 - configuration.getGapPenalty(i - k);
 
@@ -215,7 +220,7 @@ public class FuzzySearchIndex implements Serializable {
       }
     }
     int colNr = ArrayUtils.findHighestIndex(scores[rowNr]);
-    double max = scores[rowNr][colNr];
+    int max = scores[rowNr][colNr];
 
     int[] alignmentSequence = new int[scores.length];
     while (rowNr >= 0) {
@@ -235,8 +240,7 @@ public class FuzzySearchIndex implements Serializable {
       alignment.setScore(max - configuration.getGapPenalty(initialGapLength));
       alignment.setAlignment(alignmentSequence);
     }
-    System.out.println("Search time: " + searchTime);
-    alignment.setTime(time + searchTime);
+    alignment.setTime(searchTime);
     alignment.setType("Fuzzy search");
     alignment.setSequenceLength(characters.length);
     alignment.setGraphSize(graph.getCurrentSize());
@@ -279,7 +283,7 @@ public class FuzzySearchIndex implements Serializable {
     long time = System.nanoTime() - start;
     System.out.println("context time: " + time);
 
-    Alignment alignment = findMostProbablePath(alignmentScores, sequence, time);
+    Alignment alignment = findMostProbablePath(alignmentScores, sequence, start);
     return alignment;
   }
 

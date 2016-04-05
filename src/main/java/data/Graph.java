@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Set;
 
 import configuration.Configuration;
-import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import utils.GraphUtils;
 import utils.Pair;
 
@@ -218,7 +217,7 @@ public class Graph implements Serializable {
         neighbours = curr.getIncoming();
         prev = curr.getOutgoing();
       }
-      for (Integer incoming: prev) {
+      for (Integer incoming : prev) {
         if (incoming == TAIL_INDEX) {
           incoming = finished.length - 1;
         }

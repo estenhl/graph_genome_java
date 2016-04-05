@@ -15,8 +15,8 @@ public class SNPs {
   public void singleSNPnoMargin() {
     Configuration configuration = new EditDistanceConfiguration();
     configuration.setContextLength(5);
-    String sequence = "ACGGAATAAGCA";
-    String SNP = "ACGGAAGAAGCA";
+    String sequence = "ACGTATTAC";
+    String SNP = "ACGGATTAC";
     Graph graph = ParseUtils.stringToGraph(configuration, sequence);
     int before = graph.getCurrentSize();
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
@@ -35,8 +35,8 @@ public class SNPs {
     Configuration configuration = new EditDistanceConfiguration();
     configuration.setContextLength(5);
     configuration.setErrorMargin(1);
-    String sequence = "ACGGAATAAGCA";
-    String SNP = "ACGGAAGAAGCA";
+    String sequence = "ACGTATTAC";
+    String SNP = "ACGGATTAC";
     Graph graph = ParseUtils.stringToGraph(configuration, sequence);
     int before = graph.getCurrentSize();
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
@@ -45,8 +45,8 @@ public class SNPs {
 
     graph.mergeSequence(SNP, alignment.getAlignment());
     assertEquals(before + 1, graph.getCurrentSize());
-    assertEquals(2, graph.getNode(6).getOutgoing().size());
-    assertEquals(2, graph.getNode(8).getIncoming().size());
+    assertEquals(2, graph.getNode(3).getOutgoing().size());
+    assertEquals(2, graph.getNode(5).getIncoming().size());
   }
 
   @Test
@@ -122,9 +122,9 @@ public class SNPs {
     Configuration configuration = new EditDistanceConfiguration();
     configuration.setContextLength(5);
     configuration.setErrorMargin(1);
-    String sequence = "ACGGAATAAGCA";
-    String SNP1 = "ACGGAAGAAGCA";
-    String SNP2 = "ACGGAACAAGCA";
+    String sequence = "ACGTATTAC";
+    String SNP1 = "ACGGATTAC";
+    String SNP2 = "ACGCATTAC";
     Graph graph = ParseUtils.stringToGraph(configuration, sequence);
     int before = graph.getCurrentSize();
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
@@ -134,7 +134,7 @@ public class SNPs {
     graph.mergeSequence(SNP1, alignment1.getAlignment());
     graph.mergeSequence(SNP2, alignment2.getAlignment());
     assertEquals(before + 2, graph.getCurrentSize());
-    assertEquals(3, graph.getNode(6).getOutgoing().size());
-    assertEquals(3, graph.getNode(8).getIncoming().size());
+    assertEquals(3, graph.getNode(3).getOutgoing().size());
+    assertEquals(3, graph.getNode(5).getIncoming().size());
   }
 }

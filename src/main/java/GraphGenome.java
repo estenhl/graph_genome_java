@@ -21,7 +21,6 @@ import utils.GraphUtils;
 import utils.ParseUtils;
 
 public class GraphGenome {
-
   private static List<String> VALID_PARAMS;
   private static Map<String, String> SHORTHAND_PARAMS;
   private static Map<String, String> HELP_MENU;
@@ -68,10 +67,12 @@ public class GraphGenome {
     HELP_MENU.put("-sl",
         "Suffix length to use. Default to length with " + GraphUtils.SHARED_SUFFIX_PROBABILITY +
             " probability of sharing suffixes");
-    HELP_MENU.put("-p", "Filename of png file visualizing either graph or alignment. Will store dot-file if dot is not installed");
+    HELP_MENU.put("-p",
+        "Filename of png file visualizing either graph or alignment. Will store dot-file if dot is not installed");
     HELP_MENU.put("-h", "Shows this menu");
     HELP_MENU.put("-t", "Alignment algorithm to use. po_msa or fuzzy. Defaults to fuzzy");
-    HELP_MENU.put("-m", "Chooses whether the aligned sequence should be merged in to the graph and index");
+    HELP_MENU.put("-m",
+        "Chooses whether the aligned sequence should be merged in to the graph and index");
   }
 
   public static void main(String[] args)
@@ -356,11 +357,12 @@ public class GraphGenome {
 
       try {
         System.out.println("Writing png representation to " + pngFile.getAbsolutePath());
-        String[] c = {"dot", "-Tpng", dotFile.getAbsolutePath(), "-o", pngFile.getAbsolutePath()};
+        String[] c = { "dot", "-Tpng", dotFile.getAbsolutePath(), "-o", pngFile.getAbsolutePath() };
         Process p = Runtime.getRuntime().exec(c);
         int err = p.waitFor();
         if (err != 0) {
-          System.out.println("Error message " + err + " when writing png");
+          System.out
+              .println("Error message " + err + " when writing png. Maybe you don't have dot?");
         }
       } catch (Exception e) {
         System.out.println("Unable to write png-file to " + pngFile.getAbsolutePath());

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Equal sequences
-java -jar /target/graph-genome.jar -i=/small-test-equal.index -is=ACGTATTAAGCCATG
-java -jar /target/graph-genome.jar -i=/small-test-equal.index -is=ACGTATTAAGCCATG -d=equal-alignment.dot

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=../graph-genome
+DIR=../
 CONTAINER_ID=10bf4fbece7b
 
 # Create local test data
@@ -41,13 +41,13 @@ echo "Number of allowed $mismatches" >> $read_dir-fuzzy-stats/build.stats
 echo "Mutation probability: $prob" >> $read_dir-fuzzy-stats/build.stats
 
 # Run alignment on test files
-docker exec $CONTAINER_ID mkdir /sequence-graphs/$read_dir-vg-alignments
-docker exec $CONTAINER_ID mkdir /sequence-graphs/$read_dir-vg-stats
+docker exec $CONTAINER_ID mkdir /sequence-graphs/$read_dir-sg-alignments
+docker exec $CONTAINER_ID mkdir /sequence-graphs/$read_dir-sg-stats
 for i in `seq 1 $num`;
 do
-    docker exec $CONTAINER_ID /bin/bash /test-sg.sh /sequence-graphs/$read_dir-index /sequence-graphs/$read_dir/$filename /sequence-graphs/$read_dir/$i.txt /sequence-graphs/$read_dir-vg-alignments/$i.alignment $mismatches /sequence-graphs/$read_dir-vg-stats/$i.stats
+    docker exec $CONTAINER_ID /bin/bash /test-sg.sh /sequence-graphs/$read_dir-index /sequence-graphs/$read_dir/$filename /sequence-graphs/$read_dir/$i.txt /sequence-graphs/$read_dir-sg-alignments/$i.alignment $mismatches /sequence-graphs/$read_dir-sg-stats/$i.stats
     before=$(date +%s%N)
-    java -jar $DIR/target/graph-genome.jar align -i=$read_dir-fuzzy-index -af=$read_dir/$i.txt -em=$mismatches -t=fuzzy > $read_dir-fuzzy-stats/$i.stats
+    java -Xmx2048m -Xms2048m -jar $DIR/target/graph-genome.jar align -i=$read_dir-fuzzy-index -af=$read_dir/$i.txt -em=$mismatches -t=fuzzy > $read_dir-fuzzy-stats/$i.stats
     after=$(date +%s%N)
     echo "Tool time: $(($after - $before))" >> $read_dir-fuzzy-stats/$i.stats
     before=$(date +%s%N)
@@ -57,33 +57,33 @@ do
 done 
 
 #Copy alignments locally and clean up docker
-docker cp $CONTAINER_ID:/sequence-graphs/$read_dir-vg-alignments .
-docker cp $CONTAINER_ID:/sequence-graphs/$read_dir-vg-stats .
+docker cp $CONTAINER_ID:/sequence-graphs/$read_dir-sg-alignments .
+docker cp $CONTAINER_ID:/sequence-graphs/$read_dir-sg-stats .
 docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir
 docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir-index
-docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir-vg-alignments
-docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir-vg-stats
+docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir-sg-alignments
+docker exec $CONTAINER_ID rm -rf /sequence-graphs/$read_dir-sg-stats
 docker exec $CONTAINER_ID rm /test-sg.sh
 
 # Score alignments
-echo "Type: vg" > $read_dir-vg-stats/build.stats
-echo "Nanoseconds: $docker_build_time" >> $read_dir-vg-stats/build.stats
-echo "Number of tests: $num" >> $read_dir-vg-stats/build.stats
-echo "Number of allowed $mismatches" >> $read_dir-vg-stats/build.stats
-echo "Mutation probability: $prob" >> $read_dir-vg-stats/build.stats
+echo "Type: vg" > $read_dir-sg-stats/build.stats
+echo "Nanoseconds: $docker_build_time" >> $read_dir-sg-stats/build.stats
+echo "Number of tests: $num" >> $read_dir-sg-stats/build.stats
+echo "Number of allowed $mismatches" >> $read_dir-sg-stats/build.stats
+echo "Mutation probability: $prob" >> $read_dir-sg-stats/build.stats
 for i in `seq 1 $num`;
 do
-	/bin/bash score-sg-alignment.sh $read_dir-vg-alignments/$i.alignment $read_dir-vg-stats/$i.stats
+	/bin/bash score-sg-alignment.sh $read_dir-sg-alignments/$i.alignment $read_dir-sg-stats/$i.stats
 done
 
 # Print summaries
 /bin/bash summarize-stats.sh $read_dir $num
 
 # Clean up locally
-rm -rf $read_dir
-rm -rf $read_dir-vg-alignments
-rm -rf $read_dir-vg-stats
-rm -rf $read_dir-fuzzy-stats
-rm -rf $read_dir-po_msa-stats
+#rm -rf $read_dir
+#rm -rf $read_dir-sg-alignments
+#rm -rf $read_dir-sg-stats
+#rm -rf $read_dir-fuzzy-stats
+#rm -rf $read_dir-po_msa-stats
 rm $read_dir-fuzzy-index
 rm $read_dir.reads

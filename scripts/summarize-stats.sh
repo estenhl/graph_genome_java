@@ -8,6 +8,9 @@ sequence_length=0
 min_po_msa=$(date +%s%N)
 max_po_msa=0
 total_po_msa=0
+min_tool_time=$(date +%s%N)
+max_tool_time=0
+total_tool_time=0
 min_fuzzy=$(date +%s%N)
 max_fuzzy=0
 total_fuzzy=0
@@ -33,6 +36,15 @@ do
 	fi
 	total_po_msa=$(($total_po_msa + ${po_msa_time[1]}))
 
+	tool_time=($(tail -1 $filename-fuzzy-stats/$i.stats | head -1))
+	if [ ${tool_time[2]} -gt $max_tool_time ]; then
+		max_tool_time=${tool_time[2]}
+	fi
+	if [ ${tool_time[2]} -lt $min_tool_time ]; then
+		min_tool_time=${tool_time[2]}
+	fi
+	total_tool_time=$(($total_tool_time + ${tool_time[2]}))
+
 	fuzzy_time=($(tail -3 $filename-fuzzy-stats/$i.stats | head -1))
 	fuzzy_score=($(tail -4 $filename-fuzzy-stats/$i.stats | head -1))
 	if [ ${fuzzy_time[1]} -gt $max_fuzzy ]; then
@@ -47,8 +59,8 @@ do
 	fi
 	total_fuzzy=$(($total_fuzzy + ${fuzzy_time[1]}))
 
-	sg_time=($(tail -2 $filename-vg-stats/$i.stats | head -1))
-	sg_score=($(tail -1 $filename-vg-stats/$i.stats | head -1))
+	sg_time=($(tail -2 $filename-sg-stats/$i.stats | head -1))
+	sg_score=($(tail -1 $filename-sg-stats/$i.stats | head -1))
 	if [ ${sg_time[1]} -gt $max_sg ]; then
 		max_sg=${sg_time[1]}
 	fi
@@ -61,11 +73,25 @@ do
 	total_sg=$(($total_sg + ${sg_time[1]}))
 done 
 
+fuzzy_build_time=($(tail -4 $filename-fuzzy-stats/build.stats | head -1))
+sg_build_time=($(tail -4 $filename-sg-stats/build.stats | head -1))
+mismatches=($(tail -2 $filename-sg-stats/build.stats | head -1))
+prob=($(tail -1 $filename-sg-stats/build.stats | head -1))
+
 echo "Graph size: $graph_size" > $filename.summary
 echo "Sequence length: $sequence_length" >> $filename.summary
+echo "Number of tests: $num" >> $filename.summary
+echo "Allowed mismatches: ${mismatches[4]}" >> $filename.summary
+echo "Mutation probability: ${prob[3]}" >> $filename.summary
+echo "" >> $filename.summary
+echo "Fuzzy index time: ${fuzzy_build_time[1]}" >> $filename.summary
+echo "Sg index time: ${sg_build_time[1]}" >> $filename.summary
 echo "Min. PO-MSA time: $min_po_msa" >> $filename.summary
 echo "Max. PO-MSA time: $max_po_msa" >> $filename.summary
 echo "Avg. PO-MSA time: $(($total_po_msa / $num))" >> $filename.summary
+echo "Min. Tool time: $min_tool_time" >> $filename.summary
+echo "Max. Tool time: $max_tool_time" >> $filename.summary
+echo "Avg. Tool time: $(($total_tool_time / $num))" >> $filename.summary
 echo "Min. Fuzzy time: $min_fuzzy" >> $filename.summary
 echo "Max. Fuzzy time: $max_fuzzy" >> $filename.summary
 echo "Avg. Fuzzy time: $(($total_fuzzy / $num))" >> $filename.summary

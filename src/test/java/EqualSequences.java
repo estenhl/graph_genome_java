@@ -14,7 +14,7 @@ public class EqualSequences {
   public void align() {
     Configuration configuration = new EditDistanceConfiguration();
     configuration.setContextLength(5);
-    String sequence = "ACGTATTA";
+    String sequence = "ACGTATTAC";
     Graph graph = ParseUtils.stringToGraph(configuration, sequence);
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
     Alignment alignment = index.align(sequence);
@@ -28,7 +28,7 @@ public class EqualSequences {
   public void merge() {
     Configuration configuration = new EditDistanceConfiguration();
     configuration.setContextLength(5);
-    String sequence = "ACGTATTA";
+    String sequence = "ACGTATTAC";
     Graph graph = ParseUtils.stringToGraph(configuration, sequence);
     int original = graph.getCurrentSize();
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
