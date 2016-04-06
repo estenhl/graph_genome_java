@@ -1,0 +1,14 @@
+Graph size: 
+Sequence length: 37801
+Number of tests: 50
+Allowed mismatches: 
+Mutation probability: 
+
+Fuzzy index time: 16410046648
+Min. PO-MSA time: 507053055
+Max. PO-MSA time: 1626076093
+Avg. PO-MSA time: 817322537
+Min. Fuzzy time: 26000852
+Max. Fuzzy time: 45044859
+Avg. Fuzzy time: 30339892
+Fuzzy errors: 0

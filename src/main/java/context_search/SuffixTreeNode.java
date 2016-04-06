@@ -86,9 +86,6 @@ public class SuffixTreeNode implements Serializable {
             && score >= maxScore) {
           finalScores.put(i, score);
         }
-        if (i == 4) {
-          System.out.println("Found 4: " + score);
-        }
       }
       return Math.max(maxScore, score);
     }
