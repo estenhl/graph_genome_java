@@ -277,6 +277,8 @@ public class FuzzySearchIndex implements Serializable {
   }
 
   public Alignment align(String sequence) {
+    System.out
+        .println("Aligning " + sequence + " with error-margin " + configuration.getErrorMargin());
     long start = System.nanoTime();
     Object[] alignmentScores = improvedFuzzyContextSearch(sequence);
     long time = System.nanoTime() - start;

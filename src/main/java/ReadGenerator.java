@@ -51,7 +51,7 @@ public class ReadGenerator {
           }
         } else if (arg.startsWith("prob=")) {
           try {
-            prob = Double.parseDouble(arg.substring(4));
+            prob = Double.parseDouble(arg.substring(5));
           } catch (NumberFormatException e) {
             System.out.println("Invalid prob-argument " + arg.substring(4) + "! Must be a float");
             System.exit(0);

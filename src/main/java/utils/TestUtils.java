@@ -32,15 +32,15 @@ public class TestUtils {
     Node curr = graph.getNode(start);
 
     for (int i = 0; i < length; i++) {
-      if (random.nextDouble() < mutationProbability) {
+      if (random.nextDouble() < (mutationProbability / 3)) {
         // Deletion
         System.out.println("Generated deletion!");
-      } else if (random.nextDouble() < mutationProbability) {
+      } else if (random.nextDouble() < (mutationProbability / 3)) {
         // Insertion
         System.out.println("Generated insertion!");
         sequence += curr.getValue();
         sequence += getRandomBase(random);
-      } else if (random.nextDouble() < mutationProbability) {
+      } else if (random.nextDouble() < (mutationProbability / 3)) {
         // SNP
         System.out.println("Generated SNP!");
         sequence += getRandomBase(random);

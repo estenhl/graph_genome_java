@@ -1,0 +1,33 @@
+Using default scoring configuration (edit distance)
+Reading index from file mhc1-fuzzy-index
+Time for reading index: 416459134
+Sat context length to 13
+Aligning ACGGCAGCAAAGGAGAACGAGTCTTTTTTTTTTTTTTTTTTTTTTTTGTGATGGAGTCTTGCTCAGTCGCCCAGGCTGGAGTGCAGTGGCGCGATCTCGG with error-margin 0
+0 percent done
+10 percent done
+20 percent done
+30 percent done
+40 percent done
+50 percent done
+60 percent done
+70 percent done
+80 percent done
+90 percent done
+context time: 75604312
+Finding most probable path
+0 percent done
+10 percent done
+20 percent done
+30 percent done
+40 percent done
+50 percent done
+60 percent done
+70 percent done
+80 percent done
+Alignment type: Fuzzy search
+Sequence length: 100
+Graph size: 701
+Score: 0
+Time: 151306184
+Alignment: 0:476 1:477 2:478 3:479 4:480 5:481 6:482 7:483 8:484 9:485 10:486 11:487 12:488 13:489 14:490 15:491 16:492 17:493 18:494 19:495 20:496 21:497 22:498 23:499 24:500 25:501 26:502 27:503 28:504 29:505 30:506 31:507 32:508 33:509 34:510 35:511 36:512 37:513 38:514 39:515 40:516 41:517 42:518 43:519 44:520 45:521 46:522 47:523 48:524 49:525 50:526 51:527 52:528 53:529 54:530 55:531 56:532 57:533 58:534 59:535 60:536 61:537 62:538 63:539 64:540 65:541 66:542 67:543 68:544 69:545 70:546 71:547 72:548 73:549 74:550 75:551 76:552 77:553 78:554 79:555 80:556 81:557 82:558 83:559 84:560 85:561 86:562 87:563 88:564 89:565 90:566 91:567 92:568 93:569 94:570 95:571 96:572 97:573 98:574 99:575 
+Tool time: 726597147
