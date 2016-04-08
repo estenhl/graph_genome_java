@@ -83,7 +83,7 @@ done
 rm -rf $read_dir
 rm -rf $read_dir-sg-alignments
 rm -rf $read_dir-sg-stats
-#rm -rf $read_dir-fuzzy-stats
-#rm -rf $read_dir-po_msa-stats
+rm -rf $read_dir-fuzzy-stats
+rm -rf $read_dir-po_msa-stats
 rm $read_dir-fuzzy-index
 rm $read_dir.reads
