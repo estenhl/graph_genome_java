@@ -77,6 +77,9 @@ public class FuzzySearchIndex implements Serializable {
   }
 
   public Object[] improvedFuzzyContextSearch(String s) {
+    if (configuration.getAllowParallellization()) {
+      System.out.println("Doing search with parallellization");
+    }
     Object[] leftContextScores = new Object[s.length()];
     Object[] rightContextScores = new Object[s.length()];
     int tenPercent = s.length() / 10;

@@ -95,7 +95,7 @@ public class GraphGenome {
     int suffixLength = ParseUtils.parseInt(params.get("--suffix-length"), -1);
     configuration.setErrorMargin(ParseUtils.parseInt(params.get("--error-margin"),
         Configuration.DEFAULT_ERROR_MARGIN));
-    configuration.setAllowParallellization("true".equals(params.get("--scoring-system")));
+    configuration.setAllowParallellization("true".equals(params.get("--parallellization")));
     if ("index".equals(args[0])) {
       buildIndex(configuration, params, suffixLength, true);
     } else if ("align".equals(args[0])) {

@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" line="181" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" line="184" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/100k.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-0.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-1.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-2.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-3.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-4.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-5.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/20k.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/35k.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/500k.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/primary.summary" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/150k.summary" afterPath="$PROJECT_DIR$/scripts/150k.summary" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/configuration/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/configuration/Configuration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" afterPath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GraphGenome.java" afterPath="$PROJECT_DIR$/src/main/java/GraphGenome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/test-po_msa-fuzzy.sh" afterPath="$PROJECT_DIR$/scripts/test-po_msa-fuzzy.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Graph-genome.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,10 +32,10 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="128" column="5" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
+              <caret line="83" column="48" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
               <folding>
-                <element signature="e#10395#10396#0" expanded="true" />
-                <element signature="e#10437#10438#0" expanded="true" />
+                <element signature="e#10517#10518#0" expanded="true" />
+                <element signature="e#10559#10560#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,8 +44,8 @@
       <file leaf-file-name="GraphGenome.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5131165">
-              <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.66421825">
+              <caret line="97" column="87" selection-start-line="97" selection-start-column="87" selection-end-line="97" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -700,7 +683,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="7" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -818,8 +801,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
           <folding>
-            <element signature="e#10395#10396#0" expanded="true" />
-            <element signature="e#10437#10438#0" expanded="true" />
+            <element signature="e#10517#10518#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -885,8 +868,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
           <folding>
-            <element signature="e#10395#10396#0" expanded="true" />
-            <element signature="e#10437#10438#0" expanded="true" />
+            <element signature="e#10517#10518#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -952,8 +935,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="151" column="65" selection-start-line="151" selection-start-column="65" selection-end-line="151" selection-end-column="65" />
           <folding>
-            <element signature="e#10395#10396#0" expanded="true" />
-            <element signature="e#10437#10438#0" expanded="true" />
+            <element signature="e#10517#10518#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -970,8 +953,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="151" column="65" selection-start-line="151" selection-start-column="65" selection-end-line="151" selection-end-column="65" />
           <folding>
-            <element signature="e#10395#10396#0" expanded="true" />
-            <element signature="e#10437#10438#0" expanded="true" />
+            <element signature="e#10517#10518#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1083,14 +1066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ReadGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="46" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/TestUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1150,21 +1125,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ReadGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="46" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="128" column="5" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
+          <caret line="83" column="48" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
           <folding>
-            <element signature="e#10395#10396#0" expanded="true" />
-            <element signature="e#10437#10438#0" expanded="true" />
+            <element signature="e#10517#10518#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5131165">
-          <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.66421825">
+          <caret line="97" column="87" selection-start-line="97" selection-start-column="87" selection-end-line="97" selection-end-column="87" />
           <folding />
         </state>
       </provider>
