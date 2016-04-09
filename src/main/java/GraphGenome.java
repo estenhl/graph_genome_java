@@ -92,17 +92,20 @@ public class GraphGenome {
     configuration.setErrorMargin(ParseUtils.parseInt(params.get("--error-margin"),
         Configuration.DEFAULT_ERROR_MARGIN));
     if ("index".equals(args[0])) {
-      buildIndex(configuration, params, suffixLength);
+      buildIndex(configuration, params, suffixLength, true);
     } else if ("align".equals(args[0])) {
-      align(configuration, params);
+      align(configuration, params, null);
+    } else if ("build-and-align".equals(args[0])) {
+      FuzzySearchIndex index = buildIndex(configuration, params, suffixLength, false);
+      align(configuration, params, index);
     } else {
       System.out.println("Invalid type parameter! See help");
       return;
     }
   }
 
-  private static void buildIndex(Configuration configuration, Map<String, String> params,
-      int suffixLength) {
+  private static FuzzySearchIndex buildIndex(Configuration configuration, Map<String, String> params,
+      int suffixLength, boolean write) {
     long start = System.nanoTime();
     long graphStart = System.nanoTime();
     Graph graph = parseGraph(configuration, params.get("--input-fastas"),
@@ -110,7 +113,7 @@ public class GraphGenome {
     System.out.println("Time used building graph: " + (System.nanoTime() - graphStart));
     if (graph == null) {
       System.out.println("Unable to build graph! Exiting");
-      return;
+      return null;
     }
 
     if (params.get("--png") != null) {
@@ -119,24 +122,30 @@ public class GraphGenome {
     long indexStart = System.nanoTime();
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
     System.out.println("Time used creating index: " + (System.nanoTime() - indexStart));
-    if (params.get("--index") == null) {
-      System.out.println("Unable to write index without filename. Use --index=<filename>");
-      return;
-    }
-    try {
-      index.writeToFile(params.get("--index"));
-    } catch (IOException e) {
-      System.out.println("IOException when writing to file " + params.get("--index"));
+
+    if (write) {
+      if (params.get("--index") == null) {
+        System.out.println("Unable to write index without filename. Use --index=<filename>");
+      }
+      try {
+        index.writeToFile(params.get("--index"));
+      } catch (IOException e) {
+        System.out.println("IOException when writing to file " + params.get("--index"));
+      }
     }
     System.out.println("Time used building the index: " + (System.nanoTime() - start));
+
+    return index;
   }
 
-  private static void align(Configuration configuration, Map<String, String> params) {
-    if (params.get("--index") == null) {
-      System.out.println("Unable to align without an index. Use --index=<filename>");
-      return;
+  private static void align(Configuration configuration, Map<String, String> params, FuzzySearchIndex index) {
+    if (index == null) {
+      if (params.get("--index") == null) {
+        System.out.println("Unable to align without an index. Use --index=<filename>");
+        return;
+      }
+      index = FuzzySearchIndex.readIndex(params.get("--index"));
     }
-    FuzzySearchIndex index = FuzzySearchIndex.readIndex(params.get("--index"));
     if (index == null) {
       System.out.println("Unable to align sequence without an index");
       return;

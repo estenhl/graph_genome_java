@@ -3,12 +3,12 @@
 DIR=../
 CONTAINER_ID=10bf4fbece7b
 
-# Create local test data
 filename=$1
 num=$2
 mismatches=$3
 prob=$4
 
+# Create local test data
 IFS='.' read -r -a array <<< "$1"
 read_dir=${array[0]}
 mkdir $read_dir

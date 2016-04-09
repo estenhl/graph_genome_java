@@ -1,0 +1,13 @@
+Input file: 100k.fasta
+Number of tests: 50
+Allowed mismatches: 0
+Mutation probability: 0.0
+
+Fuzzy index time: 
+Min. PO-MSA time: 1107126039
+Max. PO-MSA time: 1910755883
+Avg. PO-MSA time: 1193934335
+Min. Fuzzy time: 26459984
+Max. Fuzzy time: 51905005
+Avg. Fuzzy time: 32429709
+Fuzzy errors: 0
