@@ -89,6 +89,7 @@ public class FuzzySearchIndex implements Serializable {
     Thread[] leftThreads = new Thread[s.length()];
     Thread[] rightThreads = new Thread[s.length()];
     for (int i = 0; i < s.length(); i++) {
+      System.out.println("i: " + i);
       if (s.length() > 10 && i % tenPercent == 0) {
         System.out.println(status++ * 10 + " percent done");
       }
@@ -107,8 +108,9 @@ public class FuzzySearchIndex implements Serializable {
         leftThreads[i].start();
         rightThreads[i] = new Thread(rightContexts);
         rightThreads[i].start();
-        while (!leftContexts.ready || !rightContexts.ready) {
-        }
+        int counter = 0;
+        leftContexts.await();
+        rightContexts.await();
       } else {
         leftContextScores[i] = leftContexts.improvedSearch(StringUtils.reverse(
             s.substring(Math.max(0, i - (configuration.getContextLength())), i)), force, i);

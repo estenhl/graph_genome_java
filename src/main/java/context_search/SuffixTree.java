@@ -20,7 +20,7 @@ public class SuffixTree implements Serializable, Runnable {
   private boolean force;
   private int index;
   private Map<Integer, HashMap<Integer, Integer>> scores;
-  public boolean ready = false;
+  private boolean ready = false;
 
   public SuffixTree(Configuration configuration) {
     this.configuration = configuration;
@@ -36,11 +36,27 @@ public class SuffixTree implements Serializable, Runnable {
     setReady(false);
   }
 
+  public synchronized boolean getReady() {
+    return ready;
+  }
+
+  public synchronized void await() {
+    while (!ready) {
+      try {
+        wait();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+    return;
+  }
+
   public void run() {
     improvedSearch(s, force, index);
   }
 
   public synchronized void setReady(boolean ready) {
+    System.out.println("Setting ready " + ready);
     this.ready = ready;
   }
 
@@ -59,8 +75,9 @@ public class SuffixTree implements Serializable, Runnable {
     head.addSuffix(suffix, node);
   }
 
-  public HashMap<Integer, Integer> improvedSearch(String s, boolean force, int index) {
+  public synchronized HashMap<Integer, Integer> improvedSearch(String s, boolean force, int index) {
     setReady(true);
+    notifyAll();
     if ((!force && s.length() < configuration.getContextLength()) || s.length() < 2) {
       this.scores.put(index, new HashMap<Integer, Integer>());
       return new HashMap<Integer, Integer>();
@@ -76,7 +93,7 @@ public class SuffixTree implements Serializable, Runnable {
     int depth = 0;
     head.improvedSearch(s.toCharArray(), scores, maxScore, depth, finalScores,
         new boolean[scores.length], maxDepth);
-    
+
     this.scores.put(index, finalScores);
     return finalScores;
   }

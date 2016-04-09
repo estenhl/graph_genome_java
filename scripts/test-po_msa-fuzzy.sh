@@ -79,7 +79,7 @@ echo "Avg. Fuzzy time: $(($total_fuzzy / $num))" >> $read_dir.summary
 echo "Fuzzy errors: $errors_fuzzy" >> $read_dir.summary
 
 rm -rf $read_dir
-#rm -rf $read_dir-fuzzy-stats
+rm -rf $read_dir-fuzzy-stats
 rm -rf $read_dir-po_msa-stats
 rm $read_dir.reads
 

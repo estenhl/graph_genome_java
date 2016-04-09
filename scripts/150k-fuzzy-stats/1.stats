@@ -2,38 +2,23 @@ Using default scoring configuration (edit distance)
 Read 1000 lines
 Read 2000 lines
 Sat context length to 20
-Time used building graph: 14344232346
+Time used building graph: 23934708106
 Building index
 Finished building indexes
-Time used creating index: 1904262922
-Time used building the index: 16248626767
+Time used creating index: 4539654397
+Time used building the index: 28474544963
 Sat context length to 20
-Aligning CCCTGGCTTCTTTCTGGCATCTCACAGGACATTTTCTTCCCACAGATAGAAAAGGAGGGAGCTACTCTCAGGCTGCAAGTAAGTATGAAGGAGGCTGATC with error-margin 2
+Aligning CCCTGGCTTCTTTCTGGCATCTCACAGGACATTTTCTTCCCACAGATAGAAAAGGAGGGAGCTACTCTCAGGCTGCAAGTAAGTATGAAGGAGGCTGATC with error-margin 4
+Doing search with parallellization
+i: 0
 0 percent done
-10 percent done
-20 percent done
-30 percent done
-40 percent done
-50 percent done
-60 percent done
-70 percent done
-80 percent done
-90 percent done
-context time: 975347468
-Finding most probable path
-0 percent done
-10 percent done
-20 percent done
-30 percent done
-40 percent done
-50 percent done
-60 percent done
-70 percent done
-80 percent done
-Alignment type: Fuzzy search
-Sequence length: 100
-Graph size: 144411
-Score: 0
-Time: 1072514134
-Alignment: 0:70376 1:70377 2:70378 3:70379 4:70380 5:70381 6:70382 7:70383 8:70384 9:70385 10:70386 11:70387 12:70388 13:70389 14:70390 15:70391 16:70392 17:70393 18:70394 19:70395 20:70396 21:70397 22:70398 23:70399 24:70400 25:70401 26:70402 27:70403 28:70404 29:70405 30:70406 31:70407 32:70408 33:70409 34:70410 35:70411 36:70412 37:70413 38:70414 39:70415 40:70416 41:70417 42:70418 43:70419 44:70420 45:70421 46:70422 47:70423 48:70424 49:70425 50:70426 51:70427 52:70428 53:70429 54:70430 55:70431 56:70432 57:70433 58:70434 59:70435 60:70436 61:70437 62:70438 63:70439 64:70440 65:70441 66:70442 67:70443 68:70444 69:70445 70:70446 71:70447 72:70448 73:70449 74:70450 75:70451 76:70452 77:70453 78:70454 79:70455 80:70456 81:70457 82:70458 83:70459 84:70460 85:70461 86:70462 87:70463 88:70464 89:70465 90:70466 91:70467 92:70468 93:70469 94:70470 95:70471 96:70472 97:70473 98:70474 99:70475 
-Tool time: 17600558858
+Setting ready false
+Setting ready false
+Setting ready true
+Setting ready true
+i: 1
+Setting ready false
+Setting ready false
+Setting ready true
+Setting ready true
+Tool time: 30023387338

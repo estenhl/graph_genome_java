@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" line="184" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" line="186" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" afterPath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GraphGenome.java" afterPath="$PROJECT_DIR$/src/main/java/GraphGenome.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" afterPath="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" />
     </list>
     <ignored path="Graph-genome.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,19 +32,19 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="48" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
+              <caret line="112" column="30" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
               <folding>
-                <element signature="e#10517#10518#0" expanded="true" />
-                <element signature="e#10559#10560#0" expanded="true" />
+                <element signature="e#10568#10569#0" expanded="true" />
+                <element signature="e#10610#10611#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphGenome.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GraphGenome.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.66421825">
+            <state vertical-scroll-proportion="0.0">
               <caret line="97" column="87" selection-start-line="97" selection-start-column="87" selection-end-line="97" selection-end-column="87" />
               <folding />
             </state>
@@ -64,12 +64,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SuffixTree.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SuffixTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="49" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
-              <folding />
+            <state vertical-scroll-proportion="0.21930745">
+              <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+              <folding>
+                <element signature="e#1108#1109#0" expanded="true" />
+                <element signature="e#1130#1131#0" expanded="true" />
+                <element signature="e#2546#2564#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -173,13 +177,13 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/ArrayUtils.java" />
         <option value="$PROJECT_DIR$/src/test/java/Deletions.java" />
         <option value="$PROJECT_DIR$/src/test/java/SNPs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/GraphUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/ReadGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/TestUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/configuration/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphGenome.java" />
+        <option value="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
+        <option value="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" />
       </list>
     </option>
   </component>
@@ -801,8 +805,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
           <folding>
-            <element signature="e#10517#10518#0" expanded="true" />
-            <element signature="e#10559#10560#0" expanded="true" />
+            <element signature="e#10568#10569#0" expanded="true" />
+            <element signature="e#10610#10611#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -868,8 +872,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
           <folding>
-            <element signature="e#10517#10518#0" expanded="true" />
-            <element signature="e#10559#10560#0" expanded="true" />
+            <element signature="e#10568#10569#0" expanded="true" />
+            <element signature="e#10610#10611#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -935,8 +939,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="151" column="65" selection-start-line="151" selection-start-column="65" selection-end-line="151" selection-end-column="65" />
           <folding>
-            <element signature="e#10517#10518#0" expanded="true" />
-            <element signature="e#10559#10560#0" expanded="true" />
+            <element signature="e#10568#10569#0" expanded="true" />
+            <element signature="e#10610#10611#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -953,8 +957,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="151" column="65" selection-start-line="151" selection-start-column="65" selection-end-line="151" selection-end-column="65" />
           <folding>
-            <element signature="e#10517#10518#0" expanded="true" />
-            <element signature="e#10559#10560#0" expanded="true" />
+            <element signature="e#10568#10569#0" expanded="true" />
+            <element signature="e#10610#10611#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1098,18 +1102,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="49" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/GraphUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ReadGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="46" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="87" selection-start-line="97" selection-start-column="87" selection-end-line="97" selection-end-column="87" />
           <folding />
         </state>
       </provider>
@@ -1125,30 +1137,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ReadGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="46" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="48" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
+          <caret line="112" column="30" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
           <folding>
-            <element signature="e#10517#10518#0" expanded="true" />
-            <element signature="e#10559#10560#0" expanded="true" />
+            <element signature="e#10568#10569#0" expanded="true" />
+            <element signature="e#10610#10611#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66421825">
-          <caret line="97" column="87" selection-start-line="97" selection-start-column="87" selection-end-line="97" selection-end-column="87" />
-          <folding />
+        <state vertical-scroll-proportion="0.21930745">
+          <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+          <folding>
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1130#1131#0" expanded="true" />
+            <element signature="e#2546#2564#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

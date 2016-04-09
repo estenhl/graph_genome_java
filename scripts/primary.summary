@@ -1,0 +1,39 @@
+Input file: primary.fasta
+Number of tests: 1
+Allowed mismatches: 0
+Mutation probability: 0.0
+
+Fuzzy index time: 
+Min. PO-MSA time: 549837248
+Max. PO-MSA time: 549837248
+Avg. PO-MSA time: 549837248
+Min. Fuzzy time: 1078903960
+Max. Fuzzy time: 1078903960
+Avg. Fuzzy time: 1078903960
+Fuzzy errors: 0
+Input file: primary.fasta
+Number of tests: 1
+Allowed mismatches: 1
+Mutation probability: 0.0
+
+Fuzzy index time: 
+Min. PO-MSA time: 1460243705022461429
+Max. PO-MSA time: 0
+Avg. PO-MSA time: 0
+Min. Fuzzy time: 1460243705023633958
+Max. Fuzzy time: 0
+Avg. Fuzzy time: 0
+Fuzzy errors: 0
+Input file: primary.fasta
+Number of tests: 1
+Allowed mismatches: 1
+Mutation probability: 0.0
+
+Fuzzy index time: 
+Min. PO-MSA time: 1460243729385179898
+Max. PO-MSA time: 0
+Avg. PO-MSA time: 0
+Min. Fuzzy time: 1460243729387323945
+Max. Fuzzy time: 0
+Avg. Fuzzy time: 0
+Fuzzy errors: 0
