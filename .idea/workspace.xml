@@ -1,17 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" line="153" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" line="174" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/100k.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/20k.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/35k.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/primary.summary" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/align_sequence.sh" afterPath="$PROJECT_DIR$/align_sequence.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build_index.sh" afterPath="$PROJECT_DIR$/build_index.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/test-dataset.sh" afterPath="$PROJECT_DIR$/scripts/test-dataset.sh" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-fuzzy-stats/1.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-fuzzy-stats/2.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-fuzzy-stats/3.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-fuzzy-stats/4.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-fuzzy-stats/5.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-fuzzy-stats/build.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-po_msa-stats/1.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-po_msa-stats/2.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-po_msa-stats/3.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-po_msa-stats/4.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k-po_msa-stats/5.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/150k.summary" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/1.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/10.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/11.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/12.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/13.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/14.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/15.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/16.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/17.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/18.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/19.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/2.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/20.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/3.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/4.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/5.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/6.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/7.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/8.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/9.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-fuzzy-stats/build.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/1.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/10.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/11.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/12.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/13.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/14.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/15.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/16.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/17.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/18.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/19.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/2.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/20.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/3.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/4.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/5.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/6.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/7.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/8.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1-po_msa-stats/9.stats" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/mhc1.summary" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" afterPath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" afterPath="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Graph-genome.iws" />
@@ -38,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="272" column="3" selection-start-line="272" selection-start-column="3" selection-end-line="272" selection-end-column="3" />
+              <caret line="105" column="30" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -64,12 +113,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SuffixTree.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SuffixTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="20" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="20" />
-              <folding />
+            <state vertical-scroll-proportion="0.77439666">
+              <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+              <folding>
+                <element signature="e#1086#1087#0" expanded="true" />
+                <element signature="e#1127#1128#0" expanded="true" />
+                <element signature="e#1181#1182#0" expanded="true" />
+                <element signature="e#1209#1210#0" expanded="true" />
+                <element signature="e#1268#1269#0" expanded="true" />
+                <element signature="e#1302#1303#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,7 +134,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTreeNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+              <caret line="75" column="6" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -124,10 +180,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Deletions.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Deletions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Deletions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18782791">
+            <state vertical-scroll-proportion="0.0">
               <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
               <folding />
             </state>
@@ -174,13 +230,13 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/ArrayUtils.java" />
         <option value="$PROJECT_DIR$/src/test/java/Deletions.java" />
         <option value="$PROJECT_DIR$/src/test/java/SNPs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/GraphGenome.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/GraphUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/context_search/SuffixTreeNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/ReadGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/TestUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/context_search/SuffixTreeNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
+        <option value="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" />
       </list>
     </option>
   </component>
@@ -223,9 +279,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -324,6 +380,58 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Graph-genome" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graph-genome" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Graph-genome" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graph-genome" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context_search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -332,6 +440,8 @@
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -631,7 +741,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -655,21 +765,21 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3137255" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32941177" sideWeight="0.49595687" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32941177" sideWeight="0.49595687" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32960325" sideWeight="0.5040431" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24905661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32960325" sideWeight="0.49595687" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1016,46 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/GraphUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="20" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="272" column="3" selection-start-line="272" selection-start-column="3" selection-end-line="272" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="183" column="5" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ReadGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1074,9 +1144,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Deletions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18782791">
+        <state vertical-scroll-proportion="0.0">
           <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="183" column="5" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/GraphUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="6" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="30" selection-start-line="105" selection-start-column="30" selection-end-line="105" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77439666">
+          <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+          <folding>
+            <element signature="e#1086#1087#0" expanded="true" />
+            <element signature="e#1127#1128#0" expanded="true" />
+            <element signature="e#1181#1182#0" expanded="true" />
+            <element signature="e#1209#1210#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
+            <element signature="e#1302#1303#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

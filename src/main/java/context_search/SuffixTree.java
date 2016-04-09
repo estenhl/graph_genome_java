@@ -2,11 +2,12 @@ package context_search;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import configuration.Configuration;
 
-public class SuffixTree implements Serializable {
+public class SuffixTree implements Serializable, Runnable {
 
   public static final int GAP_STATUS_NO_GAP = 0;
   public static final int GAP_STATUS_GAP_IN_SEQUENCE = 1;
@@ -15,11 +16,36 @@ public class SuffixTree implements Serializable {
   private Configuration configuration;
   private SuffixTreeNode head;
   private int maxDepth;
+  private String s;
+  private boolean force;
+  private int index;
+  private Map<Integer, HashMap<Integer, Integer>> scores;
+  public boolean ready = false;
 
   public SuffixTree(Configuration configuration) {
     this.configuration = configuration;
     head = new SuffixTreeNode(configuration, 0);
     maxDepth = configuration.getContextLength();
+    scores = new HashMap<Integer, HashMap<Integer, Integer>>();
+  }
+
+  public synchronized void setSearchParams(String s, boolean force, int index) {
+    this.s = s;
+    this.force = force;
+    this.index = index;
+    setReady(false);
+  }
+
+  public void run() {
+    improvedSearch(s, force, index);
+  }
+
+  public synchronized void setReady(boolean ready) {
+    this.ready = ready;
+  }
+
+  public HashMap<Integer, Integer> getScores(int index) {
+    return scores.get(index);
   }
 
   public void setConfiguration(Configuration configuration) {
@@ -33,8 +59,10 @@ public class SuffixTree implements Serializable {
     head.addSuffix(suffix, node);
   }
 
-  public HashMap<Integer, Integer> improvedSearch(String s, boolean force) {
+  public HashMap<Integer, Integer> improvedSearch(String s, boolean force, int index) {
+    setReady(true);
     if ((!force && s.length() < configuration.getContextLength()) || s.length() < 2) {
+      this.scores.put(index, new HashMap<Integer, Integer>());
       return new HashMap<Integer, Integer>();
     }
     int[] scores = new int[s.length() + 1];
@@ -48,7 +76,8 @@ public class SuffixTree implements Serializable {
     int depth = 0;
     head.improvedSearch(s.toCharArray(), scores, maxScore, depth, finalScores,
         new boolean[scores.length], maxDepth);
-
+    
+    this.scores.put(index, finalScores);
     return finalScores;
   }
 

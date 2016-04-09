@@ -83,6 +83,8 @@ public class FuzzySearchIndex implements Serializable {
     int status = 0;
     long leftTotal = 0;
     long rightTotal = 0;
+    Thread[] leftThreads = new Thread[s.length()];
+    Thread[] rightThreads = new Thread[s.length()];
     for (int i = 0; i < s.length(); i++) {
       if (s.length() > 10 && i % tenPercent == 0) {
         System.out.println(status++ * 10 + " percent done");
@@ -92,12 +94,31 @@ public class FuzzySearchIndex implements Serializable {
           .getContextLength()) {
         force = true;
       }
-      leftContextScores[i] = leftContexts.improvedSearch(
+      leftContexts.setSearchParams(
           StringUtils.reverse(s.substring(Math.max(0, i - (configuration.getContextLength())), i)),
-          force);
-      rightContextScores[i] = rightContexts.improvedSearch(
-          s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())),
-          force);
+          force, i);
+      rightContexts.setSearchParams(
+          s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())), force,
+          i);
+      leftThreads[i] = new Thread(leftContexts);
+      leftThreads[i].start();
+      rightThreads[i] = new Thread(rightContexts);
+      rightThreads[i].start();
+      while (!leftContexts.ready || !rightContexts.ready) {
+      }
+      ;
+    }
+
+    for (int i = 0; i < leftThreads.length; i++) {
+      try {
+        leftThreads[i].join();
+        rightThreads[i].join();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+        System.exit(-1);
+      }
+      leftContextScores[i] = leftContexts.getScores(i);
+      rightContextScores[i] = rightContexts.getScores(i);
     }
 
     return combineScores(leftContextScores, rightContextScores, s);
