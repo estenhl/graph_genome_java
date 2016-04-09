@@ -94,31 +94,38 @@ public class FuzzySearchIndex implements Serializable {
           .getContextLength()) {
         force = true;
       }
-      leftContexts.setSearchParams(
-          StringUtils.reverse(s.substring(Math.max(0, i - (configuration.getContextLength())), i)),
-          force, i);
-      rightContexts.setSearchParams(
-          s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())), force,
-          i);
-      leftThreads[i] = new Thread(leftContexts);
-      leftThreads[i].start();
-      rightThreads[i] = new Thread(rightContexts);
-      rightThreads[i].start();
-      while (!leftContexts.ready || !rightContexts.ready) {
+      if (configuration.getAllowParallellization()) {
+        leftContexts.setSearchParams(StringUtils.reverse(
+            s.substring(Math.max(0, i - (configuration.getContextLength())), i)), force, i);
+        rightContexts.setSearchParams(
+            s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())),
+            force, i);
+        leftThreads[i] = new Thread(leftContexts);
+        leftThreads[i].start();
+        rightThreads[i] = new Thread(rightContexts);
+        rightThreads[i].start();
+        while (!leftContexts.ready || !rightContexts.ready) {
+        }
+      } else {
+        leftContextScores[i] = leftContexts.improvedSearch(StringUtils.reverse(
+            s.substring(Math.max(0, i - (configuration.getContextLength())), i)), force, i);
+        rightContextScores[i] = rightContexts.improvedSearch(
+            s.substring(i + 1, Math.min(s.length(), i + 1 + configuration.getContextLength())),
+            force, i);
       }
-      ;
     }
-
-    for (int i = 0; i < leftThreads.length; i++) {
-      try {
-        leftThreads[i].join();
-        rightThreads[i].join();
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-        System.exit(-1);
+    if (configuration.getAllowParallellization()) {
+      for (int i = 0; i < leftThreads.length; i++) {
+        try {
+          leftThreads[i].join();
+          rightThreads[i].join();
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+          System.exit(-1);
+        }
+        leftContextScores[i] = leftContexts.getScores(i);
+        rightContextScores[i] = rightContexts.getScores(i);
       }
-      leftContextScores[i] = leftContexts.getScores(i);
-      rightContextScores[i] = rightContexts.getScores(i);
     }
 
     return combineScores(leftContextScores, rightContextScores, s);

@@ -15,6 +15,7 @@ public abstract class Configuration implements Serializable {
   private int contextLength;
   private int maxPairwiseScore;
   private int errorMargin;
+  private boolean allowParallellization;
 
   protected Configuration(int[][] scoringMatrix, int gapOpeningPenalty, int gapExtensionPenalty) {
     this.scoringMatrix = scoringMatrix;
@@ -23,6 +24,14 @@ public abstract class Configuration implements Serializable {
     this.contextLength = DEFAULT_SUFFIX_LENGTH;
     this.maxPairwiseScore = findMaxScore(scoringMatrix);
     this.errorMargin = DEFAULT_ERROR_MARGIN;
+  }
+
+  public void setAllowParallellization(boolean allowParallellization) {
+    this.allowParallellization = allowParallellization;
+  }
+
+  public boolean getAllowParallellization() {
+    return allowParallellization;
   }
 
   private int findMaxScore(int[][] scoringMatrix) {

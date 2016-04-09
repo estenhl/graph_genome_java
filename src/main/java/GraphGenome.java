@@ -39,6 +39,7 @@ public class GraphGenome {
     VALID_PARAMS.add("--help");
     VALID_PARAMS.add("--type");
     VALID_PARAMS.add("--merge");
+    VALID_PARAMS.add("--parallellization");
 
     SHORTHAND_PARAMS = new HashMap<String, String>();
     SHORTHAND_PARAMS.put("-if", "--input-fastas");
@@ -53,6 +54,7 @@ public class GraphGenome {
     SHORTHAND_PARAMS.put("-h", "--help");
     SHORTHAND_PARAMS.put("-t", "--type");
     SHORTHAND_PARAMS.put("-m", "--merge");
+    SHORTHAND_PARAMS.put("-pa", "--parallellization");
 
     HELP_MENU = new HashMap<String, String>();
     HELP_MENU.put("-if", "Comma separated FASTA files used to build the graph");
@@ -73,6 +75,8 @@ public class GraphGenome {
     HELP_MENU.put("-t", "Alignment algorithm to use. po_msa or fuzzy. Defaults to fuzzy");
     HELP_MENU.put("-m",
         "Chooses whether the aligned sequence should be merged in to the graph and index");
+    HELP_MENU.put("-pa",
+        "Decides whether or not to use parallellization in suffix tree search, true/false");
   }
 
   public static void main(String[] args)
@@ -91,6 +95,7 @@ public class GraphGenome {
     int suffixLength = ParseUtils.parseInt(params.get("--suffix-length"), -1);
     configuration.setErrorMargin(ParseUtils.parseInt(params.get("--error-margin"),
         Configuration.DEFAULT_ERROR_MARGIN));
+    configuration.setAllowParallellization("true".equals(params.get("--scoring-system")));
     if ("index".equals(args[0])) {
       buildIndex(configuration, params, suffixLength, true);
     } else if ("align".equals(args[0])) {
@@ -104,7 +109,8 @@ public class GraphGenome {
     }
   }
 
-  private static FuzzySearchIndex buildIndex(Configuration configuration, Map<String, String> params,
+  private static FuzzySearchIndex buildIndex(Configuration configuration,
+      Map<String, String> params,
       int suffixLength, boolean write) {
     long start = System.nanoTime();
     long graphStart = System.nanoTime();
@@ -138,7 +144,8 @@ public class GraphGenome {
     return index;
   }
 
-  private static void align(Configuration configuration, Map<String, String> params, FuzzySearchIndex index) {
+  private static void align(Configuration configuration, Map<String, String> params,
+      FuzzySearchIndex index) {
     if (index == null) {
       if (params.get("--index") == null) {
         System.out.println("Unable to align without an index. Use --index=<filename>");
