@@ -19,7 +19,7 @@ for i in `seq 1 $num`;
 do
     echo "Run: $i"
     before=$(date +%s%N)
-    java -Xmx4096m -Xms4096m -jar ../target/graph-genome.jar build-and-align -if=$filename -af=$read_dir/$i.txt -em=$mismatches -t=fuzzy -pa=true > $read_dir-fuzzy-stats/$i.stats
+    java -Xmx4096m -Xms4096m -jar ../target/graph-genome.jar build-and-align -if=$filename -af=$read_dir/$i.txt -em=$mismatches -t=fuzzy > $read_dir-fuzzy-stats/$i.stats
     after=$(date +%s%N)
     echo "Tool time: $(($after - $before))" >> $read_dir-fuzzy-stats/$i.stats
     before=$(date +%s%N)
