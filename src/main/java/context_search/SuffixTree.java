@@ -56,7 +56,6 @@ public class SuffixTree implements Serializable, Runnable {
   }
 
   public synchronized void setReady(boolean ready) {
-    System.out.println("Setting ready " + ready);
     this.ready = ready;
   }
 

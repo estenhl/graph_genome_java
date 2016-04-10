@@ -108,7 +108,6 @@ public class FuzzySearchIndex implements Serializable {
         leftThreads[i].start();
         rightThreads[i] = new Thread(rightContexts);
         rightThreads[i].start();
-        int counter = 0;
         leftContexts.await();
         rightContexts.await();
       } else {

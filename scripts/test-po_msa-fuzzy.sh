@@ -9,7 +9,7 @@ prob=$4
 IFS='.' read -r -a array <<< "$1"
 read_dir=${array[0]}
 mkdir $read_dir
-java -jar ../target/read-generator.jar reads file=$filename out=$read_dir.reads num=$num prob=$prob
+java -jar ../target/read-generator.jar reads file=$filename out=$read_dir.reads num=$num prob=$prob len=100
 /bin/bash reads-to-fastas.sh $read_dir.reads $read_dir
 cp $filename $read_dir/$filename
 mkdir $read_dir-fuzzy-stats
