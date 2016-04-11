@@ -187,6 +187,7 @@ public class GraphGenome {
 
     if ("true".equals(params.get("--merge"))) {
       graph.mergeSequence(sequence, alignment.getAlignment());
+      index = FuzzySearchIndex.buildIndex(graph, configuration);
       try {
         index.writeToFile(params.get("--index"));
       } catch (IOException e) {
