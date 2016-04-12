@@ -1,0 +1,467 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 5061835253
+[INFO]    Adding variants from ../35k_350.vcf
+[INFO]    Adding deletion on index 25597
+Found end of path 25598
+[INFO]    Adding deletion on index 34658
+Found end of path 34659
+[INFO]    Adding insertion on index 25842
+[INFO]    Adding deletion on index 31076
+Found end of path 31078
+[INFO]    Adding deletion on index 18168
+Found end of path 18170
+[INFO]    Adding deletion on index 11810
+Found end of path 11814
+[INFO]    Adding SNP on index 20218
+[INFO]    Adding insertion on index 19609
+[INFO]    Adding insertion on index 284
+[INFO]    Adding deletion on index 4472
+Found end of path 4473
+[INFO]    Adding insertion on index 16252
+[INFO]    Adding deletion on index 66
+Found end of path 67
+[INFO]    Adding SNP on index 22316
+[INFO]    Adding deletion on index 13594
+Found end of path 13597
+[INFO]    Adding deletion on index 21663
+Found end of path 21664
+[INFO]    Adding SNP on index 24066
+[INFO]    Adding insertion on index 33796
+[INFO]    Adding insertion on index 24707
+[INFO]    Adding SNP on index 13091
+[INFO]    Adding SNP on index 8554
+[INFO]    Adding deletion on index 33866
+Found end of path 33868
+[INFO]    Adding deletion on index 7470
+Found end of path 7471
+[INFO]    Adding insertion on index 33027
+[INFO]    Adding SNP on index 31656
+[INFO]    Adding SNP on index 9772
+[INFO]    Adding SNP on index 25573
+[INFO]    Adding SNP on index 23033
+[INFO]    Adding deletion on index 9033
+Found end of path 9037
+[INFO]    Adding deletion on index 25358
+Found end of path 25361
+[INFO]    Adding SNP on index 14391
+[INFO]    Adding SNP on index 27023
+[INFO]    Adding SNP on index 19905
+[INFO]    Adding insertion on index 25269
+[INFO]    Adding SNP on index 17688
+[INFO]    Adding insertion on index 13554
+[INFO]    Adding insertion on index 21844
+[INFO]    Adding SNP on index 34391
+[INFO]    Adding insertion on index 23501
+[INFO]    Adding insertion on index 7386
+[INFO]    Adding insertion on index 33681
+[INFO]    Adding insertion on index 23482
+[INFO]    Adding SNP on index 14542
+[INFO]    Adding deletion on index 22140
+Found end of path 22143
+[INFO]    Adding insertion on index 25870
+[INFO]    Adding deletion on index 13266
+Found end of path 13269
+[INFO]    Adding deletion on index 35750
+Found end of path 35753
+[INFO]    Adding insertion on index 19586
+[INFO]    Adding insertion on index 6243
+[INFO]    Adding SNP on index 24872
+[INFO]    Adding deletion on index 2209
+Found end of path 2212
+[INFO]    Adding SNP on index 21431
+[INFO]    Adding deletion on index 31825
+Found end of path 31826
+[INFO]    Adding SNP on index 27887
+[INFO]    Adding SNP on index 28184
+[INFO]    Adding deletion on index 14974
+Found end of path 14976
+[INFO]    Adding SNP on index 13569
+[INFO]    Adding SNP on index 7913
+[INFO]    Adding insertion on index 260
+[INFO]    Adding SNP on index 18230
+[INFO]    Adding deletion on index 9411
+Found end of path 9412
+[INFO]    Adding insertion on index 20697
+[INFO]    Adding SNP on index 23963
+[INFO]    Adding deletion on index 35630
+Found end of path 35633
+[INFO]    Adding insertion on index 26194
+[INFO]    Adding insertion on index 9271
+[INFO]    Adding insertion on index 29174
+[INFO]    Adding deletion on index 24569
+Found end of path 24571
+[INFO]    Adding deletion on index 1991
+Found end of path 1992
+[INFO]    Adding insertion on index 17767
+[INFO]    Adding deletion on index 32491
+Found end of path 32495
+[INFO]    Adding deletion on index 35572
+Found end of path 35576
+[INFO]    Adding SNP on index 20382
+[INFO]    Adding SNP on index 14259
+[INFO]    Adding insertion on index 9279
+[INFO]    Adding insertion on index 19763
+[INFO]    Adding SNP on index 24519
+[INFO]    Adding SNP on index 15709
+[INFO]    Adding SNP on index 35705
+[INFO]    Adding insertion on index 1346
+[INFO]    Adding insertion on index 25984
+[INFO]    Adding SNP on index 14280
+[INFO]    Adding SNP on index 34298
+[INFO]    Adding insertion on index 13859
+[INFO]    Adding deletion on index 6235
+Found end of path 6238
+[INFO]    Adding deletion on index 20108
+Found end of path 20110
+[INFO]    Adding insertion on index 32881
+[INFO]    Adding SNP on index 6665
+[INFO]    Adding SNP on index 27745
+[INFO]    Adding deletion on index 2219
+Found end of path 2223
+[INFO]    Adding insertion on index 28767
+[INFO]    Adding deletion on index 26088
+Found end of path 26091
+[INFO]    Adding insertion on index 30582
+[INFO]    Adding insertion on index 4079
+[INFO]    Adding deletion on index 23064
+Found end of path 23066
+[INFO]    Adding deletion on index 12443
+Found end of path 12445
+[INFO]    Adding deletion on index 20337
+Found end of path 20342
+[INFO]    Adding SNP on index 32083
+[INFO]    Adding insertion on index 15975
+[INFO]    Adding insertion on index 24429
+[INFO]    Adding SNP on index 26502
+[INFO]    Adding SNP on index 25967
+[INFO]    Adding SNP on index 4485
+[INFO]    Adding SNP on index 18770
+[INFO]    Adding SNP on index 8812
+[INFO]    Adding SNP on index 8495
+[INFO]    Adding deletion on index 34018
+Found end of path 34021
+[INFO]    Adding deletion on index 30944
+Found end of path 30946
+[INFO]    Adding SNP on index 6963
+[INFO]    Adding insertion on index 1991
+[INFO]    Adding SNP on index 6017
+[INFO]    Adding deletion on index 3867
+Found end of path 3868
+[INFO]    Adding insertion on index 33292
+[INFO]    Adding SNP on index 7661
+[INFO]    Adding insertion on index 33714
+[INFO]    Adding deletion on index 5308
+Found end of path 5310
+[INFO]    Adding deletion on index 9772
+Found end of path 9774
+[INFO]    Adding insertion on index 11435
+[INFO]    Adding deletion on index 22770
+Found end of path 22775
+[INFO]    Adding deletion on index 21155
+Found end of path 21158
+[INFO]    Adding insertion on index 26873
+[INFO]    Adding insertion on index 35027
+[INFO]    Adding SNP on index 6162
+[INFO]    Adding SNP on index 14432
+[INFO]    Adding insertion on index 29347
+[INFO]    Adding deletion on index 11437
+Found end of path 11439
+[INFO]    Adding insertion on index 18897
+[INFO]    Adding insertion on index 16891
+[INFO]    Adding insertion on index 26553
+[INFO]    Adding deletion on index 7693
+Found end of path 7696
+[INFO]    Adding SNP on index 12728
+[INFO]    Adding insertion on index 1589
+[INFO]    Adding deletion on index 25233
+Found end of path 25236
+[INFO]    Adding insertion on index 19376
+[INFO]    Adding insertion on index 2835
+[INFO]    Adding SNP on index 33222
+[INFO]    Adding deletion on index 16384
+Found end of path 16385
+[INFO]    Adding SNP on index 15403
+[INFO]    Adding insertion on index 18156
+[INFO]    Adding SNP on index 31647
+[INFO]    Adding deletion on index 1871
+Found end of path 1873
+[INFO]    Adding insertion on index 15097
+[INFO]    Adding SNP on index 30424
+[INFO]    Adding deletion on index 20224
+Found end of path 20227
+[INFO]    Adding deletion on index 723
+Found end of path 726
+[INFO]    Adding deletion on index 14949
+Found end of path 14953
+[INFO]    Adding deletion on index 27083
+Found end of path 27085
+[INFO]    Adding insertion on index 20538
+[INFO]    Adding insertion on index 4886
+[INFO]    Adding SNP on index 32645
+[INFO]    Adding insertion on index 13191
+[INFO]    Adding deletion on index 35738
+Found end of path 35741
+[INFO]    Adding insertion on index 18066
+[INFO]    Adding deletion on index 1025
+Found end of path 1027
+[INFO]    Adding SNP on index 15845
+[INFO]    Adding insertion on index 6855
+[INFO]    Adding deletion on index 29374
+Found end of path 29376
+[INFO]    Adding SNP on index 32116
+[INFO]    Adding SNP on index 26701
+[INFO]    Adding SNP on index 5803
+[INFO]    Adding SNP on index 27298
+[INFO]    Adding SNP on index 20102
+[INFO]    Adding SNP on index 6915
+[INFO]    Adding deletion on index 16865
+Found end of path 16866
+[INFO]    Adding insertion on index 24624
+[INFO]    Adding SNP on index 711
+[INFO]    Adding SNP on index 12700
+[INFO]    Adding SNP on index 5549
+[INFO]    Adding SNP on index 12752
+[INFO]    Adding insertion on index 24035
+[INFO]    Adding insertion on index 31797
+[INFO]    Adding SNP on index 32480
+[INFO]    Adding SNP on index 27773
+[INFO]    Adding SNP on index 15257
+[INFO]    Adding deletion on index 28773
+Found end of path 28777
+[INFO]    Adding deletion on index 40
+Found end of path 44
+[INFO]    Adding SNP on index 15433
+[INFO]    Adding deletion on index 34151
+Found end of path 34152
+[INFO]    Adding insertion on index 33816
+[INFO]    Adding deletion on index 25049
+Found end of path 25051
+[INFO]    Adding SNP on index 5530
+[INFO]    Adding SNP on index 27884
+[INFO]    Adding SNP on index 34552
+[INFO]    Adding deletion on index 33565
+Found end of path 33567
+[INFO]    Adding deletion on index 27247
+Found end of path 27251
+[INFO]    Adding insertion on index 30149
+[INFO]    Adding insertion on index 34785
+[INFO]    Adding deletion on index 4992
+Found end of path 4994
+[INFO]    Adding insertion on index 296
+[INFO]    Adding SNP on index 3822
+[INFO]    Adding SNP on index 7058
+[INFO]    Adding deletion on index 9807
+Found end of path 9809
+[INFO]    Adding insertion on index 13315
+[INFO]    Adding SNP on index 2718
+[INFO]    Adding insertion on index 26336
+[INFO]    Adding deletion on index 32178
+Found end of path 32181
+[INFO]    Adding SNP on index 13519
+[INFO]    Adding SNP on index 19748
+[INFO]    Adding SNP on index 91
+[INFO]    Adding insertion on index 25495
+[INFO]    Adding SNP on index 34656
+[INFO]    Adding SNP on index 27652
+[INFO]    Adding SNP on index 2842
+[INFO]    Adding deletion on index 32772
+Found end of path 32776
+[INFO]    Adding deletion on index 8895
+Found end of path 8898
+[INFO]    Adding SNP on index 14574
+[INFO]    Adding insertion on index 16344
+[INFO]    Adding SNP on index 9336
+[INFO]    Adding insertion on index 22956
+[INFO]    Adding insertion on index 154
+[INFO]    Adding insertion on index 23039
+[INFO]    Adding deletion on index 32402
+Found end of path 32403
+[INFO]    Adding deletion on index 12855
+Found end of path 12858
+[INFO]    Adding deletion on index 14723
+Found end of path 14725
+[INFO]    Adding insertion on index 2517
+[INFO]    Adding SNP on index 15902
+[INFO]    Adding insertion on index 15443
+[INFO]    Adding SNP on index 29864
+[INFO]    Adding SNP on index 12430
+[INFO]    Adding deletion on index 28776
+Found end of path 28779
+[INFO]    Adding deletion on index 9678
+Found end of path 9680
+[INFO]    Adding deletion on index 25576
+Found end of path 25579
+[INFO]    Adding insertion on index 8009
+[INFO]    Adding SNP on index 23932
+[INFO]    Adding insertion on index 4866
+[INFO]    Adding deletion on index 29251
+Found end of path 29253
+[INFO]    Adding deletion on index 22358
+Found end of path 22359
+[INFO]    Adding insertion on index 11706
+[INFO]    Adding deletion on index 3720
+Found end of path 3725
+[INFO]    Adding SNP on index 6558
+[INFO]    Adding insertion on index 1104
+[INFO]    Adding insertion on index 30731
+[INFO]    Adding insertion on index 13481
+[INFO]    Adding SNP on index 26398
+[INFO]    Adding insertion on index 16571
+[INFO]    Adding insertion on index 29343
+[INFO]    Adding deletion on index 28992
+Found end of path 28995
+[INFO]    Adding deletion on index 29095
+Found end of path 29097
+[INFO]    Adding insertion on index 24521
+[INFO]    Adding SNP on index 31319
+[INFO]    Adding SNP on index 13687
+[INFO]    Adding SNP on index 12238
+[INFO]    Adding insertion on index 8201
+[INFO]    Adding SNP on index 32658
+[INFO]    Adding SNP on index 9052
+[INFO]    Adding insertion on index 15870
+[INFO]    Adding deletion on index 16555
+Found end of path 16557
+[INFO]    Adding deletion on index 19652
+Found end of path 19655
+[INFO]    Adding deletion on index 27986
+Found end of path 27989
+[INFO]    Adding SNP on index 6123
+[INFO]    Adding SNP on index 23801
+[INFO]    Adding SNP on index 20355
+[INFO]    Adding deletion on index 12403
+Found end of path 12405
+[INFO]    Adding SNP on index 2804
+[INFO]    Adding deletion on index 21852
+Found end of path 21853
+[INFO]    Adding insertion on index 29619
+[INFO]    Adding SNP on index 32752
+[INFO]    Adding deletion on index 23575
+Found end of path 23577
+[INFO]    Adding insertion on index 21226
+[INFO]    Adding SNP on index 18775
+[INFO]    Adding SNP on index 12211
+[INFO]    Adding deletion on index 19781
+Found end of path 19782
+[INFO]    Adding deletion on index 32209
+Found end of path 32210
+[INFO]    Adding insertion on index 6856
+[INFO]    Adding SNP on index 2916
+[INFO]    Adding SNP on index 24697
+[INFO]    Adding SNP on index 16899
+[INFO]    Adding insertion on index 2427
+[INFO]    Adding SNP on index 32521
+[INFO]    Adding insertion on index 31942
+[INFO]    Adding insertion on index 24689
+[INFO]    Adding deletion on index 8574
+Found end of path 8576
+[INFO]    Adding deletion on index 4558
+Found end of path 4560
+[INFO]    Adding SNP on index 15859
+[INFO]    Adding insertion on index 27375
+[INFO]    Adding insertion on index 14339
+[INFO]    Adding insertion on index 26784
+[INFO]    Adding insertion on index 25283
+[INFO]    Adding insertion on index 359
+[INFO]    Adding deletion on index 2339
+Found end of path 2342
+[INFO]    Adding deletion on index 30328
+Found end of path 30331
+[INFO]    Adding deletion on index 2443
+Found end of path 2447
+[INFO]    Adding SNP on index 22756
+[INFO]    Adding deletion on index 19546
+Found end of path 19550
+[INFO]    Adding SNP on index 35554
+[INFO]    Adding insertion on index 26444
+[INFO]    Adding deletion on index 4377
+Found end of path 4378
+[INFO]    Adding deletion on index 13948
+Found end of path 13949
+[INFO]    Adding SNP on index 26512
+[INFO]    Adding SNP on index 24660
+[INFO]    Adding deletion on index 5
+Found end of path 7
+[INFO]    Adding deletion on index 28602
+Found end of path 28603
+[INFO]    Adding SNP on index 1837
+[INFO]    Adding insertion on index 26699
+[INFO]    Adding SNP on index 31991
+[INFO]    Adding insertion on index 5324
+[INFO]    Adding deletion on index 8262
+Found end of path 8265
+[INFO]    Adding SNP on index 35139
+[INFO]    Adding deletion on index 21257
+Found end of path 21262
+[INFO]    Adding insertion on index 29457
+[INFO]    Adding SNP on index 26194
+[INFO]    Adding deletion on index 8745
+Found end of path 8748
+[INFO]    Adding SNP on index 1760
+[INFO]    Adding insertion on index 6611
+[INFO]    Adding SNP on index 24300
+[INFO]    Adding insertion on index 9685
+[INFO]    Adding deletion on index 35408
+Found end of path 35410
+[INFO]    Adding insertion on index 33535
+[INFO]    Adding SNP on index 16679
+[INFO]    Adding SNP on index 402
+[INFO]    Adding insertion on index 10370
+[INFO]    Adding insertion on index 23134
+[INFO]    Adding SNP on index 10500
+[INFO]    Adding deletion on index 9325
+Found end of path 9329
+[INFO]    Adding deletion on index 33747
+Found end of path 33748
+[INFO]    Adding deletion on index 6733
+Found end of path 6737
+[INFO]    Adding deletion on index 15776
+Found end of path 15779
+[INFO]    Adding SNP on index 16466
+[INFO]    Adding SNP on index 26929
+[INFO]    Adding insertion on index 7724
+[INFO]    Adding insertion on index 21564
+[INFO]    Adding deletion on index 26411
+Found end of path 26412
+[INFO]    Adding deletion on index 18837
+Found end of path 18840
+[INFO]    Adding insertion on index 8284
+[INFO]    Adding insertion on index 4728
+[INFO]    Adding SNP on index 17053
+[INFO]    Adding insertion on index 33503
+[INFO]    Adding deletion on index 7602
+Found end of path 7606
+[INFO]    Adding insertion on index 5695
+[INFO]    Adding deletion on index 22028
+Found end of path 22030
+[INFO]    Adding deletion on index 11434
+Found end of path 11437
+[INFO]    Adding insertion on index 29624
+[INFO]    Adding SNP on index 24898
+[INFO]    Adding SNP on index 21958
+[INFO]    Adding deletion on index 28625
+Found end of path 28628
+[INFO]    Adding insertion on index 24236
+[INFO]    Adding deletion on index 8826
+Found end of path 8830
+[INFO]    Adding deletion on index 11281
+Found end of path 11284
+[INFO]    Adding insertion on index 4521
+[INFO]    Adding deletion on index 22125
+Found end of path 22129
+[INFO]    Adding SNP on index 18169
+[INFO]    Adding insertion on index 13972
+[INFO]    Adding deletion on index 6583
+Found end of path 6585
+[INFO]    Adding SNP on index 8242
+[INFO]    Adding deletion on index 32425
+Found end of path 32427
+[INFO]    Adding SNP on index 27050
+[INFO]    Adding insertion on index 11974
+[INFO]    Adding deletion on index 2774
+Found end of path 2778
+[INFO]    Adding SNP on index 13738
+[INFO]    Adding SNP on index 30045
+[INFO]    Adding deletion on index 34997
+Found end of path 34999
