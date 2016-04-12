@@ -19,7 +19,7 @@ public class AlignmentUtils {
 
   public static Alignment alignRegion(Graph g, Node start, Node end, String sequence,
       Configuration configuration) {
-    System.out.println("Brute force aligning sequence " + sequence);
+    LogUtils.printInfo("Brute force aligning sequence " + sequence);
 
     final int HORIZONTAL = 0;
     final int DIAGONAL = 1;

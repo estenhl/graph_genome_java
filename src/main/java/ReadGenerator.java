@@ -7,6 +7,7 @@ import java.util.Random;
 import configuration.Configuration;
 import configuration.EditDistanceConfiguration;
 import data.Graph;
+import data.Node;
 import utils.ParseUtils;
 import utils.TestUtils;
 
@@ -19,7 +20,7 @@ public class ReadGenerator {
     } else if ("help".equals(args[0])) {
       printHelp();
       System.exit(0);
-    } else if ("reads".equals(args[0])) {
+    } else if ("reads".equals(args[0]) || "vcf".equals(args[0])) {
       if (args.length < 4) {
         System.out.println("Read generator needs a input file, output file and a number of reads");
         printHelp();
@@ -56,17 +57,23 @@ public class ReadGenerator {
             System.out.println("Invalid prob-argument " + arg.substring(4) + "! Must be a float");
             System.exit(0);
           }
-        } else if (!"reads".equals(arg)) {
+        } else if (!"reads".equals(arg) && !"vcf".equals(arg)) {
           System.out.println("Invalid argument " + arg + " skipped");
         }
       }
       if (inputFile != null && outputFile != null && num > 0) {
-        createSampleReads(inputFile, outputFile, num, len, prob);
+        if ("reads".equals(args[0])) {
+          createSampleReads(inputFile, outputFile, num, len, prob);
+        } else {
+          createVCF(inputFile, outputFile, num);
+        }
       } else {
         System.out.println("Invalid parameters:");
         System.out
             .println("Input file: " + inputFile + ", output file: " + outputFile + ", num: " + num);
       }
+    } else if ("vcf".equals(args[0])) {
+
     } else {
       System.out.println("Invalid type argument");
       printHelp();
@@ -97,6 +104,42 @@ public class ReadGenerator {
       String read = TestUtils.generateRandomSequence(random, graph, len, prob);
       writer.write(read);
       writer.newLine();
+    }
+    writer.flush();
+    writer.close();
+  }
+
+  private static void createVCF(String inputFile, String outputFile, int num) throws IOException {
+    Configuration configuration = new EditDistanceConfiguration();
+    Graph graph = ParseUtils.fastaToGraph(configuration, inputFile);
+    Random random = new Random(TestUtils.SEED);
+    BufferedWriter writer = new BufferedWriter(new FileWriter(new File(outputFile)));
+    writer.write("# Sample VCF file for " + inputFile + "\n");
+    for (int i = 0; i < num; i++) {
+      int choice = random.nextInt(3);
+      Node curr = graph.getNode(random.nextInt(graph.getCurrentSize() - 10));
+      if (choice == 0) {
+        char base;
+        do {
+          base = TestUtils.getRandomBase(random);
+        } while (base == curr.getValue());
+        writer.write("x\t" + curr.getIndex() + "\tx\t" + curr.getValue() + "\t" + base + "\n");
+      } else if (choice == 1) {
+        writer.write("x\t" + curr.getIndex() + "\tx\t" + curr.getValue() + "\t" + TestUtils
+            .generateRandomString(random, random.nextInt(5) + 1) + "\n");
+      } else {
+        int index = curr.getIndex();
+        String path = "";
+        for (int j = 0; j < random.nextInt(5) + 1; j++) {
+          path += curr.getValue();
+          System.out.println(curr.getIndex() + ": " + curr.getOutgoing().size());
+          curr = graph.getNode(
+              (Integer) curr.getOutgoing().toArray()[random.nextInt(curr.getOutgoing().size())]);
+        }
+        writer.write(
+            "x\t" + curr.getIndex() + "\tx\t" + path + "\t" + graph.getNode(index).getValue()
+                + "\n");
+      }
     }
     writer.flush();
     writer.close();

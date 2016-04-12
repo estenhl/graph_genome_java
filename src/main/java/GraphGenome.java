@@ -18,6 +18,7 @@ import index.FuzzySearchIndex;
 import utils.AlignmentUtils;
 import utils.DOTUtils;
 import utils.GraphUtils;
+import utils.LogUtils;
 import utils.ParseUtils;
 
 public class GraphGenome {
@@ -40,6 +41,7 @@ public class GraphGenome {
     VALID_PARAMS.add("--type");
     VALID_PARAMS.add("--merge");
     VALID_PARAMS.add("--parallellization");
+    VALID_PARAMS.add("--vcf");
 
     SHORTHAND_PARAMS = new HashMap<String, String>();
     SHORTHAND_PARAMS.put("-if", "--input-fastas");
@@ -55,6 +57,7 @@ public class GraphGenome {
     SHORTHAND_PARAMS.put("-t", "--type");
     SHORTHAND_PARAMS.put("-m", "--merge");
     SHORTHAND_PARAMS.put("-pa", "--parallellization");
+    SHORTHAND_PARAMS.put("-v", "--vcf");
 
     HELP_MENU = new HashMap<String, String>();
     HELP_MENU.put("-if", "Comma separated FASTA files used to build the graph");
@@ -77,13 +80,15 @@ public class GraphGenome {
         "Chooses whether the aligned sequence should be merged in to the graph and index");
     HELP_MENU.put("-pa",
         "Decides whether or not to use parallellization in suffix tree search, true/false");
+    HELP_MENU.put("-v",
+        "A vcf file containing variants. See README for allowed formats");
   }
 
   public static void main(String[] args)
       throws IOException, InterruptedException, ClassNotFoundException {
     if (args.length == 0) {
-      System.out.println("Needs a type parameter! Either index or align");
-      System.out.println("Run with help parameter for help menu");
+      LogUtils.printError("Needs a type parameter! Either index or align");
+      LogUtils.printError("Run with help parameter for help menu");
       return;
     }
     Map<String, String> params = parseParams(args);
@@ -116,30 +121,34 @@ public class GraphGenome {
     long graphStart = System.nanoTime();
     Graph graph = parseGraph(configuration, params.get("--input-fastas"),
         params.get("--input-sequences"), suffixLength != -1);
-    System.out.println("Time used building graph: " + (System.nanoTime() - graphStart));
+    LogUtils.printInfo("Time used building graph: " + (System.nanoTime() - graphStart));
     if (graph == null) {
-      System.out.println("Unable to build graph! Exiting");
+      LogUtils.printInfo("Unable to build graph! Exiting");
       return null;
+    }
+    if (params.get("--vcf") != null) {
+      ParseUtils.addVariants(params.get("--vcf"), graph);
     }
 
     if (params.get("--png") != null) {
       printGraph(graph, params.get("--png"), null, null);
     }
     long indexStart = System.nanoTime();
+    System.exit(-1);
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
-    System.out.println("Time used creating index: " + (System.nanoTime() - indexStart));
+    LogUtils.printInfo("Time used creating index: " + (System.nanoTime() - indexStart));
 
     if (write) {
       if (params.get("--index") == null) {
-        System.out.println("Unable to write index without filename. Use --index=<filename>");
+        LogUtils.printError("Unable to write index without filename. Use --index=<filename>");
       }
       try {
         index.writeToFile(params.get("--index"));
       } catch (IOException e) {
-        System.out.println("IOException when writing to file " + params.get("--index"));
+        LogUtils.printError("IOException when writing to file " + params.get("--index"));
       }
     }
-    System.out.println("Time used building the index: " + (System.nanoTime() - start));
+    LogUtils.printInfo("Time used building the index: " + (System.nanoTime() - start));
 
     return index;
   }
@@ -148,13 +157,13 @@ public class GraphGenome {
       FuzzySearchIndex index) {
     if (index == null) {
       if (params.get("--index") == null) {
-        System.out.println("Unable to align without an index. Use --index=<filename>");
+        LogUtils.printError("Unable to align without an index. Use --index=<filename>");
         return;
       }
       index = FuzzySearchIndex.readIndex(params.get("--index"));
     }
     if (index == null) {
-      System.out.println("Unable to align sequence without an index");
+      LogUtils.printError("Unable to align sequence without an index");
       return;
     }
     Graph graph = index.getGraph();
@@ -162,11 +171,11 @@ public class GraphGenome {
     configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
     String sequence = null;
     if (params.get("--align-sequence") == null && params.get("--align-fasta") == null) {
-      System.out.println(
+      LogUtils.printError(
           "Need a sequence for alignment. Use --align-sequence=<sequence> or --align-fasta=<filename>");
       return;
     } else if (params.get("--align-sequence") != null && params.get("--align-fasta") != null) {
-      System.out.println(
+      LogUtils.printError(
           "Alignment of multiple sequences disabled. Use only one of the parameters --align-sequence or --align-fasta");
       return;
     } else if (params.get("--align-sequence") != null) {
@@ -175,14 +184,14 @@ public class GraphGenome {
       try {
         sequence = ParseUtils.fastaToSequence(params.get("--align-fasta"));
       } catch (IOException e) {
-        System.out.println("Unable to open file " + params.get("--align-fasta"));
+        LogUtils.printError("Unable to open file " + params.get("--align-fasta"));
         return;
       }
     }
     Alignment alignment = alignSequence(configuration, graph, index, sequence,
         params.get("--type"));
     if (alignment != null) {
-      System.out.println(alignment);
+      LogUtils.printInfo(alignment.toString());
     }
 
     if ("true".equals(params.get("--merge"))) {
@@ -191,7 +200,7 @@ public class GraphGenome {
       try {
         index.writeToFile(params.get("--index"));
       } catch (IOException e) {
-        System.out.println("Unable to write index to file " + params.get("--index"));
+        LogUtils.printError("Unable to write index to file " + params.get("--index"));
       }
       if (params.get("--png") != null) {
         printGraph(graph, params.get("--png"), null, null);
@@ -208,7 +217,7 @@ public class GraphGenome {
     } else if ("po_msa".equals(type)) {
       return AlignmentUtils.align(g, sequence, configuration);
     } else {
-      System.out.println("Invalid alignment algorithm");
+      LogUtils.printError("Invalid alignment algorithm");
       return null;
     }
   }
@@ -272,13 +281,13 @@ public class GraphGenome {
   private static Configuration getConfiguration(String type) {
     Configuration configuration;
     if ("lastz".equals(type)) {
-      System.out.println("Using LASTZ scoring configuration");
+      LogUtils.printInfo("Using LASTZ scoring configuration");
       configuration = new LastzConfiguration();
     } else if ("edit-distance".equals(type)) {
-      System.out.println("Using edit distance scoring configuration");
+      LogUtils.printInfo("Using edit distance scoring configuration");
       configuration = new EditDistanceConfiguration();
     } else {
-      System.out.println("Using default scoring configuration (edit distance)");
+      LogUtils.printInfo("Using default scoring configuration (edit distance)");
       configuration = new EditDistanceConfiguration();
     }
 
@@ -298,7 +307,7 @@ public class GraphGenome {
     Graph graph = null;
 
     if (files == null && sequences == null) {
-      System.out.println("Needs atleast one fasta file or input sequence to build graph");
+      LogUtils.printError("Needs atleast one fasta file or input sequence to build graph");
       return null;
     }
     if (files != null) {
@@ -307,7 +316,7 @@ public class GraphGenome {
           graph = createOrMerge(configuration, graph, ParseUtils.fastaToSequence(files[i]));
           configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
         } catch (IOException e) {
-          System.out.println("Unable to open file " + files[i]);
+          LogUtils.printError("Unable to open file " + files[i]);
         }
       }
     }
@@ -373,25 +382,24 @@ public class GraphGenome {
     File dotFile = new File(filename + ".dot");
     File pngFile = new File(filename + ".png");
     try {
-      System.out.println("Writing dot representation to " + dotFile.getAbsolutePath());
+      LogUtils.printInfo("Writing dot representation to " + dotFile.getAbsolutePath());
       BufferedWriter writer = new BufferedWriter(new FileWriter(dotFile));
       writer.write(output);
       writer.close();
 
       try {
-        System.out.println("Writing png representation to " + pngFile.getAbsolutePath());
+        LogUtils.printInfo("Writing png representation to " + pngFile.getAbsolutePath());
         String[] c = { "dot", "-Tpng", dotFile.getAbsolutePath(), "-o", pngFile.getAbsolutePath() };
         Process p = Runtime.getRuntime().exec(c);
         int err = p.waitFor();
         if (err != 0) {
-          System.out
-              .println("Error message " + err + " when writing png. Maybe you don't have dot?");
+          LogUtils.printError("Unable to convert dot to png. Maybe you don't have dot?");
         }
       } catch (Exception e) {
-        System.out.println("Unable to write png-file to " + pngFile.getAbsolutePath());
+        LogUtils.printError("Unable to write png-file to " + pngFile.getAbsolutePath());
       }
     } catch (IOException e) {
-      System.out.println("Unable to write dot-file to " + dotFile.getAbsolutePath());
+      LogUtils.printError("Unable to write dot-file to " + dotFile.getAbsolutePath());
     }
   }
 }

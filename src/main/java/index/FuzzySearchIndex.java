@@ -18,6 +18,7 @@ import data.Alignment;
 import data.Graph;
 import data.Score;
 import utils.ArrayUtils;
+import utils.LogUtils;
 import utils.StringUtils;
 
 public class FuzzySearchIndex implements Serializable {
@@ -27,7 +28,7 @@ public class FuzzySearchIndex implements Serializable {
   private SuffixTree rightContexts;
 
   public static FuzzySearchIndex buildIndex(Graph graph, Configuration configuration) {
-    System.out.println("Building index");
+    LogUtils.printInfo("Building index");
     FuzzySearchIndex index = new FuzzySearchIndex();
     index.setConfiguration(configuration);
     index.setGraph(graph);
@@ -54,31 +55,31 @@ public class FuzzySearchIndex implements Serializable {
     }
     index.setRightContexts(rightContexts);
 
-    System.out.println("Finished building indexes");
+    LogUtils.printInfo("Finished building indexes");
     return index;
   }
 
   public static FuzzySearchIndex readIndex(String filename) {
-    System.out.println("Reading index from file " + filename);
+    LogUtils.printInfo("Reading index from file " + filename);
     try {
       long start = System.nanoTime();
       FileInputStream fis = new FileInputStream(filename);
       ObjectInputStream stream = new ObjectInputStream(fis);
       FuzzySearchIndex index = (FuzzySearchIndex) stream.readObject();
-      System.out.println("Time for reading index: " + (System.nanoTime() - start));
+      LogUtils.printInfo("Time for reading index: " + (System.nanoTime() - start));
       return index;
     } catch (IOException e) {
-      System.out.println("Unable to read index from file " + filename);
+      LogUtils.printError("Unable to read index from file " + filename);
       return null;
     } catch (ClassNotFoundException e) {
-      System.out.println("Internal error. Try rebuilding the project");
+      LogUtils.printError("Internal error. Try rebuilding the project");
       return null;
     }
   }
 
   public Object[] improvedFuzzyContextSearch(String s) {
     if (configuration.getAllowParallellization()) {
-      System.out.println("Doing search with parallellization");
+      LogUtils.printInfo("Doing search with parallellization");
     }
     Object[] leftContextScores = new Object[s.length()];
     Object[] rightContextScores = new Object[s.length()];
@@ -88,11 +89,9 @@ public class FuzzySearchIndex implements Serializable {
     long rightTotal = 0;
     Thread[] leftThreads = new Thread[s.length()];
     Thread[] rightThreads = new Thread[s.length()];
-    System.out.println("Left contexts: " + leftContexts);
     for (int i = 0; i < s.length(); i++) {
-      System.out.println("i: " + i);
       if (s.length() > 10 && i % tenPercent == 0) {
-        System.out.println(status++ * 10 + " percent done");
+        LogUtils.printInfo(status++ * 10 + " percent done");
       }
       boolean force = false;
       if (i - 1 < configuration.getContextLength() && s.length() - (i + 1) < configuration
@@ -185,7 +184,7 @@ public class FuzzySearchIndex implements Serializable {
   }
 
   public Alignment findMostProbablePath(Object[] alignmentScores, String sequence, long startTime) {
-    System.out.println("Finding most probable path");
+    LogUtils.printInfo("Finding most probable path");
 
     int maxDistance = configuration.getMaxDistance();
     int[][] scores = new int[alignmentScores.length][0];
@@ -210,7 +209,7 @@ public class FuzzySearchIndex implements Serializable {
     for (i = 1; i < alignmentScores.length; i++) {
       row = (SortedSet<Score>) alignmentScores[i];
       if (tenPercent > 0 && i % tenPercent == 0) {
-        System.out.println(status++ * 10 + " percent done");
+        LogUtils.printInfo(status++ * 10 + " percent done");
       }
       scores[i] = new int[row.size()];
       indexes[i] = new int[row.size()];
@@ -310,24 +309,23 @@ public class FuzzySearchIndex implements Serializable {
   }
 
   public Alignment align(String sequence) {
-    System.out
-        .println("Aligning " + sequence + " with error-margin " + configuration.getErrorMargin());
+    LogUtils.printInfo(
+        "Aligning " + sequence + " with error-margin " + configuration.getErrorMargin());
     long start = System.nanoTime();
     Object[] alignmentScores = improvedFuzzyContextSearch(sequence);
     long time = System.nanoTime() - start;
-    System.out.println("context time: " + time);
 
     Alignment alignment = findMostProbablePath(alignmentScores, sequence, start);
     return alignment;
   }
 
   public void writeToFile(String filename) throws IOException {
-    System.out.println("Storing index to file " + filename);
+    LogUtils.printInfo("Storing index to file " + filename);
     long start = System.nanoTime();
     FileOutputStream fos = new FileOutputStream(filename);
     ObjectOutputStream stream = new ObjectOutputStream(fos);
     stream.writeObject(this);
     stream.close();
-    System.out.println("Time used writing the index: " + (System.nanoTime() - start));
+    LogUtils.printInfo("Time used writing the index: " + (System.nanoTime() - start));
   }
 }

@@ -8,6 +8,7 @@ import java.util.Set;
 
 import configuration.Configuration;
 import utils.GraphUtils;
+import utils.LogUtils;
 import utils.Pair;
 
 public class Graph implements Serializable {
@@ -59,17 +60,82 @@ public class Graph implements Serializable {
   public int addSNP(char c, int i) {
     Node old = getNode(i);
     if (old.getValue() == c) {
-      System.out.println("Impossible to create SNP with matching character");
+      LogUtils.printError("Impossible to create SNP with matching character");
       return i;
     }
     Node n = new Node(c);
+    addNode(n);
     Set<Integer> incoming = new HashSet<Integer>();
     incoming.addAll(old.getIncoming());
+    for (Integer neighbour : incoming) {
+      getNode(neighbour).addOutgoing(n.getIndex());
+    }
     n.setIncoming(incoming);
     Set<Integer> outgoing = new HashSet<Integer>();
     outgoing.addAll(old.getOutgoing());
+    for (Integer neighbour : outgoing) {
+      getNode(neighbour).addIncoming(n.getIndex());
+    }
     n.setOutgoing(outgoing);
-    return addNode(n);
+    return n.getIndex();
+  }
+
+  public void addDeletion(String ref, int index) {
+    Node curr = getNode(index);
+    if (curr == null) {
+      return;
+    }
+    Node end = findEndOfPath(index, ref);
+    System.out.println("Found end of path " + end.getIndex());
+    if (end != null) {
+      curr.getOutgoing().addAll(end.getOutgoing());
+      for (Integer neighbour : end.getOutgoing()) {
+        getNode(neighbour).addIncoming(curr.getIndex());
+      }
+    }
+  }
+
+  public void addInsertion(String variant, int index) {
+    Node start = getNode(index);
+    Set<Integer> outgoing = new HashSet<Integer>();
+    outgoing.addAll(start.getOutgoing());
+    Node prev = start;
+    for (int i = 0; i < variant.length(); i++) {
+      Node curr = new Node(variant.charAt(i));
+      addNode(curr);
+      curr.addIncoming(prev.getIndex());
+      prev.addOutgoing(curr.getIndex());
+      prev = curr;
+    }
+    prev.getOutgoing().addAll(outgoing);
+    for (Integer neighbour : outgoing) {
+      getNode(neighbour).addIncoming(prev.getIndex());
+    }
+  }
+
+  public Node findEndOfPath(int start, String path) {
+    Node n = getNode(start);
+    if (n == null) {
+      LogUtils.printError("Looking up invalid path " + path);
+      return null;
+    }
+    for (int i = 0; i < path.length(); i++) {
+      Node next = null;
+      for (Integer neighbour : n.getOutgoing()) {
+        next = getNode(neighbour);
+        if (next.getValue() == path.charAt(i)) {
+          break;
+        }
+        next = null;
+      }
+      if (next == null) {
+        LogUtils.printError("Looking up invalid path");
+        return null;
+      }
+      n = next;
+    }
+
+    return n;
   }
 
   public boolean isNeighbours(int node, int neighbour) {

@@ -3,6 +3,7 @@ package configuration;
 import java.io.Serializable;
 
 import data.Graph;
+import utils.LogUtils;
 
 public abstract class Configuration implements Serializable {
   public static final int DEFAULT_SUFFIX_LENGTH = 15;
@@ -100,7 +101,7 @@ public abstract class Configuration implements Serializable {
   }
 
   public void setContextLength(int contextLength) {
-    System.out.println("Sat context length to " + contextLength);
+    LogUtils.printInfo("Sat context length to " + contextLength);
     this.contextLength = contextLength;
   }
 
