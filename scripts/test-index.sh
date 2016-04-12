@@ -31,7 +31,7 @@ do
     echo "Finished po-msa: ${po_msa_time[1]}"
 done 
 
-echo "Avg fuzzy, em=0: $(($total_fuzzy_0 / $runs))" > summary-$vcf_name
+echo "Avg fuzzy, em=0: $(($total_fuzzy_0 / $runs))" > summary-$vcf-name
 echo "Avg fuzzy, em=1: $(($total_fuzzy_1 / $runs))" >> summary-$vcf-name
 echo "Avg fuzzy, em=2: $(($total_fuzzy_2 / $runs))" >> summary-$vcf-name
 echo "Avg po-msa: $(($total_po_msa / $runs))" >> summary-$vcf-name
