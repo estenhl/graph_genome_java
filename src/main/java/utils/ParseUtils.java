@@ -130,7 +130,7 @@ public class ParseUtils {
 
   private static void addVariantLine(Graph graph, int index, String ref, String[] variants) {
     if (index > graph.getCurrentSize()) {
-      LogUtils.printError("vcf file referencing indexes not in the graph! Skipping variants");
+      LogUtils.printError("vcf file referencing index " + index + " which is not in the graph! Skipping variants");
       return;
     }
     Node node = graph.getNode(index);

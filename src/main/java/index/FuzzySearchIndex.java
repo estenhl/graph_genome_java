@@ -319,13 +319,18 @@ public class FuzzySearchIndex implements Serializable {
     return alignment;
   }
 
-  public void writeToFile(String filename) throws IOException {
+  public void writeToFile(String filename) {
     LogUtils.printInfo("Storing index to file " + filename);
     long start = System.nanoTime();
-    FileOutputStream fos = new FileOutputStream(filename);
-    ObjectOutputStream stream = new ObjectOutputStream(fos);
-    stream.writeObject(this);
-    stream.close();
+    try {
+      FileOutputStream fos = new FileOutputStream(filename);
+      ObjectOutputStream stream = new ObjectOutputStream(fos);
+      stream.writeObject(this);
+      stream.close();
+    } catch (IOException e) {
+      LogUtils.printError("Unable to write index to file " + filename);
+      return;
+    }
     LogUtils.printInfo("Time used writing the index: " + (System.nanoTime() - start));
   }
 }

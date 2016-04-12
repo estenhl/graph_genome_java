@@ -123,22 +123,21 @@ public class ReadGenerator {
         do {
           base = TestUtils.getRandomBase(random);
         } while (base == curr.getValue());
-        writer.write("x\t" + curr.getIndex() + "\tx\t" + curr.getValue() + "\t" + base + "\n");
+        writer.write("x\t" + curr.getIndex() + "\tx\t" + curr.getValue() + "\t" + base + "\tSNP\n");
       } else if (choice == 1) {
-        writer.write("x\t" + curr.getIndex() + "\tx\t" + curr.getValue() + "\t" + TestUtils
-            .generateRandomString(random, random.nextInt(5) + 1) + "\n");
+        writer.write("x\t" + curr.getIndex() + "\tx\t" + curr.getValue() + "\t" + curr.getValue() + TestUtils
+            .generateRandomString(random, random.nextInt(5) + 1) + "\tInsertion\n");
       } else {
         int index = curr.getIndex();
         String path = "";
-        for (int j = 0; j < random.nextInt(5) + 1; j++) {
+        for (int j = 0; j < random.nextInt(5) + 2; j++) {
           path += curr.getValue();
-          System.out.println(curr.getIndex() + ": " + curr.getOutgoing().size());
           curr = graph.getNode(
               (Integer) curr.getOutgoing().toArray()[random.nextInt(curr.getOutgoing().size())]);
         }
         writer.write(
-            "x\t" + curr.getIndex() + "\tx\t" + path + "\t" + graph.getNode(index).getValue()
-                + "\n");
+            "x\t" + index + "\tx\t" + path + "\t" + graph.getNode(index).getValue()
+                + "\tDeletion\n");
       }
     }
     writer.flush();

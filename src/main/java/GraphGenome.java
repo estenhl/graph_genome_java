@@ -134,7 +134,6 @@ public class GraphGenome {
       printGraph(graph, params.get("--png"), null, null);
     }
     long indexStart = System.nanoTime();
-    System.exit(-1);
     FuzzySearchIndex index = FuzzySearchIndex.buildIndex(graph, configuration);
     LogUtils.printInfo("Time used creating index: " + (System.nanoTime() - indexStart));
 
@@ -191,6 +190,7 @@ public class GraphGenome {
     Alignment alignment = alignSequence(configuration, graph, index, sequence,
         params.get("--type"));
     if (alignment != null) {
+      LogUtils.printInfo("Branching factor: " + graph.getApproxBranchingFactor());
       LogUtils.printInfo(alignment.toString());
     }
 

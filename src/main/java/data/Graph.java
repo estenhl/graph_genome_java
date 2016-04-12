@@ -86,7 +86,6 @@ public class Graph implements Serializable {
       return;
     }
     Node end = findEndOfPath(index, ref);
-    System.out.println("Found end of path " + end.getIndex());
     if (end != null) {
       curr.getOutgoing().addAll(end.getOutgoing());
       for (Integer neighbour : end.getOutgoing()) {
@@ -148,7 +147,7 @@ public class Graph implements Serializable {
   public void mergeSequence(String sequence, int[] alignment) {
     char[] characters = sequence.toCharArray();
     if (characters.length != alignment.length) {
-      System.out.println("Invalid alignment");
+      LogUtils.printError("Invalid alignment");
       return;
     }
 
@@ -169,44 +168,6 @@ public class Graph implements Serializable {
     }
     prev.addOutgoing(TAIL_INDEX);
     getTail().addIncoming(prev.getIndex());
-
-    /*
-    Set<Node> newPrev = getPrev(alignment);
-    for (int i = 0; i < characters.length; i++) {
-      if (alignment[i] == 0) {
-        Node n = new Node(characters[i]);
-        int value = addNode(n);
-        for (Node prev : newPrev) {
-          n.addIncoming(prev.getIndex());
-          prev.addOutgoing(value);
-          newPrev.remove(prev);
-        }
-        newPrev.add(n);
-        continue;
-      }
-      Node curr = getNode(alignment[i]);
-      if (curr.getValue() != characters[i]) {
-        Node n = new Node(characters[i]);
-        int value = addNode(n);
-        for (Node prev : newPrev) {
-          n.addIncoming(prev.getIndex());
-          prev.addOutgoing(value);
-          newPrev.remove(prev);
-        }
-        newPrev.add(n);
-      } else {
-        for (Node prev : newPrev) {
-          curr.addIncoming(prev.getIndex());
-          prev.addOutgoing(curr.getIndex());
-          newPrev.remove(prev);
-        }
-        newPrev.add(curr);
-      }
-    }
-    for (Node n: newPrev) {
-      n.addIncoming(TAIL_INDEX);
-    }
-    */
   }
 
   private Set<Node> getPrev(int[] alignment) {
