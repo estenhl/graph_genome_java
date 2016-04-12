@@ -141,10 +141,10 @@ public class GraphGenome {
       if (params.get("--index") == null) {
         LogUtils.printError("Unable to write index without filename. Use --index=<filename>");
       }
-      try {
+      if (params.get("--index") != null) {
         index.writeToFile(params.get("--index"));
-      } catch (IOException e) {
-        LogUtils.printError("IOException when writing to file " + params.get("--index"));
+      } else {
+        LogUtils.printError("Unable to write index without a filename");
       }
     }
     LogUtils.printInfo("Time used building the index: " + (System.nanoTime() - start));
@@ -197,11 +197,10 @@ public class GraphGenome {
     if ("true".equals(params.get("--merge"))) {
       graph.mergeSequence(sequence, alignment.getAlignment());
       index = FuzzySearchIndex.buildIndex(graph, configuration);
-      try {
+      if (params.get("--index") != null) {
         index.writeToFile(params.get("--index"));
-      } catch (IOException e) {
-        LogUtils.printError("Unable to write index to file " + params.get("--index"));
       }
+
       if (params.get("--png") != null) {
         printGraph(graph, params.get("--png"), null, null);
       }

@@ -15,6 +15,7 @@ public abstract class Configuration implements Serializable {
   private int gapExtensionPenalty;
   private int contextLength;
   private int maxPairwiseScore;
+  private int minPairwiseScore;
   private int errorMargin;
   private boolean allowParallellization;
 
@@ -23,8 +24,8 @@ public abstract class Configuration implements Serializable {
     this.gapOpeningPenalty = gapOpeningPenalty;
     this.gapExtensionPenalty = gapExtensionPenalty;
     this.contextLength = DEFAULT_SUFFIX_LENGTH;
-    this.maxPairwiseScore = findMaxScore(scoringMatrix);
     this.errorMargin = DEFAULT_ERROR_MARGIN;
+    setMinAndMax(scoringMatrix);
   }
 
   public void setAllowParallellization(boolean allowParallellization) {
@@ -35,17 +36,22 @@ public abstract class Configuration implements Serializable {
     return allowParallellization;
   }
 
-  private int findMaxScore(int[][] scoringMatrix) {
+  private void setMinAndMax(int[][] scoringMatrix) {
     int max = Integer.MIN_VALUE;
+    int min = Integer.MAX_VALUE;
     for (int i = 0; i < scoringMatrix.length; i++) {
       for (int j = 0; j < scoringMatrix[i].length; j++) {
         if (scoringMatrix[i][j] > max) {
           max = scoringMatrix[i][j];
         }
+        if (scoringMatrix[i][j] < min) {
+          min = scoringMatrix[i][j];
+        }
       }
     }
 
-    return max;
+    maxPairwiseScore = max;
+    minPairwiseScore = min;
   }
 
   public int getScore(char a, char b) {
@@ -84,8 +90,12 @@ public abstract class Configuration implements Serializable {
     } else if (b == 'T') {
       j = T;
     }
-
-    return scoringMatrix[i][j];
+    if (i != -1 && j != -1) {
+      return scoringMatrix[i][j];
+    } else {
+      LogUtils.printError("Looking up invalid bases " + a + " or " + b);
+      return minPairwiseScore;
+    }
   }
 
   public int getGapPenalty(int distance) {

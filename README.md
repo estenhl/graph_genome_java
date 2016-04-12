@@ -45,7 +45,7 @@ Builds an index from a set of input sequences, fasta files or vcf files.
 Passes on parameters to the underlying functions, and is thus dependant on the same arguments. Does not need an `--index` parameter!
 ## Examples
 A set of examples can be found in the `examples/` folder
-### `simple.sh`
+**`simple.sh`**
 Builds indexes and produces visualizations for the examples shown in the thesis
-### `hla_a.sh`
+**`hla_a.sh`**
 Builds an index and produces a visualization for a set of assemblies of the hla-a gene in the MHC region

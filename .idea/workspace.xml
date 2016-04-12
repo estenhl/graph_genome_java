@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/35.reads" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/35k_1500.vcf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/35k_3000.vcf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/35k_350.vcf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/35k_3500.vcf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/35k_700.vcf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/temp.stats" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/DemoHttpListener.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/small-tests.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/35k.summary" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/temp.summary" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GraphGenome.java" afterPath="$PROJECT_DIR$/src/main/java/GraphGenome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ReadGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/ReadGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/Graph.java" afterPath="$PROJECT_DIR$/src/main/java/data/Graph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" afterPath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/ParseUtils.java" afterPath="$PROJECT_DIR$/src/main/java/utils/ParseUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/configuration/Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/configuration/Configuration.java" />
     </list>
     <ignored path="Graph-genome.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GraphGenome.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GraphGenome.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-648">
-              <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+            <state relative-caret-position="435">
+              <caret line="146" column="71" selection-start-line="146" selection-start-column="71" selection-end-line="146" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Configuration.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/configuration/Configuration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="774">
+              <caret line="96" column="30" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -145,16 +137,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StringUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/StringUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -195,15 +177,15 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/TestUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/LogUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/configuration/Configuration.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/AlignmentUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/ParseUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/Graph.java" />
         <option value="$PROJECT_DIR$/src/main/java/ReadGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GraphGenome.java" />
         <option value="$PROJECT_DIR$/src/main/java/DemoHttpListener.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GraphGenome.java" />
+        <option value="$PROJECT_DIR$/src/main/java/configuration/Configuration.java" />
       </list>
     </option>
   </component>
@@ -323,6 +305,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Graph-genome" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graph_genome_java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configuration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -725,7 +733,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="28" width="1920" height="1138" extended-state="1" />
+    <frame x="0" y="28" width="1920" height="1138" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1024,13 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/configuration/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="103" column="23" selection-start-line="103" selection-start-column="23" selection-end-line="103" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/context_search/SuffixTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1085,6 +1086,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1188,8 +1190,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GraphGenome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
+        <state relative-caret-position="435">
+          <caret line="146" column="71" selection-start-line="146" selection-start-column="71" selection-end-line="146" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/configuration/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="96" column="30" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
           <folding />
         </state>
       </provider>

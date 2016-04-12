@@ -3,18 +3,18 @@ java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --png=bui
 
 # Equal sequence
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=equal.index
-java -jar ../target/graph-genome.jar align bash ../align_sequence.sh --index=equal.index --align-sequence=ACGTATTAC --png=equal-align
+java -jar ../target/graph-genome.jar align --index=equal.index --align-sequence=ACGTATTAC --png=equal-align
 java -jar ../target/graph-genome.jar align --index=equal.index --align-sequence=ACGTATTAC --merge=true --png=equal-merge
 
 # SNP without error margin
-java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=snp-no-errors
+java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=snp-no-errors.index
 java -jar ../target/graph-genome.jar align --index=snp-no-errors.index --align-sequence=ACGGATTAC --png=snp-no-errors-align
 java -jar ../target/graph-genome.jar align --index=snp-no-errors.index --align-sequence=ACGGATTAC --merge=true --png=snp-no-errors-merge
 
 # SNP with error margin
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=snp.index
-java -jar ../target/graph-genome.jar align --input-sequence=ACGGATTAC --error-margin=1 --png=single-snp-align
-java -jar ../target/graph-genome.jar align --input-sequences=ACGGATTAC --error-margin=1 --png=single-snp-merge
+java -jar ../target/graph-genome.jar align --index=snp.index --input-sequence=ACGGATTAC --error-margin=1 --png=single-snp-align
+java -jar ../target/graph-genome.jar align --index=snp.index --input-sequences=ACGGATTAC --error-margin=1 --png=single-snp-merge
 
 # Deletion
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=deletion.index
