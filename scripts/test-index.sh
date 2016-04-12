@@ -3,6 +3,7 @@ runs=$1
 fasta_name=$2
 vcf_name=$3
 reads=$4
+out=$5
 total_fuzzy_0=0
 total_fuzzy_1=0
 total_fuzzy_2=0
@@ -31,7 +32,7 @@ do
     echo "Finished po-msa: ${po_msa_time[1]}"
 done 
 
-echo "Avg fuzzy, em=0: $(($total_fuzzy_0 / $runs))" > summary-$vcf_name
-echo "Avg fuzzy, em=1: $(($total_fuzzy_1 / $runs))" >> summary-$vcf_name
-echo "Avg fuzzy, em=2: $(($total_fuzzy_2 / $runs))" >> summary-$vcf_name
-echo "Avg po-msa: $(($total_po_msa / $runs))" >> summary-$vcf_name
+echo "Avg fuzzy, em=0: $(($total_fuzzy_0 / $runs))" > $out
+echo "Avg fuzzy, em=1: $(($total_fuzzy_1 / $runs))" >> $out
+echo "Avg fuzzy, em=2: $(($total_fuzzy_2 / $runs))" >> $out
+echo "Avg po-msa: $(($total_po_msa / $runs))" >> $out

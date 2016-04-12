@@ -4,11 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" line="184" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/summary--name" afterPath="$PROJECT_DIR$/scripts/summary--name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/temp.stats" afterPath="$PROJECT_DIR$/scripts/temp.stats" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/test-index.sh" afterPath="$PROJECT_DIR$/scripts/test-index.sh" />
-    </list>
+    <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="" />
     <ignored path="Graph-genome.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -232,6 +228,7 @@
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -530,8 +527,8 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
