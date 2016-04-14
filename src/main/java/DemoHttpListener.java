@@ -10,11 +10,9 @@ import java.net.URLEncoder;
 import java.util.Base64;
 import java.util.Scanner;
 
-import com.sun.deploy.net.HttpResponse;
 import com.sun.net.httpserver.HttpExchange;
-        import com.sun.net.httpserver.HttpHandler;
-        import com.sun.net.httpserver.HttpServer;
-import sun.net.www.http.HttpClient;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
 
 import javax.imageio.ImageIO;
 
