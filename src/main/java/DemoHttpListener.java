@@ -45,8 +45,11 @@ public class DemoHttpListener {
                 t.sendResponseHeaders(500, response.length());
             } else {
                 String pngFile = Long.toString(System.currentTimeMillis());
+                System.out.println("Starting process");
                 String[] c = { "bash", "../build_index.sh", "-is=" + sequences, "-em=" + em, "--png=" + pngFile };
+                System.out.println("c: " + c);
                 Process p = Runtime.getRuntime().exec(c);
+                System.out.println("Ended process");
                 System.out.println("p.exitValue(): " + p.exitValue());
                 if (p.exitValue() != 0) {
                     Scanner reader = new Scanner(p.getErrorStream());
