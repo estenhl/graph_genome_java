@@ -77,7 +77,7 @@ public class DemoHttpListener {
 
         response = "mycallback({png: " + URLEncoder.encode(dataImage, "UTF-8") + "});";
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-        t.getResponseHeaders().add("Content-Type", "application/javascript");
+        t.getResponseHeaders().add("Content-Type", "application/json; charset=utf8");
         t.sendResponseHeaders(200, response.length());
       }
       OutputStream os = t.getResponseBody();
