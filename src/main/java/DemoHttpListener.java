@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Base64;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -61,29 +62,17 @@ public class DemoHttpListener {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                /*
-                if (err != 0) {
-                    Scanner reader = new Scanner(p.getErrorStream());
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(new File(pngFile + ".log")));
-                    while (reader.hasNextLine()) {
-                        String line = reader.nextLine();
-                        writer.write(line + "\n");
-                        System.out.println("ERROR: " + line);
-                    }
-                    reader.close();
-                    writer.close();
-                }
-                */
+
                 BufferedImage image = null;
                 File file = new File(pngFile + ".png");
                 image = ImageIO.read(file);
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                 System.out.println("Image: ");
-                ImageIO.write(image, "png", t.getResponseBody());
+                ImageIO.write(image, "png", byteArray);
                 byte[] byteImage = byteArray.toByteArray();
-                //String dataImage = Base64.getEncoder().encodeToString(byteImage);
+                String dataImage = Base64.getEncoder().encodeToString(byteImage);
 
-                //response = "<html><body><img src=\"data:image/png;base64," + URLEncoder.encode(dataImage, "UTF-8")+"></body></html>";
+                response = "<html><body><img src=\"data:image/png;base64," + URLEncoder.encode(dataImage, "UTF-8")+"></body></html>";
                 t.sendResponseHeaders(200, response.length());
             }
             OutputStream os = t.getResponseBody();
