@@ -26,14 +26,19 @@ var Demo = React.createClass({
 			}
 		}
 		var alignment = document.getElementById("alignment").value;
-		var errorMargin = document.getElementById("error-margin").value;
+		var e = document.getElementById("error-margin");
+		var errorMargin = e.options[e.selectedIndex].value;
 		if (sequences.length < 1) {
 			alert("Need atleast one sequence!")
 			return;
 		}
+		var url = "http://130.211.79.61:8000/test?sequences=" + sequences.substr(0, sequences.length - 1) + "&error-margin=" + errorMargin;
+		if (alignment != undefined && alignment.length > 0) {
+			url += "&alignment=" + alignment;
+		}
 
 		$.ajax({
-			url: "http://130.211.79.61:8000/test?sequences=" + sequences.substr(0, sequences.length - 1) + "&error-margin=errorMargin",
+			url: url,
 			type: 'GET',
 			dataType: 'jsonp',
 			jsonpCallback: 'mycallback',
@@ -74,7 +79,7 @@ var Demo = React.createClass({
 							{errorMargin}
 							<br />
 							<br />
-							<Button name="Produce graph and align" onClick={this.onClick}/>
+							<Button name="Test!" onClick={this.onClick}/>
 						</div>
 					</td>
 					<td>
