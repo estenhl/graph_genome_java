@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.net.URLEncoder;
 import java.util.Base64;
 
 import javax.imageio.ImageIO;
@@ -75,7 +74,7 @@ public class DemoHttpListener {
         byte[] byteImage = byteArray.toByteArray();
         String dataImage = Base64.getEncoder().encodeToString(byteImage);
 
-        response = "mycallback({png: " + URLEncoder.encode(dataImage, "UTF-8") + "});";
+        response = "mycallback({png: asdf});";
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         t.getResponseHeaders().add("Content-Type", "application/json; charset=utf8");
         t.sendResponseHeaders(200, response.length());
