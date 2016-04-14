@@ -1,11 +1,11 @@
 /**
  * Created by estenhl on 4/12/16.
  */
-import java.io.IOException;
-        import java.io.OutputStream;
-        import java.net.InetSocketAddress;
+import java.io.*;
+import java.net.InetSocketAddress;
+import java.util.Scanner;
 
-        import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpExchange;
         import com.sun.net.httpserver.HttpHandler;
         import com.sun.net.httpserver.HttpServer;
 
@@ -19,10 +19,43 @@ public class DemoHttpListener {
 
     static class MyHandler implements HttpHandler {
         public void handle(HttpExchange t) throws IOException {
-            System.out.println((String) t.getAttribute("sequences"));
-            System.out.println((String) t.getAttribute("error-margin"));
-            System.out.println("Got a request");
-            String response = "This is the response";
+            String query = t.getRequestURI().getRawQuery();
+            String sequences = null;
+            String em = null;
+            for (String param: query.split("&")) {
+                if (param.startsWith("sequences")) {
+                    sequences = param.split("=")[1];
+                } else if (param.startsWith("error-margin")) {
+                    em = param.split("=")[1];
+                }
+            }
+
+            String response = null;
+            if (sequences == null && em == null) {
+                response = "Requires a set of sequences and an error-margin";
+                t.sendResponseHeaders(500, response.length());
+            } else if (sequences == null) {
+                response = "Requires a set of sequences";
+                t.sendResponseHeaders(500, response.length());
+            } else if (em == null) {
+                response = "Requires an error-margin";
+                t.sendResponseHeaders(500, response.length());
+            } else {
+                String pngFile = Long.toString(System.currentTimeMillis());
+                String[] c = { "bash", "../build_index.sh", "-is=" + sequences, "-em=" + em, "--png=" + pngFile };
+                Process p = Runtime.getRuntime().exec(c);
+                System.out.println("p.exitValue(): " + p.exitValue());
+                if (p.exitValue() != 0) {
+                    Scanner reader = new Scanner(p.getErrorStream());
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(new File(pngFile + ".log")));
+                    while (reader.hasNextLine()) {
+                        writer.write(reader.nextLine() + "\n");
+                    }
+                    reader.close();
+                    writer.close();
+                }
+                System.out.println("Png: " + pngFile + ".png");
+            }
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
