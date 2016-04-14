@@ -81,9 +81,9 @@ public class DemoHttpListener {
                 System.out.println("Image: ");
                 ImageIO.write(image, "png", System.out);
                 byte[] byteImage = byteArray.toByteArray();
-                String dataImage = Base64.getEncoder().encodeToString(byteImage);
+                //String dataImage = Base64.getEncoder().encodeToString(byteImage);
 
-                response = "<html><body><img src=\"data:image/png;base64," + URLEncoder.encode(dataImage, "UTF-8")+"></body></html>";
+                //response = "<html><body><img src=\"data:image/png;base64," + URLEncoder.encode(dataImage, "UTF-8")+"></body></html>";
                 t.sendResponseHeaders(200, response.length());
             }
             OutputStream os = t.getResponseBody();
