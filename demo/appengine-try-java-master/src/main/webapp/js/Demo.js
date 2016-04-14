@@ -26,6 +26,17 @@ var Demo = React.createClass({
 
 		document.getElementsByTagName('head')[0].appendChild(script);
 		var url = "http://130.211.79.61:8000/test?callback=foo&sequences=" + sequences.substr(0, sequences.length - 2) + "em=errorMargin";
+		$.ajax({
+			url: 'http://www.remote_host.com/feed.php?type=json',
+			type: 'GET',
+			dataType: 'jsonp',
+			error: function(xhr, status, error) {
+				alert("error");
+			},
+			success: function(json) {
+				alert("success");
+			}
+		});
 	},
 	render: function () {
 		console.log("Rendering DEMO");
