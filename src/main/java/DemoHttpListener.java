@@ -34,9 +34,11 @@ public class DemoHttpListener {
             String response = null;
             if (sequences == null && em == null) {
                 response = "Requires a set of sequences and an error-margin";
+                System.out.println("response: " + response);
                 t.sendResponseHeaders(500, response.length());
             } else if (sequences == null) {
                 response = "Requires a set of sequences";
+                System.out.println("response: " + response);
                 t.sendResponseHeaders(500, response.length());
             } else if (em == null) {
                 response = "Requires an error-margin";
@@ -50,14 +52,16 @@ public class DemoHttpListener {
                     Scanner reader = new Scanner(p.getErrorStream());
                     BufferedWriter writer = new BufferedWriter(new FileWriter(new File(pngFile + ".log")));
                     while (reader.hasNextLine()) {
-                        writer.write(reader.nextLine() + "\n");
+                        String line = reader.nextLine();
+                        writer.write(line + "\n");
+                        System.out.println("ERROR: " + line);
                     }
                     reader.close();
                     writer.close();
                 }
                 System.out.println("Png: " + pngFile + ".png");
+                t.sendResponseHeaders(200, response.length());
             }
-            t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
             os.close();
