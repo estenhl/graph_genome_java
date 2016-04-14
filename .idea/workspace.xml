@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Graph-genome-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/Graph-genome-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/demo-http-listener.jar" afterPath="$PROJECT_DIR$/target/demo-http-listener.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/graph-genome.jar" afterPath="$PROJECT_DIR$/target/graph-genome.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/read-generator.jar" afterPath="$PROJECT_DIR$/target/read-generator.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DemoHttpListener.java" afterPath="$PROJECT_DIR$/src/main/java/DemoHttpListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Graph-genome.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/DemoHttpListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.660021">
-              <caret line="77" column="37" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="82" />
+              <caret line="77" column="86" selection-start-line="77" selection-start-column="86" selection-end-line="77" selection-end-column="86" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1168,7 +1162,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/DemoHttpListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.660021">
-          <caret line="77" column="37" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="82" />
+          <caret line="77" column="86" selection-start-line="77" selection-start-column="86" selection-end-line="77" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
