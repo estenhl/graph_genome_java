@@ -1,13 +1,22 @@
 /**
  * Created by estenhl on 4/12/16.
  */
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Base64;
 import java.util.Scanner;
 
+import com.sun.deploy.net.HttpResponse;
 import com.sun.net.httpserver.HttpExchange;
         import com.sun.net.httpserver.HttpHandler;
         import com.sun.net.httpserver.HttpServer;
+import sun.net.www.http.HttpClient;
+
+import javax.imageio.ImageIO;
 
 public class DemoHttpListener {
     public static void main(String[] args) throws Exception {
@@ -67,13 +76,21 @@ public class DemoHttpListener {
                     reader.close();
                     writer.close();
                 }
-                System.out.println("Png: " + pngFile + ".png");
+                BufferedImage image = null;
+                File file = new File(pngFile + ".png");
+                image = ImageIO.read(file);
+                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", byteArray);
+                byte[] byteImage = byteArray.toByteArray();
+                String dataImage = Base64.getEncoder().encodeToString(byteImage);
+
+                response = "<html><body><img src=\"data:image/png;base64," + URLEncoder.encode(dataImage, "UTF-8")+"></body></html>";
                 t.sendResponseHeaders(200, response.length());
             }
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
             os.close();
         }
-    }
 
+    }
 }
