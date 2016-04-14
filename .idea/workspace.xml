@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/Demo.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/js/Demo.js" afterPath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/js/Demo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DemoHttpListener.java" afterPath="$PROJECT_DIR$/src/main/java/DemoHttpListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/.idea/workspace.xml" afterPath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/.idea/workspace.xml" />
@@ -46,8 +46,8 @@
       <file leaf-file-name="DemoHttpListener.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/DemoHttpListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6789087">
-              <caret line="77" column="51" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.660021">
+              <caret line="77" column="85" selection-start-line="77" selection-start-column="85" selection-end-line="77" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1164,8 +1164,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DemoHttpListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6789087">
-          <caret line="77" column="51" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.660021">
+          <caret line="77" column="85" selection-start-line="77" selection-start-column="85" selection-end-line="77" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

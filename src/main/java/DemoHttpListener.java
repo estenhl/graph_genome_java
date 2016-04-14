@@ -75,7 +75,7 @@ public class DemoHttpListener {
         byte[] byteImage = byteArray.toByteArray();
         String dataImage = Base64.getEncoder().encodeToString(byteImage);
 
-        response = "mycallback({png: " + URLEncoder.encode(dataImage, "UTF-8") + "})";
+        response = "mycallback({png: " + URLEncoder.encode(dataImage, "UTF-8") + "});";
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         t.getResponseHeaders().add("Content-Type", "application/javascript");
         t.sendResponseHeaders(200, response.length());

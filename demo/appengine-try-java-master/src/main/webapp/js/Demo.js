@@ -1,4 +1,7 @@
 var Demo = React.createClass({
+	getInitialState: function () {
+		return {image: undefined};
+	},
 	renderInputSequences: function () {
 		var rows = [];
 		for (var i = 0; i < 10; i++) {
@@ -16,25 +19,32 @@ var Demo = React.createClass({
 	onClick: function () {
 		var sequences = "";
 		for (var i = 0; i < 10; i++) {
-			sequences += document.getElementById("Sequence_" + i).value + ",";
+
+			var sequence = document.getElementById("Sequence_" + i).value;
+			if (sequence.length > 0) {
+				sequences += sequence + ",";
+			}
 		}
 		var alignment = document.getElementById("alignment").value;
 		var errorMargin = document.getElementById("error-margin").value;
 		if (sequences.length < 1) {
-
+			alert("Need atleast one sequence!")
+			return;
 		}
 
-		document.getElementsByTagName('head')[0].appendChild(script);
-		var url = "http://130.211.79.61:8000/test?callback=foo&sequences=" + sequences.substr(0, sequences.length - 2) + "em=errorMargin";
 		$.ajax({
-			url: 'http://www.remote_host.com/feed.php?type=json',
+			url: "http://130.211.79.61:8000/test?sequences=" + sequences.substr(0, sequences.length - 1) + "&error-margin=errorMargin",
 			type: 'GET',
 			dataType: 'jsonp',
-			error: function(xhr, status, error) {
+			jsonpCallback: 'mycallback',
+			error: function (xhr, status, error) {
+				console.log("xhr: " + xhr);
+				console.log("status: " + status);
+				console.log("error: " + error);
 				alert("error");
 			},
-			success: function(json) {
-				alert("success");
+			success: function (json) {
+				this.setState({image: json.png})
 			}
 		});
 	},
@@ -43,21 +53,36 @@ var Demo = React.createClass({
 		var inputSequences = this.renderInputSequences();
 		var alignmentSequence = this.renderAlignmentSequence();
 		var errorMargin = this.renderErrorMargin();
+		var src = ""
+		if (this.state.image) {
+			src = "data:image/jpeg;base64," + this.state.image;
+		}
 		return (
-			<div>
-				{inputSequences}
-				<br />
-				<br />
-				Alignment sequence:<br />
-				{alignmentSequence}
-				<br />
-				<br />
-				Error margin:<br />
-				{errorMargin}
-				<br />
-				<br />
-				<Button name="Produce graph and align" onClick={this.onClick}/>
-			</div>
+			<table>
+				<tr>
+					<td>
+						<div>
+							{inputSequences}
+							<br />
+							<br />
+							Alignment sequence:<br />
+							{alignmentSequence}
+							<br />
+							<br />
+							Error margin:<br />
+							{errorMargin}
+							<br />
+							<br />
+							<Button name="Produce graph and align" onClick={this.onClick}/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src={src}/>
+					</td>
+				</tr>
+			</table>
 		)
 	}
 });
