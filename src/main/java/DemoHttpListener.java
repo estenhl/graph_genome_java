@@ -20,6 +20,7 @@ public class DemoHttpListener {
     static class MyHandler implements HttpHandler {
         public void handle(HttpExchange t) throws IOException {
             String query = t.getRequestURI().getRawQuery();
+            System.out.println("Got request with query " + query);
             String sequences = null;
             String em = null;
             for (String param: query.split("&")) {
