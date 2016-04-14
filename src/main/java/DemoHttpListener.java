@@ -7,8 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Base64;
-import java.util.Scanner;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -63,6 +61,7 @@ public class DemoHttpListener {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                /*
                 if (err != 0) {
                     Scanner reader = new Scanner(p.getErrorStream());
                     BufferedWriter writer = new BufferedWriter(new FileWriter(new File(pngFile + ".log")));
@@ -74,11 +73,13 @@ public class DemoHttpListener {
                     reader.close();
                     writer.close();
                 }
+                */
                 BufferedImage image = null;
                 File file = new File(pngFile + ".png");
                 image = ImageIO.read(file);
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-                ImageIO.write(image, "png", byteArray);
+                System.out.println("Image: ");
+                ImageIO.write(image, "png", System.out);
                 byte[] byteImage = byteArray.toByteArray();
                 String dataImage = Base64.getEncoder().encodeToString(byteImage);
 
