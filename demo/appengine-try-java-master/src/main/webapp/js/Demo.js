@@ -37,6 +37,7 @@ var Demo = React.createClass({
 			type: 'GET',
 			dataType: 'jsonp',
 			jsonpCallback: 'mycallback',
+			context: this,
 			error: function (xhr, status, error) {
 				console.log("xhr: " + xhr);
 				console.log("status: " + status);
@@ -60,7 +61,7 @@ var Demo = React.createClass({
 		return (
 			<table>
 				<tr>
-					<td>
+					<td width="40%">
 						<div>
 							{inputSequences}
 							<br />
@@ -76,8 +77,6 @@ var Demo = React.createClass({
 							<Button name="Produce graph and align" onClick={this.onClick}/>
 						</div>
 					</td>
-				</tr>
-				<tr>
 					<td>
 						<img src={src}/>
 					</td>

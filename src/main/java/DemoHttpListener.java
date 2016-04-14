@@ -31,11 +31,14 @@ public class DemoHttpListener {
       System.out.println("Got request with query " + query);
       String sequences = null;
       String em = null;
+      String alignment = null;
       for (String param : query.split("&")) {
         if (param.startsWith("sequences")) {
           sequences = param.split("=")[1];
         } else if (param.startsWith("error-margin")) {
           em = param.split("=")[1];
+        } else if (param.startsWith("alignment")) {
+          alignment = param.split("=")[1];
         }
       }
 
@@ -53,17 +56,28 @@ public class DemoHttpListener {
         t.sendResponseHeaders(500, response.length());
       } else {
         String pngFile = Long.toString(System.currentTimeMillis());
-        System.out.println("Starting process");
-        String[] c = { "bash", "build_index.sh", "--index=" + pngFile + ".index",
+        System.out.println(
+            "Starting process with sequences " + sequences + ", em: " + em + " and align: "
+                + alignment);
+        String[] build = { "bash", "build_index.sh", "--index=" + pngFile + ".index",
             "-is=" + sequences, "-em=" + em, "--png=" + pngFile };
-        System.out.println("c: " + c);
-        Process p = Runtime.getRuntime().exec(c);
-        System.out.println("Ended process");
+        Process p = Runtime.getRuntime().exec(build);
         int err = 0;
         try {
           err = p.waitFor();
         } catch (InterruptedException e) {
           e.printStackTrace();
+        }
+
+        if (alignment != null) {
+          String[] align = { "bash", "align_sequence.sh", "--index=" + pngFile + ".index",
+              "-as=" + alignment, "-em=" + em, "--png=" + pngFile };
+          p = Runtime.getRuntime().exec(build);
+          try {
+            err = p.waitFor();
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          }
         }
 
         BufferedImage image = null;
