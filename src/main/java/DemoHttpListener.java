@@ -79,7 +79,7 @@ public class DemoHttpListener {
                 image = ImageIO.read(file);
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                 System.out.println("Image: ");
-                ImageIO.write(image, "png", new FileOutputStream(new File("pic")));
+                ImageIO.write(image, "png", t.getResponseBody());
                 byte[] byteImage = byteArray.toByteArray();
                 //String dataImage = Base64.getEncoder().encodeToString(byteImage);
 
