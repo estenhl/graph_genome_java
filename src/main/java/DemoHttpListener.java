@@ -19,6 +19,7 @@ public class DemoHttpListener {
 
     static class MyHandler implements HttpHandler {
         public void handle(HttpExchange t) throws IOException {
+            System.out.println("Got a request");
             String response = "This is the response";
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
