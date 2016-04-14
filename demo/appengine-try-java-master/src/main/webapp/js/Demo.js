@@ -23,18 +23,12 @@ var Demo = React.createClass({
 		if (sequences.length < 1) {
 
 		}
-		var url = "http://130.211.79.61:8000/test?sequences=" + sequences.substr(0, sequences.length - 2) + "em=errorMargin";
-		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.onreadystatechange = function () {
-			console.log(xmlHttp.responseText);
-		};
-		xmlHttp.open("GET", url, true); // true for asynchronous
-		xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-		xmlHttp.send(null);
-		console.log(xmlHttp.responseText);
-		return xmlHttp.responseText;
+
+		document.getElementsByTagName('head')[0].appendChild(script);
+		var url = "http://130.211.79.61:8000/test?callback=foo&sequences=" + sequences.substr(0, sequences.length - 2) + "em=errorMargin";
 	},
 	render: function () {
+		console.log("Rendering DEMO");
 		var inputSequences = this.renderInputSequences();
 		var alignmentSequence = this.renderAlignmentSequence();
 		var errorMargin = this.renderErrorMargin();
