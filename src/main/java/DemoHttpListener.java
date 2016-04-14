@@ -73,7 +73,7 @@ public class DemoHttpListener {
           System.out.println("Doing alignment!");
           String[] align = { "bash", "align_sequence.sh", "--index=" + pngFile + ".index",
               "-as=" + alignment, "-em=" + em, "--png=" + pngFile };
-          p = Runtime.getRuntime().exec(build);
+          p = Runtime.getRuntime().exec(align);
           try {
             err = p.waitFor();
           } catch (InterruptedException e) {

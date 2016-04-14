@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/js/Demo.js" afterPath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/js/Demo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DemoHttpListener.java" afterPath="$PROJECT_DIR$/src/main/java/DemoHttpListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/.idea/workspace.xml" afterPath="$PROJECT_DIR$/demo/appengine-try-java-master/src/main/webapp/.idea/workspace.xml" />
     </list>
     <ignored path="Graph-genome.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/DemoHttpListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.8499475">
-              <caret line="74" column="65" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="65" />
+              <caret line="80" column="11" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1164,7 +1162,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/DemoHttpListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8499475">
-          <caret line="74" column="65" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="65" />
+          <caret line="80" column="11" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
