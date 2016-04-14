@@ -46,12 +46,17 @@ public class DemoHttpListener {
             } else {
                 String pngFile = Long.toString(System.currentTimeMillis());
                 System.out.println("Starting process");
-                String[] c = { "bash", "../build_index.sh", "-is=" + sequences, "-em=" + em, "--png=" + pngFile };
+                String[] c = { "bash", "build_index.sh", "--index=" + pngFile + ".index", "-is=" + sequences, "-em=" + em, "--png=" + pngFile };
                 System.out.println("c: " + c);
                 Process p = Runtime.getRuntime().exec(c);
                 System.out.println("Ended process");
-                System.out.println("p.exitValue(): " + p.exitValue());
-                if (p.exitValue() != 0) {
+                int err = 0;
+                try {
+                    err = p.waitFor();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (err != 0) {
                     Scanner reader = new Scanner(p.getErrorStream());
                     BufferedWriter writer = new BufferedWriter(new FileWriter(new File(pngFile + ".log")));
                     while (reader.hasNextLine()) {
