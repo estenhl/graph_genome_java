@@ -63,29 +63,38 @@ var Demo = React.createClass({
 		if (this.state.image) {
 			src = "data:image/jpeg;base64," + this.state.image;
 		}
+
 		return (
-			<table>
+			<table style={{backgroundColor: "lightblue", margin: "10px", marginTop: "30px", borderRadius: "10px", width: "99%"}}>
 				<tr>
-					<td width="40%">
-						<div>
-							{inputSequences}
-							<br />
-							<br />
-							Alignment sequence:<br />
-							{alignmentSequence}
-							<br />
-							<br />
-							Error margin:<br />
-							{errorMargin}
-							<br />
-							<br />
-							<Button name="Test!" onClick={this.onClick}/>
-						</div>
+					<td class="col-md-12" style={{textAlign: "center"}}>
+						<h1>Graph Genome Tool demo alpha v0.1</h1>
 					</td>
-					<td>
+				</tr>
+				<tr>
+					<table style={{padding: "5px"}}>
+						<tr>
+					<td style={{border: "1px solid black", width: "30%"}}>
+						(DISCLAIMER: This is a very small demo of the tool found in https://github.com/estenpro/graph_genome_java. For larger sequences and more flexibility follow the download and execute instructions for the command line tool)<br />
+						<br />
+						{inputSequences}
+						<br />
+						<br />
+						Alignment sequence:<br />
+						{alignmentSequence}
+						<br />
+						<font color="red">(IMPORTANT DISCLAIMER: In order to achieve "expected" results, this parameter must be set to atleast the smallest edit distance between the strings)</font><br />
+						Error margin:{errorMargin}
+						<br />
+						<br />
+						<Button name="Test!" onClick={this.onClick}/>
+					</td>
+					<td style={{width: "70%"}}>
+						Result: <br />
 						<img src={src}/>
 					</td>
 				</tr>
+						</table></tr>
 			</table>
 		)
 	}
@@ -95,7 +104,7 @@ var Input = React.createClass({
 	render: function () {
 		console.log("Name: " + this.props.name);
 		return (
-			<div><input type="text" id={this.props.name}/> < br/>
+			<div><input type="text" id={this.props.name} style={{marginBottom: "2px", borderRadius: "2px"}}/> < br/>
 			</div>
 		)
 	}
