@@ -6,7 +6,9 @@ var Demo = React.createClass({
 		var rows = [];
 		for (var i = 0; i < 10; i++) {
 			var name = "Sequence_" + i;
-			rows.push(<Input name={name} key={name}/>);
+			rows.push(<tr>
+				<td><Input name={name} key={name}/></td>
+			</tr>);
 		}
 		return <div>Input Sequences:<br />{rows}</div>;
 	},
@@ -64,11 +66,14 @@ var Demo = React.createClass({
 			src = "data:image/jpeg;base64," + this.state.image;
 		}
 		return (
-			<table>
+			<table cellpadding="20">
+				<tbody>
 				<tr>
 					<td width="40%">
 						<div>
-							{inputSequences}
+							<table cellpadding="20">
+								{inputSequences}
+							</table>
 							<br />
 							<br />
 							Alignment sequence:<br />
@@ -86,6 +91,7 @@ var Demo = React.createClass({
 						<img src={src}/>
 					</td>
 				</tr>
+				</tbody>
 			</table>
 		)
 	}
@@ -95,7 +101,7 @@ var Input = React.createClass({
 	render: function () {
 		console.log("Name: " + this.props.name);
 		return (
-			<div><input type="text" id={this.props.name}/> < br/>
+			<div><input type="text" id={this.props.name} size="20"/> < br/>
 			</div>
 		)
 	}

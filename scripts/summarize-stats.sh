@@ -65,25 +65,27 @@ do
 	total_fuzzy=$(($total_fuzzy + ${fuzzy_time[1]}))
 	echo "Total after: $total_fuzzy"
 
-	#sg_time=($(tail -2 $filename-sg-stats/$i.stats | head -1))
-	#sg_score=($(tail -1 $filename-sg-stats/$i.stats | head -1))
-	#if [ ${sg_time[1]} -gt $max_sg ]; then
-		#max_sg=${sg_time[1]}
-	#fi
-	#if [ ${sg_time[1]} -lt $min_sg ]; then
-		#min_sg=${sg_time[1]}
-	#fi
-	#if [ ${sg_score[1]} -ne ${po_msa_score[1]} ]; then
-		#errors_sg=$(($sg_fuzzy + 1))
-	#fi
-	#total_sg=$(($total_sg + ${sg_time[1]}))
+	sg_time=($(tail -2 $filename-sg-stats/$i.stats | head -1))
+	sg_score=($(tail -1 $filename-sg-stats/$i.stats | head -1))
+	if [ ${sg_time[1]} -gt $max_sg ]; then
+		max_sg=${sg_time[1]}
+	fi
+	if [ ${sg_time[1]} -lt $min_sg ]; then
+		min_sg=${sg_time[1]}
+	fi
+	echo "Sg score: ${sg_score[1]}"
+	echo "PO-MSA score: ${po_msa_score[1]}"
+	if [ ${sg_score[1]} -ne ${po_msa_score[1]} ]; then
+		errors_sg=$(($errors_sg + 1))
+	fi
+	total_sg=$(($total_sg + ${sg_time[1]}))
 
 done 
 
 fuzzy_build_time=($(tail -4 $filename-fuzzy-stats/build.stats | head -1))
-#sg_build_time=($(tail -4 $filename-sg-stats/build.stats | head -1))
-#mismatches=($(tail -2 $filename-sg-stats/build.stats | head -1))
-#prob=($(tail -1 $filename-sg-stats/build.stats | head -1))
+sg_build_time=($(tail -4 $filename-sg-stats/build.stats | head -1))
+mismatches=($(tail -2 $filename-sg-stats/build.stats | head -1))
+prob=($(tail -1 $filename-sg-stats/build.stats | head -1))
 
 echo "Graph size: $graph_size" > $filename.summary
 echo "Sequence length: $sequence_length" >> $filename.summary
@@ -103,7 +105,7 @@ echo "Min. Fuzzy time: $min_fuzzy" >> $filename.summary
 echo "Max. Fuzzy time: $max_fuzzy" >> $filename.summary
 echo "Avg. Fuzzy time: $(($total_fuzzy / $num))" >> $filename.summary
 echo "Fuzzy errors: $errors_fuzzy" >> $filename.summary
-#echo "Max. sg time: $max_sg" >> $filename.summary
-#echo "Min. sg time: $min_sg" >> $filename.summary
-#echo "Avg. sg time: $(($total_sg / $num))" >> $filename.summary
-#echo "sg errors: $errors_sg" >> $filename.summary
+echo "Max. sg time: $max_sg" >> $filename.summary
+echo "Min. sg time: $min_sg" >> $filename.summary
+echo "Avg. sg time: $(($total_sg / $num))" >> $filename.summary
+echo "sg errors: $errors_sg" >> $filename.summary
