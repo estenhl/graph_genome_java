@@ -18,6 +18,7 @@ public abstract class Configuration implements Serializable {
   private int minPairwiseScore;
   private int errorMargin;
   private boolean allowParallellization;
+  private boolean allowHeuristics;
 
   protected Configuration(int[][] scoringMatrix, int gapOpeningPenalty, int gapExtensionPenalty) {
     this.scoringMatrix = scoringMatrix;
@@ -25,6 +26,8 @@ public abstract class Configuration implements Serializable {
     this.gapExtensionPenalty = gapExtensionPenalty;
     this.contextLength = DEFAULT_SUFFIX_LENGTH;
     this.errorMargin = DEFAULT_ERROR_MARGIN;
+    this.allowParallellization = false;
+    this.allowHeuristics = false;
     setMinAndMax(scoringMatrix);
   }
 
@@ -137,6 +140,14 @@ public abstract class Configuration implements Serializable {
 
   public int getErrorMargin() {
     return errorMargin;
+  }
+
+  public void setAllowHeuristics(boolean allowHeuristics) {
+    this.allowHeuristics = allowHeuristics;
+  }
+
+  public boolean getAllowHeuristics() {
+    return allowHeuristics;
   }
 
   public int getMaxAlignmentScore(String s) {

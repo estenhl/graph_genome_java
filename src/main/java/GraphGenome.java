@@ -42,6 +42,7 @@ public class GraphGenome {
     VALID_PARAMS.add("--merge");
     VALID_PARAMS.add("--parallellization");
     VALID_PARAMS.add("--vcf");
+    VALID_PARAMS.add("--heuristical");
 
     SHORTHAND_PARAMS = new HashMap<String, String>();
     SHORTHAND_PARAMS.put("-if", "--input-fastas");
@@ -56,8 +57,9 @@ public class GraphGenome {
     SHORTHAND_PARAMS.put("-h", "--help");
     SHORTHAND_PARAMS.put("-t", "--type");
     SHORTHAND_PARAMS.put("-m", "--merge");
-    SHORTHAND_PARAMS.put("-pa", "--parallellization");
+    SHORTHAND_PARAMS.put("-par", "--parallellization");
     SHORTHAND_PARAMS.put("-v", "--vcf");
+    SHORTHAND_PARAMS.put("-heur", "--heuristical");
 
     HELP_MENU = new HashMap<String, String>();
     HELP_MENU.put("-if", "Comma separated FASTA files used to build the graph");
@@ -78,10 +80,10 @@ public class GraphGenome {
     HELP_MENU.put("-t", "Alignment algorithm to use. po_msa or fuzzy. Defaults to fuzzy");
     HELP_MENU.put("-m",
         "Chooses whether the aligned sequence should be merged in to the graph and index");
-    HELP_MENU.put("-pa",
+    HELP_MENU.put("-par",
         "Decides whether or not to use parallellization in suffix tree search, true/false");
-    HELP_MENU.put("-v",
-        "A vcf file containing variants. See README for allowed formats");
+    HELP_MENU.put("-v", "A vcf file containing variants. See README for allowed formats");
+    HELP_MENU.put("-heur", "Allows the algorithm to return a heuristical result");
   }
 
   public static void main(String[] args)
@@ -101,6 +103,7 @@ public class GraphGenome {
     configuration.setErrorMargin(ParseUtils.parseInt(params.get("--error-margin"),
         Configuration.DEFAULT_ERROR_MARGIN));
     configuration.setAllowParallellization("true".equals(params.get("--parallellization")));
+    configuration.setAllowHeuristics("true".equals(params.get("--heuristical")));
     if ("index".equals(args[0])) {
       buildIndex(configuration, params, suffixLength, true);
     } else if ("align".equals(args[0])) {
