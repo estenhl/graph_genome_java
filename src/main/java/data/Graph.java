@@ -13,8 +13,8 @@ import utils.Pair;
 
 public class Graph implements Serializable {
 
-  public static final char HEAD_VALUE = '$';
-  public static final char TAIL_VALUE = '$';
+  public static final char HEAD_VALUE = 's';
+  public static final char TAIL_VALUE = 'e';
   public static final int HEAD_INDEX = 0;
   public static final int TAIL_INDEX = -1;
 

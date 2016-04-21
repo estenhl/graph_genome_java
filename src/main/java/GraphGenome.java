@@ -359,6 +359,7 @@ public class GraphGenome {
             DOTUtils.getEdgeRepresentation(Integer.toString(index), Integer.toString(dest)));
       }
     }
+    nodes.append(DOTUtils.getNodeRepresentation(graph.getTail()));
 
     if (alignment != null && sequence != null) {
       char[] characters = sequence.toCharArray();
