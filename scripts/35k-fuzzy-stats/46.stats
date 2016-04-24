@@ -1,0 +1,37 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 638123625
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 399658280
+[INFO]    Time used building the index: 1038062825
+[INFO]    Sat context length to 18
+[INFO]    Aligning GCATCACCACGAAGGACTAATGTCAGAGGATTAGACTCTTGGGAGTGAAATATCCAGGGTTATATAATACTCCATGTTAATAAAATGAATAGCATTAATC with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 100
+Graph size: 35771
+Score: -4
+Time: 14201948038
+Alignment: 0:20850 1:20851 2:20852 3:20853 4:20854 5:20855 6:20856 7:20857 8:20858 9:20859 10:20860 11:20861 12:20862 13:20863 14:0 15:20864 16:20865 17:20866 18:20867 19:20868 20:20869 21:20870 22:20871 23:20872 24:20873 25:20874 26:20875 27:20876 28:20877 29:20878 30:20879 31:20880 32:20881 33:20882 34:20884 35:20885 36:20886 37:20887 38:20888 39:20889 40:20890 41:20891 42:20892 43:20893 44:20894 45:20895 46:20896 47:20897 48:20898 49:20899 50:20900 51:20901 52:20902 53:20903 54:20904 55:20905 56:20906 57:20907 58:20908 59:20909 60:20910 61:20911 62:20912 63:20913 64:20914 65:20915 66:20916 67:20917 68:20918 69:20919 70:20920 71:20921 72:20922 73:20923 74:20924 75:20925 76:20926 77:20927 78:20928 79:20929 80:20930 81:20931 82:20932 83:20933 84:20934 85:20935 86:20936 87:20937 88:20938 89:20939 90:20940 91:20941 92:20942 93:20943 94:20944 95:20945 96:20946 97:20947 98:20948 99:20949 
+Tool time: 15414441498

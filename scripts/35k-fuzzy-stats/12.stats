@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 631512295
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 437742865
+[INFO]    Time used building the index: 1069539214
+[INFO]    Sat context length to 18
+[INFO]    Aligning GCTCAAATACTTTATAAAGAAATCCTACCAAACTGTCAAATATCAAAAATCATGATGCTACTTAAATTATTCGAAGCATAGACACTAGCACTTATA with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 96
+Graph size: 35771
+Score: -3
+Time: 18787958094
+Alignment: 0:17796 1:17797 2:17798 3:17799 4:17800 5:17801 6:17802 7:17803 8:17804 9:17805 10:17806 11:17807 12:17808 13:17810 14:17811 15:17812 16:17813 17:17814 18:17815 19:17816 20:17817 21:17818 22:17819 23:17820 24:17821 25:17822 26:17823 27:17824 28:17825 29:17826 30:17827 31:17828 32:17829 33:17830 34:17831 35:17832 36:17833 37:17834 38:17835 39:17836 40:17837 41:17838 42:17839 43:17840 44:17842 45:17843 46:17844 47:17845 48:17846 49:17847 50:17848 51:17849 52:17850 53:17851 54:17852 55:17853 56:17854 57:17855 58:17856 59:17857 60:17858 61:17859 62:17860 63:17861 64:17862 65:17863 66:17864 67:17865 68:17866 69:17867 70:17868 71:17869 72:17870 73:17871 74:17872 75:17873 76:17874 77:17875 78:17876 79:17877 80:17878 81:17879 82:17880 83:17881 84:17882 85:17883 86:17884 87:17885 88:17886 89:17887 90:17888 91:17889 92:17890 93:17892 94:17893 95:17894 
+Tool time: 20046339652

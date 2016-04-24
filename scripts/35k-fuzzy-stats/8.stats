@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 634357750
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 439314318
+[INFO]    Time used building the index: 1074017786
+[INFO]    Sat context length to 18
+[INFO]    Aligning AATTCTATTTCTGGTATCGGTCATTTCTTTTTCTTTCTTTCCTTTCTTATCTCTTTTTCTTTTTTCTTTCTTTCTCTCTTTCTTTCTCTCTCTTTCCTT with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 99
+Graph size: 35771
+Score: -4
+Time: 26301524843
+Alignment: 0:33904 1:0 2:33905 3:33906 4:33907 5:33908 6:33909 7:33910 8:33911 9:33912 10:33913 11:33914 12:33915 13:33916 14:33917 15:33918 16:33919 17:33920 18:33921 19:33922 20:33923 21:33924 22:33925 23:33926 24:33927 25:33928 26:33929 27:33930 28:33931 29:33932 30:33933 31:33934 32:33935 33:33936 34:33937 35:33938 36:33939 37:33940 38:33941 39:33942 40:33943 41:33944 42:33945 43:33946 44:33947 45:33948 46:33949 47:33950 48:33951 49:33952 50:33953 51:33954 52:33955 53:33956 54:33957 55:33958 56:33959 57:33960 58:33961 59:33962 60:33963 61:33964 62:33965 63:33966 64:33967 65:33968 66:33969 67:33970 68:33971 69:33972 70:33973 71:33974 72:33975 73:33976 74:33977 75:33978 76:33979 77:33980 78:33981 79:33982 80:33983 81:33984 82:33985 83:33986 84:33987 85:33988 86:33989 87:33990 88:33991 89:33992 90:33993 91:33994 92:33995 93:33996 94:33997 95:33998 96:33999 97:34000 98:34001 
+Tool time: 27529076418

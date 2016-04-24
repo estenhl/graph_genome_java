@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 631061458
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 411345091
+[INFO]    Time used building the index: 1042687392
+[INFO]    Sat context length to 18
+[INFO]    Aligning TGAGCAGAGATGGCGCCACTGCACTGCAGCCTGGTCAAGGGGCAAAACTCCGACTCAAAAAAAGAAAAAAAAAAGAAAAAAGAAAAAAGTACTCAGCA with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 98
+Graph size: 35771
+Score: -2
+Time: 123803835080
+Alignment: 0:21250 1:21251 2:21252 3:21253 4:21254 5:21255 6:21256 7:21257 8:21258 9:21259 10:21260 11:21261 12:21262 13:21263 14:21264 15:21265 16:21266 17:21267 18:21268 19:21269 20:21270 21:21271 22:21272 23:21273 24:21274 25:21275 26:21276 27:21277 28:21278 29:21279 30:21280 31:21281 32:21282 33:21283 34:21284 35:21285 36:21286 37:21287 38:21288 39:21289 40:21290 41:21292 42:21293 43:21294 44:21295 45:21296 46:21297 47:21298 48:21299 49:21300 50:21301 51:21302 52:21303 53:21304 54:21305 55:21306 56:21307 57:21308 58:21309 59:21310 60:21311 61:21312 62:21313 63:21314 64:21315 65:21316 66:21317 67:21318 68:21319 69:21320 70:21322 71:21323 72:21324 73:21325 74:21326 75:21327 76:21328 77:21329 78:21330 79:21331 80:21332 81:21333 82:21334 83:21335 84:21336 85:21337 86:21338 87:21339 88:21340 89:21341 90:21342 91:21343 92:21344 93:21345 94:21346 95:21347 96:21348 97:21349 
+Tool time: 125041866621

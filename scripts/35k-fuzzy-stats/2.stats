@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 716789034
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 521668511
+[INFO]    Time used building the index: 1238841764
+[INFO]    Sat context length to 18
+[INFO]    Aligning TTGAACTTCACTGGGACACTGTGGTAATCACTCTCCTACAATTACCCCATGCTTATGTATGTTAAATAAATTTTATATGTCTTTTTCTTTTGTTAATCTGC with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 101
+Graph size: 35771
+Score: -3
+Time: 17767131118
+Alignment: 0:19658 1:19659 2:19660 3:19661 4:19662 5:19663 6:19664 7:19665 8:19666 9:19667 10:19668 11:19669 12:19670 13:19671 14:19672 15:19673 16:19674 17:19675 18:19676 19:19677 20:19678 21:0 22:19679 23:19680 24:19681 25:19682 26:19683 27:19684 28:19685 29:19686 30:19687 31:19688 32:19689 33:19690 34:19691 35:19692 36:19693 37:19694 38:19695 39:19696 40:19697 41:19698 42:19699 43:19700 44:19701 45:19702 46:19703 47:19704 48:19705 49:19706 50:19707 51:19708 52:19709 53:19710 54:19711 55:19712 56:19713 57:19714 58:19715 59:19716 60:19717 61:19718 62:19719 63:19720 64:19721 65:19722 66:19723 67:19724 68:19725 69:19726 70:19727 71:19728 72:19729 73:19730 74:19731 75:19732 76:19733 77:19734 78:19735 79:19736 80:19737 81:19738 82:19739 83:19740 84:19741 85:19742 86:19743 87:19744 88:19745 89:19746 90:19747 91:19748 92:19749 93:19750 94:19751 95:19752 96:19753 97:19754 98:19755 99:19756 100:19757 
+Tool time: 19195744412

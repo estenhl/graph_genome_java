@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 631067239
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 420200110
+[INFO]    Time used building the index: 1051545826
+[INFO]    Sat context length to 18
+[INFO]    Aligning ATAATTTTTTTCTGCCACAGGAGTATAACGTGGCAAAGAGACATTGTGGAACTGTACTTTGAAAATGAGAGAAGAGAGAGAAAAAATGTTGACAGAACA with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 99
+Graph size: 35771
+Score: -4
+Time: 20444140215
+Alignment: 0:13780 1:13781 2:13782 3:13783 4:13784 5:13785 6:13786 7:13787 8:13788 9:13789 10:13790 11:13791 12:13792 13:13793 14:13794 15:13795 16:13796 17:13797 18:13798 19:13799 20:13801 21:13802 22:13803 23:13804 24:13805 25:13806 26:13807 27:13808 28:0 29:13809 30:13810 31:13811 32:13812 33:13813 34:13814 35:13815 36:13816 37:13817 38:13818 39:13819 40:13820 41:13821 42:13822 43:13823 44:13824 45:13825 46:13826 47:13827 48:13828 49:13829 50:13830 51:13831 52:13832 53:13833 54:13834 55:13835 56:13836 57:13837 58:13838 59:13839 60:13840 61:13841 62:13842 63:13843 64:13844 65:13845 66:13846 67:13847 68:13848 69:13849 70:13850 71:13851 72:13852 73:13853 74:13854 75:13855 76:13856 77:13857 78:13858 79:13859 80:13860 81:13861 82:13862 83:13863 84:13864 85:13865 86:13866 87:13867 88:13868 89:13869 90:13870 91:13871 92:13872 93:13873 94:13874 95:13875 96:13876 97:13877 98:13878 
+Tool time: 21688475444

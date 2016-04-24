@@ -19,7 +19,7 @@ for i in `seq 1 $num`;
 do
     echo "Run: $i"
     before=$(date +%s%N)
-    java -Xmx4096m -Xms4096m -jar ../target/graph-genome.jar build-and-align -if=$filename -af=$read_dir/$i.txt -em=$mismatches -t=fuzzy > $read_dir-fuzzy-stats/$i.stats
+    java -Xmx4096m -Xms4096m -jar ../target/graph-genome.jar build-and-align -if=$filename -af=$read_dir/$i.txt -em=$mismatches -t=fuzzy -heur=true> $read_dir-fuzzy-stats/$i.stats
     after=$(date +%s%N)
     echo "Tool time: $(($after - $before))" >> $read_dir-fuzzy-stats/$i.stats
     before=$(date +%s%N)
@@ -78,8 +78,8 @@ echo "Max. Fuzzy time: $max_fuzzy" >> $read_dir.summary
 echo "Avg. Fuzzy time: $(($total_fuzzy / $num))" >> $read_dir.summary
 echo "Fuzzy errors: $errors_fuzzy" >> $read_dir.summary
 
-rm -rf $read_dir
-rm -rf $read_dir-fuzzy-stats
+#rm -rf $read_dir
+#rm -rf $read_dir-fuzzy-stats
 rm -rf $read_dir-po_msa-stats
 rm $read_dir.reads
 

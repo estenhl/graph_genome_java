@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 629724964
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 450620522
+[INFO]    Time used building the index: 1080639070
+[INFO]    Sat context length to 18
+[INFO]    Aligning AAACCAAAAGAATGAGGAAGGAAGGGTTGTAAGGACAAATTCAGAGATGAGTTAGAAACAAGTATAACTAATAAAGATAACAAAAAAGGTGGATATTTG with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 99
+Graph size: 35771
+Score: -3
+Time: 30146730106
+Alignment: 0:17425 1:17426 2:17427 3:17428 4:17429 5:17430 6:17431 7:17432 8:17433 9:17434 10:17435 11:17436 12:17437 13:17438 14:17439 15:17440 16:17441 17:17442 18:17443 19:17444 20:17445 21:17446 22:17447 23:17448 24:17449 25:17450 26:17451 27:17452 28:17453 29:17454 30:17455 31:17456 32:17457 33:17458 34:17459 35:17460 36:17461 37:17462 38:17463 39:17464 40:17465 41:17466 42:17467 43:17468 44:17469 45:17470 46:17472 47:17473 48:17474 49:17475 50:17476 51:17477 52:17478 53:17479 54:17480 55:17481 56:17482 57:17483 58:17484 59:17486 60:17487 61:17488 62:17489 63:17490 64:17491 65:17492 66:17493 67:17494 68:17495 69:17496 70:17497 71:17498 72:17499 73:17500 74:17501 75:17502 76:17503 77:17504 78:17505 79:0 80:17506 81:17507 82:17508 83:17509 84:17510 85:17511 86:17512 87:17513 88:17514 89:17515 90:17516 91:17517 92:17518 93:17519 94:17520 95:17521 96:17522 97:17523 98:17524 
+Tool time: 31424852705

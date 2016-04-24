@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 635032897
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 437115997
+[INFO]    Time used building the index: 1072456682
+[INFO]    Sat context length to 18
+[INFO]    Aligning CCTATGTCTGGTACAGTTTTCAAACTCAGTCTCCTATTCCGAGAGAGTCCAGGCTTTCTGTTTTTAGCCAAAAATTTGTTGGGAGGGTCAATTAAAATATTT with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 102
+Graph size: 35771
+Score: -2
+Time: 10634379281
+Alignment: 0:2273 1:2274 2:2275 3:2276 4:2277 5:2278 6:2279 7:2280 8:2281 9:2282 10:2283 11:0 12:2284 13:2285 14:2286 15:2287 16:2288 17:2289 18:2290 19:2291 20:2292 21:2293 22:2294 23:2295 24:2296 25:2297 26:2298 27:2299 28:2300 29:2301 30:2302 31:2303 32:2304 33:2305 34:2306 35:2307 36:2308 37:2309 38:2310 39:2311 40:2312 41:2313 42:2314 43:2315 44:2316 45:2317 46:2318 47:2319 48:2320 49:2321 50:2322 51:2323 52:2324 53:2325 54:2326 55:2327 56:2328 57:2329 58:2330 59:2331 60:2332 61:2333 62:2334 63:2335 64:2336 65:2337 66:2338 67:2339 68:2340 69:2341 70:2342 71:2343 72:2344 73:0 74:2345 75:2346 76:2347 77:2348 78:2349 79:2350 80:2351 81:2352 82:2353 83:2354 84:2355 85:2356 86:2357 87:2358 88:2359 89:2360 90:2361 91:2362 92:2363 93:2364 94:2365 95:2366 96:2367 97:2368 98:2369 99:2370 100:2371 101:2372 
+Tool time: 11894609939

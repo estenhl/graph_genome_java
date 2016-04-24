@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 627818728
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 440751694
+[INFO]    Time used building the index: 1068837202
+[INFO]    Sat context length to 18
+[INFO]    Aligning ACCCCGTCTCACCAAAAAAATGAAAAAAATTAGCCTGGCATGGTGGCAGACGCCTGTAGTCGCAGCTACTCGGGAGACTGAGGCAGTGAGAATGGCGTG with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 99
+Graph size: 35771
+Score: -6
+Time: 38645277676
+Alignment: 0:21127 1:21128 2:21129 3:21130 4:21131 5:21132 6:21133 7:21134 8:21135 9:21136 10:21138 11:21139 12:21141 13:21142 14:21143 15:21144 16:21145 17:21146 18:21147 19:21148 20:21149 21:21150 22:21151 23:21152 24:21153 25:21154 26:21155 27:21156 28:21157 29:21158 30:21159 31:21160 32:21161 33:21162 34:21163 35:21164 36:21165 37:21166 38:21167 39:21168 40:21169 41:21170 42:21171 43:21172 44:21173 45:21174 46:21175 47:21176 48:21177 49:21178 50:21179 51:21180 52:21181 53:21182 54:21183 55:21184 56:21185 57:21186 58:21187 59:21188 60:21189 61:21190 62:21191 63:21192 64:21193 65:21194 66:21195 67:21196 68:21197 69:21198 70:21199 71:21200 72:21201 73:21202 74:21203 75:21204 76:21205 77:21206 78:21207 79:21208 80:21209 81:21210 82:21211 83:21212 84:21213 85:21214 86:0 87:21215 88:21216 89:21217 90:21218 91:21219 92:21220 93:21221 94:21222 95:21223 96:21224 97:21225 98:21226 
+Tool time: 39906950532

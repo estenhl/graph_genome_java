@@ -1,0 +1,37 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 636418464
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 442998851
+[INFO]    Time used building the index: 1079824688
+[INFO]    Sat context length to 18
+[INFO]    Aligning CACACAAAAATCAGTTGCATTTCTGCAAACTAGCAATGACCAACTGAAACAGAAAATTAAGAAAACAATCCCATTTACATATAGCACCAAAAAGATAAAA with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 100
+Graph size: 35771
+Score: -5
+Time: 25701898791
+Alignment: 0:22009 1:22010 2:22011 3:22012 4:22013 5:22014 6:22015 7:22016 8:22017 9:22018 10:22019 11:22020 12:22021 13:22022 14:22023 15:22024 16:22025 17:22026 18:22027 19:22028 20:22029 21:22030 22:22031 23:22032 24:22033 25:22034 26:22035 27:22036 28:22037 29:22038 30:22039 31:22040 32:22041 33:22042 34:22043 35:22044 36:22045 37:22046 38:22047 39:22048 40:22049 41:22050 42:22051 43:22053 44:22054 45:22055 46:22056 47:22057 48:22058 49:0 50:22059 51:22060 52:22061 53:22062 54:22063 55:22064 56:22065 57:22066 58:22067 59:22068 60:22069 61:22070 62:22071 63:22072 64:22073 65:22074 66:22075 67:22076 68:22077 69:22078 70:22079 71:22080 72:22081 73:22082 74:22083 75:22084 76:22085 77:22086 78:0 79:22087 80:22088 81:22089 82:22090 83:22091 84:22092 85:22093 86:22094 87:22095 88:22096 89:22097 90:22098 91:22099 92:22100 93:22101 94:22102 95:22104 96:22105 97:22106 98:22107 99:22108 
+Tool time: 26967760431

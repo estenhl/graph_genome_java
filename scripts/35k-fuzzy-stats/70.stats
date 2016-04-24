@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 630086951
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 458036327
+[INFO]    Time used building the index: 1088403968
+[INFO]    Sat context length to 18
+[INFO]    Aligning CTTGTGGACTGAGCCCCCAACCTGCAGGAACTGACATACCTTCAGGTAGACAGTGTCAGAACTGAATTGGAGGACACCTAGCTGGTGTCTGCTGCTTGA with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 99
+Graph size: 35771
+Score: -1
+Time: 11925513774
+Alignment: 0:24183 1:24184 2:24185 3:24186 4:24187 5:24188 6:24189 7:24190 8:24191 9:24192 10:24193 11:24194 12:24195 13:24196 14:24197 15:24198 16:24199 17:24200 18:24201 19:24202 20:24203 21:24204 22:24205 23:24206 24:24207 25:24208 26:24209 27:24210 28:24211 29:24212 30:24213 31:24214 32:24215 33:24216 34:24217 35:24218 36:24220 37:24221 38:24222 39:24223 40:24224 41:24225 42:24226 43:24227 44:24228 45:24229 46:24230 47:24231 48:24232 49:24233 50:24234 51:24235 52:24236 53:24237 54:24238 55:24239 56:24240 57:24241 58:24242 59:24243 60:24244 61:24245 62:24246 63:24247 64:24248 65:24249 66:24250 67:24251 68:24252 69:24253 70:24254 71:24255 72:24256 73:24257 74:24258 75:24259 76:24260 77:24261 78:24262 79:24263 80:24264 81:24265 82:24266 83:24267 84:24268 85:24269 86:24270 87:24271 88:24272 89:24273 90:24274 91:24275 92:24276 93:24277 94:24278 95:24279 96:24280 97:24281 98:24282 
+Tool time: 13197258988

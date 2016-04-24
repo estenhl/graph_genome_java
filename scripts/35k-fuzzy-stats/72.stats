@@ -1,0 +1,37 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 629651405
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 520048949
+[INFO]    Time used building the index: 1150021408
+[INFO]    Sat context length to 18
+[INFO]    Aligning TAGAAGAAGAAATACAAGGCCAAGCATGGTAGCACACGCCTGTAATCCCAGCACTTTGCAATCTGGGGTTGGGCAGATCACCTGAGGTCGGGAGTTCTAG with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 100
+Graph size: 35771
+Score: -4
+Time: 17850162167
+Alignment: 0:4278 1:4279 2:4280 3:4281 4:4282 5:4283 6:4284 7:4285 8:4286 9:4287 10:4288 11:4289 12:4290 13:4291 14:4292 15:4293 16:4294 17:4295 18:4296 19:4297 20:4298 21:4299 22:4300 23:4301 24:4302 25:4303 26:4304 27:4305 28:4306 29:4307 30:4308 31:4309 32:4310 33:4311 34:4312 35:4313 36:4314 37:4315 38:4316 39:4317 40:4318 41:4319 42:4320 43:4321 44:4322 45:4323 46:4324 47:4325 48:4326 49:4327 50:4328 51:4329 52:4330 53:4331 54:4332 55:4333 56:4334 57:4335 58:4336 59:4337 60:4338 61:4340 62:4341 63:4342 64:4343 65:4344 66:4345 67:4346 68:4347 69:0 70:4348 71:4349 72:4350 73:4351 74:4352 75:4353 76:4354 77:4355 78:4356 79:4357 80:4358 81:4359 82:4360 83:4361 84:4362 85:4363 86:4364 87:4365 88:4366 89:4367 90:4368 91:4369 92:4370 93:4371 94:4372 95:4373 96:4374 97:4375 98:4376 99:4377 
+Tool time: 19182834806

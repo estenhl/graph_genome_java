@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 671380879
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 511394948
+[INFO]    Time used building the index: 1183113753
+[INFO]    Sat context length to 18
+[INFO]    Aligning GAAAATGGTATAATTCCAAGGGCAGAAACATTTGCAGTATCTAGAAAAAATGTATAATTATTTACGCCTTTAACCCCAAATTCCACTTCTAAAAAGCGTATCT with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 103
+Graph size: 35771
+Score: -5
+Time: 16336169608
+Alignment: 0:18749 1:18750 2:18751 3:18752 4:18753 5:18754 6:18755 7:18756 8:18757 9:18758 10:18759 11:18760 12:18761 13:18762 14:18763 15:18764 16:18765 17:18766 18:18767 19:18768 20:18769 21:18770 22:18771 23:18772 24:18773 25:18774 26:18775 27:18776 28:0 29:18777 30:18778 31:18779 32:18780 33:18781 34:18782 35:18783 36:18784 37:18785 38:18786 39:18787 40:18788 41:18789 42:18790 43:18791 44:18792 45:18793 46:18794 47:18795 48:18796 49:18797 50:18798 51:18799 52:18800 53:18801 54:18802 55:18803 56:18804 57:18805 58:18806 59:18807 60:18808 61:18809 62:18810 63:18811 64:18812 65:0 66:18813 67:18814 68:18815 69:18816 70:18817 71:18818 72:18819 73:18820 74:18821 75:18822 76:18824 77:18825 78:18826 79:18827 80:18828 81:18829 82:18830 83:18831 84:18832 85:18833 86:18834 87:18835 88:18836 89:18837 90:18838 91:18839 92:18840 93:18841 94:18842 95:18843 96:18844 97:0 98:18845 99:18846 100:18847 101:18848 102:18849 
+Tool time: 17714559772

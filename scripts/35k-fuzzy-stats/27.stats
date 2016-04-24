@@ -1,0 +1,37 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 635313020
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 441120038
+[INFO]    Time used building the index: 1076756582
+[INFO]    Sat context length to 18
+[INFO]    Aligning AGGCAACATTATCCTGATACCAAAGCCTGGCGGAGACATGACAAAAAAAGAGAAATTTAGACCAATCATCCCTGATGAACATCGGTGCGAAAATCCTCAA with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 100
+Graph size: 35771
+Score: -5
+Time: 21912847892
+Alignment: 0:29938 1:29939 2:29940 3:29941 4:29942 5:29943 6:29945 7:29946 8:29947 9:29948 10:29949 11:29950 12:29951 13:29952 14:29953 15:29954 16:29955 17:29956 18:29957 19:29958 20:29959 21:29960 22:29961 23:29962 24:29963 25:29964 26:29965 27:29966 28:29967 29:29968 30:29969 31:29970 32:29971 33:29972 34:29973 35:29974 36:29975 37:29976 38:29977 39:29978 40:29979 41:29980 42:29981 43:29982 44:29983 45:29984 46:29985 47:29986 48:29987 49:29988 50:29989 51:29990 52:29991 53:29992 54:29993 55:29994 56:29995 57:29996 58:29997 59:29998 60:29999 61:30000 62:30001 63:30002 64:30003 65:30004 66:0 67:30005 68:30006 69:30007 70:30008 71:30009 72:30010 73:30011 74:30012 75:30013 76:30014 77:30015 78:30016 79:30017 80:30018 81:30019 82:30020 83:30021 84:30022 85:30023 86:30024 87:30025 88:30026 89:30027 90:30028 91:30029 92:30030 93:30031 94:30032 95:30033 96:30034 97:30035 98:30036 99:30037 
+Tool time: 23199882393

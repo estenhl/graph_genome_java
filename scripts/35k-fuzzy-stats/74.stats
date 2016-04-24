@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 637170246
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 479857943
+[INFO]    Time used building the index: 1117376231
+[INFO]    Sat context length to 18
+[INFO]    Aligning TTGTCTTTACCAGGGGGATTTCTGAATTACCTAGACATCCATTATCTGGAACAGAGTTCGTCTCTCTTCACTTGTCTTAATTGAAAACTAGAGCAGC with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 97
+Graph size: 35771
+Score: -3
+Time: 11606222905
+Alignment: 0:34600 1:34601 2:34602 3:34603 4:34604 5:34605 6:34606 7:34607 8:34608 9:34609 10:34610 11:34611 12:34612 13:34613 14:34614 15:34615 16:34616 17:34617 18:34618 19:34619 20:34621 21:34622 22:34623 23:34624 24:34625 25:34626 26:34627 27:34628 28:34629 29:34630 30:34631 31:34632 32:34633 33:34634 34:34635 35:34636 36:34637 37:34638 38:34639 39:34640 40:34641 41:34642 42:34643 43:34644 44:34645 45:34646 46:34647 47:34648 48:34649 49:34650 50:34651 51:34652 52:34653 53:34654 54:34655 55:34656 56:34657 57:34658 58:34659 59:34661 60:34662 61:34663 62:34664 63:34665 64:34666 65:34667 66:34668 67:34669 68:34670 69:34671 70:34672 71:34673 72:34674 73:34675 74:34676 75:34677 76:34678 77:34679 78:34680 79:34681 80:34682 81:34683 82:34684 83:34685 84:34686 85:34687 86:34688 87:34689 88:34690 89:34691 90:34692 91:34693 92:34694 93:34696 94:34697 95:34698 96:34699 
+Tool time: 12898167792

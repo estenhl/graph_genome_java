@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 678243386
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 484188630
+[INFO]    Time used building the index: 1162776685
+[INFO]    Sat context length to 18
+[INFO]    Aligning TAAATTAGACACAGACTGGCAAATTGGATAAAGAGTCAAGACCCATCAAGTGTGCTGTATTCAGGAGACCAAGTCTCACATGCAGAGAGCACACCAGGCTC with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 101
+Graph size: 35771
+Score: -3
+Time: 15235491753
+Alignment: 0:28466 1:28467 2:28468 3:28469 4:28470 5:28471 6:28472 7:28473 8:28474 9:28475 10:28476 11:28477 12:28478 13:28479 14:28480 15:28481 16:28482 17:28483 18:28484 19:28485 20:28486 21:28487 22:28488 23:28489 24:28490 25:28491 26:28492 27:28493 28:28494 29:28495 30:28496 31:28497 32:28498 33:28499 34:28500 35:28501 36:28502 37:28503 38:28504 39:28505 40:28506 41:28507 42:28508 43:28509 44:28510 45:28511 46:28512 47:28513 48:28514 49:28515 50:28516 51:28517 52:28518 53:28519 54:28520 55:28521 56:28522 57:28523 58:28524 59:28525 60:28526 61:28527 62:28528 63:28529 64:28530 65:28531 66:28532 67:28533 68:28534 69:28535 70:28536 71:28537 72:0 73:28538 74:28539 75:28540 76:28541 77:28542 78:28543 79:28544 80:28545 81:28546 82:28547 83:28548 84:28549 85:28550 86:28551 87:28552 88:28554 89:28555 90:28556 91:28557 92:28558 93:28559 94:0 95:28560 96:28561 97:28562 98:28563 99:28564 100:28565 
+Tool time: 16571759138

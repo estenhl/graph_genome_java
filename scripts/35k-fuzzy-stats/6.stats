@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 649998693
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 452253788
+[INFO]    Time used building the index: 1102555631
+[INFO]    Sat context length to 18
+[INFO]    Aligning GTTTAAGCAAGGAAAATATAAGTGAAAGCAATGGTAAAAAAATTAAAAGCAAAAGGAATGGAGGTGCCGGGGATTTGAACCCGGGGCCTCGTGCATGCTAAGC with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 103
+Graph size: 35771
+Score: -4
+Time: 26825622684
+Alignment: 0:15906 1:15907 2:15908 3:15909 4:15910 5:15911 6:15912 7:15913 8:15914 9:15915 10:15916 11:15917 12:15918 13:15919 14:15920 15:15921 16:15922 17:15923 18:0 19:15924 20:15925 21:15926 22:15927 23:0 24:15928 25:15929 26:15930 27:15931 28:15932 29:15933 30:15934 31:15935 32:15936 33:15937 34:15938 35:15939 36:15940 37:15941 38:15942 39:15943 40:15944 41:15945 42:15946 43:15947 44:15948 45:15949 46:15950 47:15951 48:15952 49:15953 50:15954 51:15955 52:15956 53:15957 54:15958 55:15959 56:15960 57:15961 58:15962 59:15963 60:15964 61:15965 62:15966 63:15967 64:15968 65:15969 66:15970 67:15971 68:15972 69:15973 70:15974 71:15975 72:15976 73:15977 74:15978 75:0 76:15979 77:15980 78:15981 79:15982 80:15983 81:15984 82:15985 83:15986 84:15987 85:15988 86:15989 87:15990 88:15991 89:15992 90:15993 91:15994 92:15995 93:15996 94:15997 95:15998 96:15999 97:16000 98:16001 99:16002 100:16003 101:16004 102:16005 
+Tool time: 28099224424

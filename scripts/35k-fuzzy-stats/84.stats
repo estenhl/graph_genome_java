@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 642700849
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 478573271
+[INFO]    Time used building the index: 1121587123
+[INFO]    Sat context length to 18
+[INFO]    Aligning CATAGGTGGGAATTGAACAATGAGAACATTTGGACACAGGGTGGGGAACATCACACATCGGGGCGCTGTCGCGCGGGTGGGTGTGATAGGGGAGGGATAGCAT with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 103
+Graph size: 35771
+Score: -4
+Time: 11279478578
+Alignment: 0:9527 1:9528 2:9529 3:9530 4:9531 5:9532 6:9533 7:9534 8:9535 9:9536 10:9537 11:9538 12:9539 13:9540 14:9541 15:9542 16:9543 17:9544 18:9545 19:9546 20:9547 21:9548 22:9549 23:9550 24:9551 25:9552 26:9553 27:9554 28:9555 29:9556 30:9557 31:9558 32:9559 33:9560 34:9561 35:9562 36:9563 37:9564 38:9565 39:9566 40:9567 41:9568 42:9569 43:9570 44:9571 45:9572 46:9573 47:9574 48:9575 49:9576 50:9577 51:9578 52:9579 53:9580 54:9581 55:9582 56:9583 57:9584 58:9585 59:9586 60:9587 61:9588 62:9589 63:9590 64:0 65:9591 66:9592 67:9593 68:9594 69:9595 70:9596 71:9597 72:9598 73:0 74:9599 75:9600 76:9601 77:9602 78:9603 79:9604 80:9605 81:0 82:9606 83:9607 84:9608 85:9609 86:9610 87:9611 88:9612 89:9613 90:9614 91:9615 92:9616 93:9617 94:9618 95:9619 96:9620 97:9621 98:9622 99:9623 100:9624 101:9625 102:9626 
+Tool time: 12582629769

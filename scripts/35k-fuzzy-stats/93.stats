@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 629336563
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 443093438
+[INFO]    Time used building the index: 1072692875
+[INFO]    Sat context length to 18
+[INFO]    Aligning TGATTCACTATGTCCTAGACCAAAGATGGCACTGTTTGCTCTCAAAGAAGGACTTCTATCTGTCATATGTCATTTGTTTCATGTGTCCCAAGATGTTAT with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 99
+Graph size: 35771
+Score: -7
+Time: 11510672591
+Alignment: 0:13433 1:13434 2:13435 3:13436 4:13437 5:13438 6:13439 7:13440 8:13441 9:13442 10:13444 11:13445 12:13446 13:13447 14:13448 15:13449 16:13450 17:13451 18:13452 19:13453 20:13454 21:13455 22:13456 23:13457 24:13458 25:13459 26:13460 27:13462 28:13463 29:13464 30:13465 31:13466 32:13467 33:13468 34:13469 35:13470 36:13471 37:13472 38:13473 39:13474 40:13475 41:13476 42:13477 43:13478 44:13479 45:13480 46:13481 47:13482 48:13483 49:13484 50:13485 51:13486 52:13487 53:13488 54:13489 55:13490 56:13491 57:13492 58:13493 59:13494 60:13495 61:13496 62:13497 63:13498 64:13499 65:13500 66:13501 67:13502 68:13503 69:13504 70:13505 71:13506 72:13507 73:13508 74:13509 75:13510 76:13512 77:13513 78:13514 79:13515 80:13516 81:13517 82:0 83:13518 84:13519 85:13520 86:13521 87:13522 88:13523 89:13524 90:13525 91:13526 92:13527 93:13528 94:13529 95:13530 96:13531 97:13532 98:13533 
+Tool time: 12771936799

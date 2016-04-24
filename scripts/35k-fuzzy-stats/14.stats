@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 635420085
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 409507883
+[INFO]    Time used building the index: 1045233189
+[INFO]    Sat context length to 18
+[INFO]    Aligning GAAAATTATGCTATTTCCCACGATCAAGAAAGTCTGGGTCCTCAGTACTAACTCTGAATCTTTCTTAAAGAAGTAAACTGAACCCAAGACATCTTTAATCT with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 101
+Graph size: 35771
+Score: -5
+Time: 13311474236
+Alignment: 0:13879 1:13880 2:13881 3:13882 4:13883 5:13884 6:13885 7:13886 8:13887 9:0 10:13888 11:13889 12:13890 13:13891 14:13892 15:13893 16:13894 17:13895 18:13896 19:13897 20:13898 21:0 22:13899 23:13900 24:13901 25:13902 26:13903 27:13904 28:13905 29:13906 30:13907 31:13908 32:13909 33:13910 34:13911 35:13912 36:13913 37:13914 38:13915 39:13916 40:13917 41:13918 42:13919 43:13920 44:13921 45:13922 46:13923 47:13924 48:13925 49:13926 50:13927 51:13928 52:13929 53:13930 54:13931 55:13932 56:13933 57:13934 58:13935 59:13936 60:13937 61:13938 62:13939 63:13940 64:13941 65:13943 66:13944 67:13945 68:13946 69:13947 70:13948 71:13949 72:13950 73:13951 74:13952 75:13953 76:13954 77:13955 78:13956 79:13957 80:13959 81:13960 82:13961 83:13962 84:13963 85:13964 86:13965 87:13966 88:13967 89:13968 90:13969 91:13970 92:13971 93:13972 94:13973 95:0 96:13974 97:13975 98:13976 99:13977 100:13978 
+Tool time: 14525659614

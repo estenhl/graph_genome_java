@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 638576764
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 411711010
+[INFO]    Time used building the index: 1050593468
+[INFO]    Sat context length to 18
+[INFO]    Aligning CTAGAAATACCATTTGACCCAGCCATCCCATTACTGGGTATATACCAAAAGATTATAAATCATGCTGCTTAAAGACACCATGCACACGTAAGTTTATTG with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 99
+Graph size: 35771
+Score: -5
+Time: 13565176554
+Alignment: 0:9186 1:9187 2:9188 3:9189 4:9190 5:9191 6:9192 7:9193 8:9194 9:9195 10:9196 11:9197 12:9198 13:9199 14:9200 15:9201 16:9202 17:9203 18:9204 19:9205 20:9206 21:9207 22:9208 23:9209 24:9210 25:9211 26:9212 27:9213 28:9214 29:9215 30:9216 31:9217 32:9218 33:9219 34:9220 35:9221 36:9222 37:9223 38:9224 39:9225 40:9226 41:9227 42:9228 43:9229 44:9231 45:9232 46:9233 47:9234 48:9235 49:9236 50:9237 51:9238 52:9239 53:9240 54:9241 55:9242 56:9243 57:9244 58:9245 59:9246 60:9247 61:9248 62:9249 63:9250 64:9251 65:9252 66:9253 67:9254 68:9255 69:9257 70:9258 71:9259 72:9260 73:9261 74:9262 75:9263 76:9264 77:9265 78:0 79:9266 80:9267 81:9268 82:9269 83:9270 84:9271 85:9272 86:9273 87:9274 88:9275 89:9276 90:9277 91:9278 92:9279 93:9280 94:9281 95:9282 96:9283 97:9284 98:9285 
+Tool time: 14782568084

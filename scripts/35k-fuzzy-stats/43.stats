@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 634196744
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 429418997
+[INFO]    Time used building the index: 1063923104
+[INFO]    Sat context length to 18
+[INFO]    Aligning TAAGGAAGTCAAATTATCCGGCAGGAGTGAAGGACAGAATAAAACTGGAAATCAGTCCGTGAAGCTTTGAGATCTTCATGCAGAGCATGCTTCCCAGTGAA with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 101
+Graph size: 35771
+Score: -5
+Time: 15204094315
+Alignment: 0:15092 1:15093 2:15094 3:15096 4:15097 5:15098 6:15099 7:15100 8:15101 9:15102 10:15103 11:15104 12:15105 13:15106 14:15107 15:15108 16:15109 17:15110 18:15111 19:15112 20:15113 21:15114 22:15115 23:15116 24:15117 25:15118 26:15119 27:15120 28:15121 29:15122 30:15123 31:15124 32:0 33:15125 34:15126 35:15127 36:15128 37:15129 38:15130 39:15131 40:15132 41:15133 42:15134 43:15135 44:15136 45:15137 46:15138 47:15139 48:15140 49:15141 50:15142 51:15143 52:15144 53:15145 54:15146 55:15147 56:15148 57:15149 58:15150 59:15151 60:15152 61:15153 62:15154 63:0 64:15155 65:15156 66:15157 67:15158 68:15159 69:15160 70:15161 71:15162 72:15163 73:15164 74:15165 75:15166 76:15167 77:15168 78:0 79:15169 80:15170 81:15171 82:15172 83:15173 84:15174 85:15175 86:15176 87:15177 88:15178 89:15179 90:15180 91:15181 92:15182 93:15183 94:15184 95:15185 96:15186 97:15187 98:15188 99:15189 100:15190 
+Tool time: 16458779342

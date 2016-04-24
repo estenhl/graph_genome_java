@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 626721137
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 443751688
+[INFO]    Time used building the index: 1070745357
+[INFO]    Sat context length to 18
+[INFO]    Aligning GGACATAGGTATGGACAAGGACTTTCATGACTGAAAACACCAAAAGCAATGACAACAAAAGCCAAAATAAACAAATGGGATCTAATTAAACTAAAGAGCTTC with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 102
+Graph size: 35771
+Score: -2
+Time: 29754466373
+Alignment: 0:31359 1:31360 2:31361 3:31362 4:31363 5:31364 6:31365 7:31366 8:31367 9:31368 10:31369 11:31370 12:31371 13:31372 14:31373 15:31374 16:31375 17:31376 18:31377 19:31378 20:31379 21:31380 22:31381 23:31382 24:0 25:31383 26:31384 27:31385 28:31386 29:31387 30:31388 31:31389 32:0 33:31390 34:31391 35:31392 36:31393 37:31394 38:31395 39:31396 40:31397 41:31398 42:31399 43:31400 44:31401 45:31402 46:31403 47:31404 48:31405 49:31406 50:31407 51:31408 52:31409 53:31410 54:31411 55:31412 56:31413 57:31414 58:31415 59:31416 60:31417 61:31418 62:31419 63:31420 64:31421 65:31422 66:31423 67:31424 68:31425 69:31426 70:31427 71:31428 72:31429 73:31430 74:31431 75:31432 76:31433 77:31434 78:31435 79:31436 80:31437 81:31438 82:31439 83:31440 84:31441 85:31442 86:31443 87:31444 88:31445 89:31446 90:31447 91:31448 92:31449 93:31450 94:31451 95:31452 96:31453 97:31454 98:31455 99:31456 100:31457 101:31458 
+Tool time: 31005043044

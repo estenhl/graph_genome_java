@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 630230188
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 457988193
+[INFO]    Time used building the index: 1088495572
+[INFO]    Sat context length to 18
+[INFO]    Aligning GAGTTTTGCTGTCTTGCTCTGTTGCCCAGGCTGGAGTGCAGTTGGCTCATCTAGCTTCACGGAAACCTCTGCCTCCGGGTTAAGCAATCTCCTGGCT with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 97
+Graph size: 35771
+Score: -9
+Time: 11558546070
+Alignment: 0:35050 1:35051 2:35052 3:35053 4:35054 5:35055 6:35056 7:35057 8:35058 9:35059 10:35060 11:35061 12:35062 13:35063 14:35064 15:35065 16:35066 17:35067 18:35068 19:35069 20:35070 21:35071 22:35072 23:35073 24:35074 25:35075 26:35076 27:35077 28:35078 29:35079 30:35080 31:35081 32:35082 33:35083 34:35084 35:35085 36:35086 37:35087 38:35088 39:35089 40:35090 41:35091 42:0 43:35092 44:35093 45:35094 46:35095 47:35096 48:35098 49:35099 50:35100 51:35101 52:35103 53:35104 54:35105 55:35106 56:0 57:35107 58:35108 59:35109 60:35110 61:35111 62:35112 63:35113 64:35114 65:35115 66:35116 67:35117 68:35118 69:35119 70:35120 71:35121 72:35122 73:35123 74:35125 75:35126 76:35127 77:35128 78:35129 79:35130 80:35131 81:35133 82:35134 83:35135 84:35136 85:35137 86:35138 87:35139 88:35141 89:35142 90:35143 91:35144 92:35145 93:35146 94:35147 95:35148 96:35149 
+Tool time: 12834625543

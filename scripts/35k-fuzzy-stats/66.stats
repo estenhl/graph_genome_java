@@ -1,0 +1,39 @@
+[INFO]    Using default scoring configuration (edit distance)
+[INFO]    Sat context length to 18
+[INFO]    Time used building graph: 631452599
+[INFO]    Building index
+[INFO]    Finished building indexes
+[INFO]    Time used creating index: 445504494
+[INFO]    Time used building the index: 1077304309
+[INFO]    Sat context length to 18
+[INFO]    Aligning ATAAACAGTGTAGAGAAGACCTCAAAGGACCTGATGGAGCTGAAAACCATGGCACGAGAACTACGTGTACACATGTAAAAAGCCTTCAGTAGCCGATTCATC with error-margin 5
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    100 percent done
+[INFO]    Finding most probable path
+[INFO]    0 percent done
+[INFO]    10 percent done
+[INFO]    20 percent done
+[INFO]    30 percent done
+[INFO]    40 percent done
+[INFO]    50 percent done
+[INFO]    60 percent done
+[INFO]    70 percent done
+[INFO]    80 percent done
+[INFO]    90 percent done
+[INFO]    Branching factor: 1.0
+[INFO]    Alignment type: Fuzzy search
+Sequence length: 102
+Graph size: 35771
+Score: -4
+Time: 13083991439
+Alignment: 0:27241 1:27242 2:27243 3:27244 4:27245 5:27246 6:27247 7:27248 8:27249 9:27250 10:27251 11:27252 12:27253 13:27254 14:27255 15:27256 16:27257 17:27258 18:27259 19:27260 20:27261 21:27262 22:27263 23:27264 24:27265 25:27266 26:27267 27:27268 28:27269 29:27270 30:27271 31:27272 32:27273 33:27274 34:27275 35:27276 36:27277 37:27278 38:27279 39:27280 40:27281 41:27282 42:27283 43:27284 44:27285 45:27286 46:27287 47:27288 48:27289 49:27290 50:27291 51:27292 52:27293 53:27294 54:27295 55:27296 56:27297 57:27298 58:27299 59:27300 60:27301 61:27302 62:27303 63:27304 64:27305 65:27306 66:27307 67:0 68:27308 69:27309 70:27310 71:27311 72:27312 73:27313 74:27314 75:27315 76:27316 77:27317 78:27318 79:27319 80:0 81:27320 82:27321 83:0 84:27322 85:27323 86:27324 87:27325 88:27326 89:27327 90:27328 91:27329 92:27330 93:27331 94:27332 95:27333 96:27334 97:27335 98:27336 99:27338 100:27339 101:27340 
+Tool time: 14357685307
