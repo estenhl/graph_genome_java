@@ -14,7 +14,7 @@ java -jar ../target/graph-genome.jar align --index=snp-no-errors.index --align-s
 # SNP with error margin
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=snp.index
 java -jar ../target/graph-genome.jar align --index=snp.index --align-sequence=ACGGATTAC --error-margin=1 --png=single-snp-align
-java -jar ../target/graph-genome.jar align --index=snp.index --align-sequence=ACGGATTAC --error-margin=1 --png=single-snp-merge
+java -jar ../target/graph-genome.jar align --index=snp.index --align-sequence=ACGGATTAC --error-margin=1 --merge=true --png=single-snp-merge
 
 # Deletion
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=deletion.index
