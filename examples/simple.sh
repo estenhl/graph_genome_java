@@ -24,7 +24,7 @@ java -jar ../target/graph-genome.jar align --index=deletion.index --align-sequen
 # Insertion
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=insertion.index
 java -jar ../target/graph-genome.jar align --index=insertion.index --align-sequence=ACGTAATTAC --error-margin=1 --png=insertion-align
-java -jar ../target/graph-genome.jar align --index=insertion.index --align-sequence=ACGTAATTAC --error-margin=1 --png=insertion-merge
+java -jar ../target/graph-genome.jar align --index=insertion.index --align-sequence=ACGTAATTAC -merge=true --error-margin=1 --png=insertion-merge
 
 # Structural 1
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=structural1.index
