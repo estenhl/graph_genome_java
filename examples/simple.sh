@@ -19,7 +19,7 @@ java -jar ../target/graph-genome.jar align --index=snp.index --align-sequence=AC
 # Deletion
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=deletion.index
 java -jar ../target/graph-genome.jar align --index=deletion.index --align-sequence=ACGTTTAC --error-margin=1 --png=deletion-align
-java -jar ../target/graph-genome.jar align --index=deletion.index --align-sequence=ACGTTTAC --error-margin=1 --png=deletion-merge
+java -jar ../target/graph-genome.jar align --index=deletion.index --align-sequence=ACGTTTAC --merge=true --error-margin=1 --png=deletion-merge
 
 # Insertion
 java -jar ../target/graph-genome.jar index --input-sequences=ACGTATTAC --index=insertion.index
