@@ -24,7 +24,7 @@ Builds an index from a set of input sequences, fasta files or vcf files.
 * `--png=<filename>` Filename for the visual output files. Results in a `filename.dot` dot-file, and an additional `filename.png` file if dot is installed on the system. Outputs the finished merged graph.
 * `--type=<type>` The type of algorithm to use for alignment. Possible values `fuzzy` and `po-msa`. Defaults to fuzzy, which is the "Fuzzy context-based search" algorithm developed in the thesis
 * `--parallellization=<true/false>` Chooses whether to use parallellization in the alignment process. Defaults to false
-* `--heuristical=<true/false>` Runs the algorithm heuristically
+* `--heuristical=<true/false>` Runs the algorithm heuristically. Defaults to false
 * `--vcf` Vcf files used to build the graph. (WARNING: Extremely experimental)
 
 ### align_sequence.sh
