@@ -72,6 +72,17 @@ public class SuffixTreeNode implements Serializable {
     return cumulativeIndexes;
   }
 
+  /**
+   *
+   * @param suffix The context being looked up
+   * @param scores The scores-table
+   * @param maxScore The max score found by the search so far
+   * @param depth Current depth of the search
+   * @param finalScores The structure storing candidate vertices and scores
+   * @param gaps A table representing gaps indicating how futher gaps should be penalized
+     * @param maxDepth Depth of the tree
+     * @return
+     */
   public int improvedSearch(char[] suffix, int[] scores, int maxScore, int depth,
       HashMap<Integer, Integer> finalScores, boolean[] gaps, int maxDepth) {
     double currentMax = ArrayUtils.max(scores);
@@ -79,6 +90,7 @@ public class SuffixTreeNode implements Serializable {
         < maxScore) {
       return maxScore;
     }
+
     if (children.size() == 0) {
       int score = ArrayUtils.max(scores);
       for (Integer i : indexes) {
@@ -113,8 +125,7 @@ public class SuffixTreeNode implements Serializable {
           myGaps[i] = true;
         }
       }
-      children.get(c)
-          .improvedSearch(suffix, myScores, maxScore, depth + 1, finalScores, myGaps, maxDepth);
+      children.get(c).improvedSearch(suffix, myScores, maxScore, depth + 1, finalScores, myGaps, maxDepth);
     }
     return maxScore;
   }

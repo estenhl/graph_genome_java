@@ -1,11 +1,6 @@
 package index;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -20,7 +15,7 @@ import data.Score;
 import utils.ArrayUtils;
 import utils.LogUtils;
 import utils.StringUtils;
-
+/** The index, representing the main bulk of the functionality */
 public class FuzzySearchIndex implements Serializable {
   private Configuration configuration;
   private Graph graph;
@@ -77,10 +72,12 @@ public class FuzzySearchIndex implements Serializable {
     }
   }
 
+  /** The procedure doing the search for candidate vertices */
   public Object[] improvedFuzzyContextSearch(String s) {
     if (configuration.getAllowParallellization()) {
       LogUtils.printInfo("Doing search with parallellization");
     }
+
     Object[] leftContextScores = new Object[s.length()];
     Object[] rightContextScores = new Object[s.length()];
     int tenPercent = s.length() / 10;
@@ -143,9 +140,11 @@ public class FuzzySearchIndex implements Serializable {
     return score;
   }
 
+  /** Combines left and right context scores into a single candidate set for every index */
   private Object[] combineScores(Object[] scores1, Object[] scores2, String s) {
     char[] characters = s.toCharArray();
     Object[] combined = new Object[scores1.length];
+
     for (int i = 0; i < scores1.length; i++) {
       SortedSet<Score> combinedForPosition = new TreeSet<Score>();
       HashMap<Integer, Integer> map1 = (HashMap<Integer, Integer>) scores1[i];
@@ -183,9 +182,10 @@ public class FuzzySearchIndex implements Serializable {
     return combined;
   }
 
-  public Alignment findMostProbablePath(Object[] alignmentScores, String sequence, long startTime) {
+  public Alignment findMostProbablePath(Object[] alignmentScores, String sequence, long time) {
     LogUtils.printInfo("Finding most probable path");
 
+      long startTime = System.nanoTime();
     int maxDistance = configuration.getMaxDistance();
     int[][] scores = new int[alignmentScores.length][0];
     int[][] indexes = new int[alignmentScores.length][0];
@@ -206,7 +206,6 @@ public class FuzzySearchIndex implements Serializable {
     }
     int tenPercent = alignmentScores.length / 10;
     int status = 0;
-
     for (i = 1; i < alignmentScores.length; i++) {
       row = (SortedSet<Score>) alignmentScores[i];
       if (tenPercent > 0 && i % tenPercent == 0) {
@@ -222,7 +221,7 @@ public class FuzzySearchIndex implements Serializable {
         } else {
           scores[i][j] = (-2 * configuration.getErrorMargin()) - 1;
         }
-        indexes[i][j] = -1;
+        indexes[i][j] = s.getIndex();
         backPointers[i][j] = "-1:-1";
         int baseScore = configuration
             .getScore(graph.getNode(s.getIndex()).getValue(), characters[i]);
@@ -248,14 +247,15 @@ public class FuzzySearchIndex implements Serializable {
 
     int rowNr = scores.length - 1;
     int initialGapLength = 1;
-    while (scores[rowNr] == null || scores[rowNr].length == 0 || noValidScores(scores[rowNr],
-        limit)) {
+    while (scores[rowNr] == null || scores[rowNr].length == 0 || noValidScores(scores[rowNr], limit)) {
       initialGapLength += 1;
       rowNr -= 1;
       if (rowNr == -1) {
         Alignment alignment = new Alignment();
+        alignment.setType("Fuzzy search");
+          alignment.setTime(System.nanoTime() - startTime);
         alignment.setAlignment(new int[sequence.length()]);
-        alignment.setScore(Double.MIN_VALUE);
+        alignment.setScore(0 - configuration.getGapPenalty(graph.getCurrentSize()));
         return alignment;
       }
     }
@@ -270,12 +270,12 @@ public class FuzzySearchIndex implements Serializable {
       colNr = Integer.parseInt(backPointer.split(":")[1]);
     }
 
-    long searchTime = System.nanoTime() - startTime;
+      long searchTime = System.nanoTime() - startTime;
     Alignment alignment = new Alignment();
     if (!configuration.getAllowHeuristics()
         && max < configuration.getMaxAlignmentScore(sequence) - configuration.getErrorMargin()) {
       alignment.setScore(
-          configuration.getMaxAlignmentScore(sequence) - (2 * configuration.getErrorMargin()) - 1);
+          configuration.getMaxAlignmentScore(sequence) - configuration.getGapPenalty(graph.getCurrentSize()));
       alignment.setAlignment(new int[sequence.length()]);
     } else {
       alignment.setScore(max - configuration.getGapPenalty(initialGapLength));
@@ -285,7 +285,6 @@ public class FuzzySearchIndex implements Serializable {
     alignment.setType("Fuzzy search");
     alignment.setSequenceLength(characters.length);
     alignment.setGraphSize(graph.getCurrentSize());
-
     return alignment;
   }
 
@@ -328,11 +327,9 @@ public class FuzzySearchIndex implements Serializable {
   }
 
   public Alignment align(String sequence) {
-    LogUtils.printInfo(
-        "Aligning " + sequence + " with error-margin " + configuration.getErrorMargin());
+    LogUtils.printInfo("Aligning " + sequence + " with error-margin " + configuration.getErrorMargin());
     long start = System.nanoTime();
     Object[] alignmentScores = improvedFuzzyContextSearch(sequence);
-    long time = System.nanoTime() - start;
 
     Alignment alignment = findMostProbablePath(alignmentScores, sequence, start);
     return alignment;

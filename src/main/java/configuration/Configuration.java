@@ -5,6 +5,7 @@ import java.io.Serializable;
 import data.Graph;
 import utils.LogUtils;
 
+/** The class modelling scoring schemas */
 public abstract class Configuration implements Serializable {
   public static final int DEFAULT_SUFFIX_LENGTH = 15;
   public static final int DEFAULT_ERROR_MARGIN = 0;
@@ -59,7 +60,7 @@ public abstract class Configuration implements Serializable {
 
   public int getScore(char a, char b) {
     if (a == WILDCARD || b == WILDCARD) {
-      return maxPairwiseScore;
+      return minPairwiseScore;
     }
 
     final int A = 0;

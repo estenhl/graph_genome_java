@@ -3,7 +3,7 @@ This is a tool developed as a part of a master thesis in Informatics: Programmin
 ## Demo
 There exists an extremely crude in-browser demo of the tool at **somewhere**
 ## Setup
-Clone the repo: `git@github.com:estenpro/graph_genome_java.git`
+Clone the repo: `git clone http://github.com/estenpro/graph_genome_java`
 Build the project with maven: `mvn clean install`
 ### Users without maven
 For users without maven there exist prebuilt binaries in the `target/` folder, reachable through the run-scripts.
@@ -46,10 +46,7 @@ Builds an index from a set of input sequences, fasta files or vcf files.
 ### build_and_align.sh
 Passes on parameters to the underlying functions, and is thus dependant on the same arguments. Does not need an `--index` parameter!
 ## Examples
-A set of examples can be found in the `examples/` folder
+Examples can be found in the `examples/` folder
 
 **`simple.sh`**
 Builds indexes and produces visualizations for the examples shown in the thesis
-
-**`hla_a.sh`**
-Builds an index and produces a visualization for a set of assemblies of the hla-a gene in the MHC region

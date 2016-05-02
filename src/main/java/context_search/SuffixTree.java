@@ -29,6 +29,7 @@ public class SuffixTree implements Serializable, Runnable {
     scores = new HashMap<Integer, HashMap<Integer, Integer>>();
   }
 
+  /** Method used in parallelization */
   public synchronized void setSearchParams(String s, boolean force, int index) {
     this.s = s;
     this.force = force;
@@ -36,10 +37,12 @@ public class SuffixTree implements Serializable, Runnable {
     setReady(false);
   }
 
+  /** Method used in parallelization */
   public synchronized boolean getReady() {
     return ready;
   }
 
+  /** Method used in parallelization */
   public synchronized void await() {
     while (!ready) {
       try {
@@ -51,14 +54,17 @@ public class SuffixTree implements Serializable, Runnable {
     return;
   }
 
+  /** Method used in parallelization */
   public void run() {
     improvedSearch(s, force, index);
   }
 
+  /** Method used in parallelization */
   public synchronized void setReady(boolean ready) {
     this.ready = ready;
   }
 
+  /** Method used in parallelization */
   public HashMap<Integer, Integer> getScores(int index) {
     return scores.get(index);
   }
@@ -74,10 +80,11 @@ public class SuffixTree implements Serializable, Runnable {
     head.addSuffix(suffix, node);
   }
 
+  /** The recursive suffix tree search */
   public synchronized HashMap<Integer, Integer> improvedSearch(String s, boolean force, int index) {
     setReady(true);
     notifyAll();
-    if ((!force && s.length() < configuration.getContextLength()) || s.length() < 2) {
+    if ((!force && s.length() < configuration.getContextLength()) || s.length() == 0) {
       this.scores.put(index, new HashMap<Integer, Integer>());
       return new HashMap<Integer, Integer>();
     }

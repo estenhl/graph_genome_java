@@ -13,6 +13,7 @@ import data.Graph;
 import data.Node;
 
 public class AlignmentUtils {
+  /** PO-MSA */
   public static Alignment align(Graph g, String sequence, Configuration configuration) {
     return alignRegion(g, g.getHead(), g.getTail(), sequence, configuration);
   }

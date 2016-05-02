@@ -204,6 +204,7 @@ public class Graph implements Serializable {
     return getNode(-1);
   }
 
+  /** The procedure generating contexts for the index */
   public Object[] getContexts(String direction) {
     List<Node> queue = new ArrayList<Node>();
     Set<Integer> active = new HashSet<Integer>();

@@ -21,6 +21,7 @@ import utils.GraphUtils;
 import utils.LogUtils;
 import utils.ParseUtils;
 
+/** I/O Handler */
 public class GraphGenome {
   private static List<String> VALID_PARAMS;
   private static Map<String, String> SHORTHAND_PARAMS;
@@ -100,6 +101,7 @@ public class GraphGenome {
     }
     Configuration configuration = getConfiguration(params.get("--scoring-system"));
     int suffixLength = ParseUtils.parseInt(params.get("--suffix-length"), -1);
+    configuration.setContextLength(suffixLength);
     configuration.setErrorMargin(ParseUtils.parseInt(params.get("--error-margin"),
         Configuration.DEFAULT_ERROR_MARGIN));
     configuration.setAllowParallellization("true".equals(params.get("--parallellization")));
@@ -170,7 +172,10 @@ public class GraphGenome {
     }
     Graph graph = index.getGraph();
     index.setConfiguration(configuration);
-    configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
+
+    if (configuration.getContextLength() == -1) {
+      configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
+    }
     String sequence = null;
     if (params.get("--align-sequence") == null && params.get("--align-fasta") == null) {
       LogUtils.printError(
@@ -316,7 +321,9 @@ public class GraphGenome {
       for (int i = 0; i < files.length; i++) {
         try {
           graph = createOrMerge(configuration, graph, ParseUtils.fastaToSequence(files[i]));
-          configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
+          if (configuration.getContextLength() == -1) {
+            configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
+          }
         } catch (IOException e) {
           LogUtils.printError("Unable to open file " + files[i]);
         }
@@ -326,7 +333,9 @@ public class GraphGenome {
     if (sequences != null) {
       for (int i = 0; i < sequences.length; i++) {
         graph = createOrMerge(configuration, graph, sequences[i]);
-        configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
+        if (configuration.getContextLength() == -1) {
+          configuration.setContextLength(GraphUtils.optimalSuffixLength(graph));
+        }
       }
     }
 

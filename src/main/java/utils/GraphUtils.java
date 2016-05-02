@@ -29,6 +29,7 @@ public class GraphUtils {
     return newArr;
   }
 
+  /** Calculates probabilities of sharing suffixes based on the birthday problem */
   public static int optimalSuffixLength(Graph graph) {
     int nodes = graph.getCurrentSize();
     int i = 1;
