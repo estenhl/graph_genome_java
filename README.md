@@ -1,7 +1,7 @@
 # The GraphGenome tool
 This is a tool developed as a part of a master thesis in Informatics: Programming and networks at the Department for Informatics, University of Oslo. The tool builds graph-based reference genomes from datasets and provides functionality for aligning reads against the graph.
 ## Demo
-There exists an extremely crude in-browser demo of the tool at **somewhere**
+There exists an extremely crude in-browser demo of the tool at http://graph-genome-demo.appspot.com
 ## Setup
 Clone the repo: `git clone http://github.com/estenpro/graph_genome_java`
 Build the project with maven: `mvn clean install`
