@@ -38,18 +38,6 @@
               <goal>one-jar</goal>
             </goals>
           </execution>
-          <execution>
-            <id>build-third</id>
-            <configuration>
-              <mainClass>DemoHttpListener</mainClass>
-              <attachToBuild>true</attachToBuild>
-              <classifier>onejar</classifier>
-              <filename>demo-http-listener.jar</filename>
-            </configuration>
-            <goals>
-              <goal>one-jar</goal>
-            </goals>
-          </execution>
         </executions>
       </plugin>
       <plugin>
