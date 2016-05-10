@@ -4,19 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" line="197" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/utils/AlignmentUtils.class" afterPath="$PROJECT_DIR$/target/classes/utils/AlignmentUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/configuration/Configuration.class" afterPath="$PROJECT_DIR$/target/classes/configuration/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/index/FuzzySearchIndex.class" afterPath="$PROJECT_DIR$/target/classes/index/FuzzySearchIndex.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/data/Graph.class" afterPath="$PROJECT_DIR$/target/classes/data/Graph.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/GraphGenome.class" afterPath="$PROJECT_DIR$/target/classes/GraphGenome.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/utils/GraphUtils.class" afterPath="$PROJECT_DIR$/target/classes/utils/GraphUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/context_search/SuffixTree.class" afterPath="$PROJECT_DIR$/target/classes/context_search/SuffixTree.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/context_search/SuffixTreeNode.class" afterPath="$PROJECT_DIR$/target/classes/context_search/SuffixTreeNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" afterPath="$PROJECT_DIR$/src/main/java/index/FuzzySearchIndex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="6842c733-613e-40f1-8c5d-c3a9e810ff12" name="Default" comment="" />
     <ignored path="Graph-genome.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
