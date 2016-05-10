@@ -50,3 +50,9 @@ Examples can be found in the `examples/` folder
 
 **`simple.sh`**
 Builds indexes and produces visualizations for the examples shown in the thesis
+
+**`hla-double.sh`**
+Builds a graph from two HLA-A sequences
+
+**`hla-double.sh`**
+Builds a graph from three HLA-A sequences
