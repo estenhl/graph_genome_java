@@ -21,7 +21,9 @@ import utils.GraphUtils;
 import utils.LogUtils;
 import utils.ParseUtils;
 
-/** I/O Handler */
+/**
+ * I/O Handler
+ */
 public class GraphGenome {
   private static List<String> VALID_PARAMS;
   private static Map<String, String> SHORTHAND_PARAMS;

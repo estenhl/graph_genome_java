@@ -284,8 +284,8 @@ public class FuzzySearchIndex implements Serializable {
     int colNr = ArrayUtils.findHighestIndex(scores[rowNr]);
     int max = scores[rowNr][colNr];
 
+    // Backtracks the sequence leading to the best score
     int[] alignmentSequence = new int[scores.length];
-    // Backtracks
     while (rowNr >= 0) {
       alignmentSequence[rowNr] = indexes[rowNr][colNr];
       String backPointer = backPointers[rowNr][colNr];

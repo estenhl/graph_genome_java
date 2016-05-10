@@ -13,7 +13,9 @@ import data.Graph;
 import data.Node;
 
 public class AlignmentUtils {
-  /** PO-MSA */
+  /**
+   * PO-MSA
+   */
   public static Alignment align(Graph g, String sequence, Configuration configuration) {
     return alignRegion(g, g.getHead(), g.getTail(), sequence, configuration);
   }
@@ -54,6 +56,8 @@ public class AlignmentUtils {
       queue.add(g.getNode(neighbour));
       waiting.add(neighbour);
     }
+
+    // Iterates over all vertices
     while (!queue.isEmpty()) {
       Node curr = queue.remove(0);
       values = new Integer[characters.length + 1];
@@ -65,6 +69,8 @@ public class AlignmentUtils {
       Integer[] myBackPointers = new Integer[characters.length + 1];
       Integer[] paths = new Integer[characters.length + 1];
       boolean wait = false;
+
+      // Iterates over all incoming paths to a vertex
       for (Integer neighbour : curr.getIncoming()) {
         Integer[] prev = results.get(neighbour);
         Boolean[] prevGaps = gaps.get(neighbour);
@@ -72,6 +78,8 @@ public class AlignmentUtils {
           wait = true;
           break;
         }
+
+        // Iterates over all indexes of the string in one preceding vertex
         for (int i = 1; i < values.length; i++) {
           int verticalScore = values[i - 1];
           if (i == 1 || values[i - 1] - values[i - 2] == configuration.getGapExtensionPenalty()
@@ -89,6 +97,8 @@ public class AlignmentUtils {
           int diagonalScore =
               prev[i - 1] + configuration.getScore(characters[i - 1], curr.getValue());
           int myMax = Math.max(verticalScore, Math.max(horizontalScore, diagonalScore));
+
+          // Finds the highest score and sets backpointer and gap
           if (myMax > values[i]) {
             values[i] = myMax;
             if (myMax == horizontalScore) {
@@ -127,6 +137,7 @@ public class AlignmentUtils {
       }
     }
 
+    // Backtracks the alignment
     int index = characters.length;
     int[] alignmentSequence = new int[sequence.length()];
     while (index > 0) {
